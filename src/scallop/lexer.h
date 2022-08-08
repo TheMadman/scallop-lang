@@ -25,6 +25,13 @@
 extern "C" {
 #endif
 
+/**
+ * \file
+ *
+ * \brief This file defines the data structures and
+ *	functions used for lexing.
+ */
+
 enum SCALLOP_TOKEN {
 	SCALLOP_TOKEN_EOF,
 	SCALLOP_TOKEN_WORD,
@@ -42,7 +49,9 @@ enum SCALLOP_TOKEN {
 /**
  * \brief Represents a single token.
  *
- * The start_offset and end_offset are offsets
+ *
+ * The scallop_parse_token::start_offset and
+ * scallop_parse_token::end_offset are offsets
  * into the original string, allowing fetching
  * of the original value from the source.
  *
@@ -54,16 +63,44 @@ enum SCALLOP_TOKEN {
  * store that can persist the original source,
  * such as an initialized csalt_resource_vector.
  *
- * You are expected to use start_offset and
- * end_offset to read out the raw values from the
- * original store.
+ * You are expected to use
+ * scallop_parse_token::start_offset and
+ * scallop_parse_token::end_offset to read out
+ * the raw values from the original store.
  */
 struct scallop_parse_token {
-	int32_t token;
+	/**
+	 * \brief The byte offset that the value for
+	 *	this token starts at.
+	 */
 	int64_t start_offset;
+
+	/**
+	 * \brief The byte offset that the value for
+	 *	this token ends at.
+	 *
+	 * Note that this value represents the character
+	 * _after_ the last character of the token.
+	 */
 	int64_t end_offset;
+
+	/**
+	 * \brief The line number that the token was
+	 * 	begins at.
+	 */
 	int64_t row;
+
+	/**
+	 * \brief The character number on the given line
+	 * 	that the token begins at.
+	 */
 	int64_t col;
+
+	/**
+	 * \brief The SCALLOP_TOKEN value that the lexer
+	 * 	lexed.
+	 */
+	int32_t token;
 };
 
 /**
