@@ -49,6 +49,20 @@ enum SCALLOP_TOKEN {
 /**
  * \brief Represents a single token.
  *
+ * If the store would have blocked on a read
+ * before the token was fully lexed, the
+ * scallop_parse_token::read_finished property will be 0. The
+ * resulting scallop_parse_token can be used
+ * in a new call to scallop_lex to continue
+ * lexing until the token was lexed completely.
+ * Example:
+ *
+ * \code
+ * 	struct scallop_parse_token token = { 0 };
+ * 	while (!token.read_finished)
+ * 		token = scallop_lex(source, token);
+ * 	// use token
+ * \endcode
  *
  * The scallop_parse_token::start_offset and
  * scallop_parse_token::end_offset are offsets
@@ -69,6 +83,18 @@ enum SCALLOP_TOKEN {
  * the raw values from the original store.
  */
 struct scallop_parse_token {
+	/**
+	 * \brief The SCALLOP_TOKEN value that the lexer
+	 * 	lexed.
+	 */
+	int32_t token;
+
+	/**
+	 * \brief Single character of push-back. Used
+	 * 	internally.
+	 */
+	int32_t pushback_char;
+
 	/**
 	 * \brief The byte offset that the value for
 	 *	this token starts at.
@@ -97,10 +123,10 @@ struct scallop_parse_token {
 	int64_t col;
 
 	/**
-	 * \brief The SCALLOP_TOKEN value that the lexer
+	 * \brief Represents whether the full token was
 	 * 	lexed.
 	 */
-	int32_t token;
+	int8_t read_finished;
 };
 
 /**
@@ -109,6 +135,14 @@ struct scallop_parse_token {
  *
  * Pass a zero-initialized token for the beginning of
  * lexing; to continue lexing, pass the previously-returned token.
+ *
+ * Example:
+ * \code
+ *	struct scallop_parse_token token = { 0 };
+ *	while (!token.read_finished)
+ *		token = scallop_lex(source, token);
+ *	// use token
+ * \endcode
  */
 struct scallop_parse_token scallop_lex(
 	csalt_store *source,

@@ -26,20 +26,26 @@
 
 static int get_char_internal(csalt_store *store, void *param)
 {
-	return !!csalt_store_read(store, param, 1);
+	return (int)csalt_store_read(store, param, 1);
 }
 
-static char get_char(csalt_store *store, ssize_t index)
+static int get_char(csalt_store *store, ssize_t index)
 {
 	char result = 0;
-	int success = csalt_store_split(store, index, index + 1, get_char_internal, &result);
-	if (!success)
-		return 0;
-	return result;
+	int success = csalt_store_split(
+		store,
+		index,
+		index + 1,
+		get_char_internal,
+		&result
+	);
+	return success <= 0 ? success - 1 : result;
 }
 
 enum CHAR_TYPE {
 	CHAR_NULL,
+	CHAR_ERROR,
+	CHAR_EAGAIN,
 	CHAR_ASCII_PRINTABLE,
 	CHAR_UTF8_START,
 	CHAR_UTF8_CONT,
@@ -59,9 +65,13 @@ enum CHAR_TYPE {
 #define UTF8_FIRST_BIT (1 << 7)
 #define UTF8_SECOND_BIT (1 << 6)
 
-static enum CHAR_TYPE char_type(char character)
+static enum CHAR_TYPE char_type(int character)
 {
 	switch (character) {
+		case -2:
+			return CHAR_ERROR;
+		case -1:
+			return CHAR_EAGAIN;
 		case '{':
 			return CHAR_OPEN_CURLY_BRACKET;
 		case '}':
@@ -114,13 +124,14 @@ static struct next_char next_char(
 	struct scallop_parse_token token
 )
 {
-	char c = get_char(store, ++token.end_offset);
-	char is_newline = c == '\n';
+	int c = get_char(store, ++token.end_offset);
+	int is_newline = c == '\n';
 	enum CHAR_TYPE type = char_type(c);
-	char is_utf8_cont = type == CHAR_UTF8_CONT;
+	int is_utf8_cont = type == CHAR_UTF8_CONT;
+	token.pushback_char = type == CHAR_EAGAIN ? 0 : type;
 	token.row += is_newline;
 	token.col = is_newline ? 1 :
-		is_utf8_cont? token.col: token.col + 1;
+		is_utf8_cont ? token.col: token.col + 1;
 	return (struct next_char) {
 		type,
 		token,
@@ -145,6 +156,14 @@ struct scallop_parse_token lex_error(
 		.start_offset = -1,
 		.end_offset = -1,
 	};
+}
+
+struct scallop_parse_token lex_eagain(
+	csalt_store *store,
+	struct scallop_parse_token token
+)
+{
+	return token;
 }
 
 /*
@@ -177,6 +196,11 @@ static lex_fn *transition_state_bounds(
 	const enum CHAR_TYPE input
 )
 {
+	// debating if this should be in the state
+	// transition table or if it should be
+	// here...
+	if (input == CHAR_EAGAIN)
+		return lex_eagain;
 	for (
 		const struct state_transition_row *current = rows_begin;
 		current < rows_end;
@@ -293,6 +317,7 @@ struct scallop_parse_token lex_end(
 	struct scallop_parse_token token
 )
 {
+	token.read_finished = 1;
 	return token;
 }
 
@@ -303,7 +328,7 @@ struct scallop_parse_token lex_eof(
 {
 	token.token = SCALLOP_TOKEN_EOF;
 	++token.end_offset;
-	return token;
+	return lex_end(store, token);
 }
 
 struct scallop_parse_token lex_utf8_start(
@@ -576,7 +601,7 @@ struct scallop_parse_token lex_open_curly_bracket(
 {
 	token.token = SCALLOP_TOKEN_OPEN_CURLY_BRACKET;
 	++token.end_offset;
-	return token;
+	return lex_end(store, token);
 }
 
 struct scallop_parse_token lex_close_curly_bracket(
@@ -586,7 +611,7 @@ struct scallop_parse_token lex_close_curly_bracket(
 {
 	token.token = SCALLOP_TOKEN_CLOSE_CURLY_BRACKET;
 	++token.end_offset;
-	return token;
+	return lex_end(store, token);
 }
 
 struct scallop_parse_token lex_open_square_bracket(
@@ -596,7 +621,7 @@ struct scallop_parse_token lex_open_square_bracket(
 {
 	token.token = SCALLOP_TOKEN_OPEN_SQUARE_BRACKET;
 	++token.end_offset;
-	return token;
+	return lex_end(store, token);
 }
 
 struct scallop_parse_token lex_close_square_bracket(
@@ -606,7 +631,7 @@ struct scallop_parse_token lex_close_square_bracket(
 {
 	token.token = SCALLOP_TOKEN_CLOSE_SQUARE_BRACKET;
 	++token.end_offset;
-	return token;
+	return lex_end(store, token);
 }
 
 
@@ -664,32 +689,21 @@ struct scallop_parse_token lex_escape_double_quoted_string(
 	return lex_double_quoted_string(store, escaped_char.token);
 }
 
-static struct scallop_parse_token token_rewind(
-	csalt_store *store,
-	struct scallop_parse_token token
-)
-{
-	--token.end_offset;
-	char c = get_char(store, token.end_offset);
-	char is_newline = c == '\n';
-	char is_utf8_cont = c & UTF8_FIRST_BIT;
-	token.row -= is_newline;
-	token.col = is_newline ? token.col :
-		is_utf8_cont ? token.col : token.col - 1;
-
-	return token;
-}
-
 struct scallop_parse_token lex_begin(
 	csalt_store *store,
 	struct scallop_parse_token token
 )
 {
-	// dirty hack to get the right char
-	token = token_rewind(store, token);
-	const struct next_char current_char = next_char(store, token);
-	const enum CHAR_TYPE input = current_char.type;
-	token = current_char.token;
+	enum CHAR_TYPE input = 0;
+	if (token.pushback_char) {
+		input = token.pushback_char;
+	} else {
+		// dirty hack to get the right char
+		token.end_offset--;
+		const struct next_char current_char = next_char(store, token);
+		input = current_char.type;
+		token = current_char.token;
+	}
 	static const struct state_transition_row transitions[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_word },
 		{ CHAR_UTF8_START, lex_utf8_start },
@@ -713,7 +727,11 @@ struct scallop_parse_token scallop_lex(
 	struct scallop_parse_token token
 )
 {
-	token.start_offset = token.end_offset;
+	if (token.read_finished) {
+		token.start_offset = token.end_offset;
+		token.read_finished = 0;
+		token.pushback_char = 0;
+	}
 	return lex_begin(source, token);
 }
 

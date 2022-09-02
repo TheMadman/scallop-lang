@@ -59,4 +59,12 @@ static const char *token_types[] = {
 	} \
 }
 
+inline struct scallop_parse_token make_token(
+	enum SCALLOP_TOKEN token,
+	ssize_t start,
+	ssize_t end
+)
+{
+	return (struct scallop_parse_token){ token, start, end };
+}
 
