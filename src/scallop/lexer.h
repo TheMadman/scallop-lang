@@ -32,6 +32,10 @@ extern "C" {
  *	functions used for lexing.
  */
 
+/**
+ * \brief Indicates the kind of token that has been
+ * 	read.
+ */
 enum SCALLOP_TOKEN {
 	SCALLOP_TOKEN_EOF,
 	SCALLOP_TOKEN_WORD,
@@ -53,7 +57,7 @@ enum SCALLOP_TOKEN {
  * before the token was fully lexed, the
  * scallop_parse_token::read_finished property will be 0. The
  * resulting scallop_parse_token can be used
- * in a new call to scallop_lex to continue
+ * in a new call to scallop_lex() to continue
  * lexing until the token was lexed completely.
  * Example:
  *
