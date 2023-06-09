@@ -115,7 +115,7 @@ struct scallop_parse_token {
 	int64_t end_offset;
 
 	/**
-	 * \brief The line number that the token was
+	 * \brief The line number that the token
 	 * 	begins at.
 	 */
 	int64_t row;
