@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
 
-#include "scallop/util.h"
 #include "scallop/lexer.h"
 
 #define print_error(format, ...) fprintf(stderr, "%s:%d: " format "\n", __FILE__, __LINE__ __VA_OPT__(,) __VA_ARGS__)
