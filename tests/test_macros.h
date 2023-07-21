@@ -32,7 +32,7 @@ static const char *token_types[] = {
 { \
 	struct csalt_cmemory csalt_script = csalt_cmemory_array(script); \
 	csalt_store * const store = (csalt_store *)&csalt_script; \
-	static const struct scallop_parse_token expects[] = { \
+	const struct scallop_parse_token expects[] = { \
 		__VA_ARGS__ \
 	}; \
 	const struct scallop_parse_token *expected = expects; \
@@ -58,12 +58,16 @@ static const char *token_types[] = {
 	} \
 }
 
-inline struct scallop_parse_token make_token(
+struct scallop_parse_token make_token(
 	enum SCALLOP_TOKEN token,
 	ssize_t start,
 	ssize_t end
 )
 {
-	return (struct scallop_parse_token){ token, start, end };
+	struct scallop_parse_token result = { 0 };
+	result.start_offset = start;
+	result.end_offset = end;
+	result.token = token;
+	return result;
 }
 

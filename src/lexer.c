@@ -267,6 +267,7 @@ struct state_transition lex_eof(
 	enum CHAR_TYPE type
 )
 {
+	(void)type;
 	token.token = SCALLOP_TOKEN_EOF;
 	return (struct state_transition) {
 		NULL,
@@ -279,7 +280,7 @@ struct state_transition lex_utf8_start(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_UTF8_CONT, lex_utf8_cont },
 	};
 	token.token = SCALLOP_TOKEN_WORD;
@@ -294,7 +295,7 @@ struct state_transition lex_utf8_cont(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_UTF8_START, lex_utf8_start },
 		{ CHAR_UTF8_CONT, lex_utf8_cont },
 		{ CHAR_ASCII_PRINTABLE, lex_word },
@@ -318,7 +319,7 @@ struct state_transition lex_quoted_utf8_start(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_UTF8_CONT, lex_quoted_utf8_cont },
 	};
 	return (struct state_transition) {
@@ -332,7 +333,7 @@ struct state_transition lex_quoted_utf8_cont(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_quoted_string },
 		{ CHAR_WORD_SEPARATOR, lex_quoted_string },
 		{ CHAR_STATEMENT_SEPARATOR, lex_quoted_string },
@@ -357,7 +358,7 @@ struct state_transition lex_word_separator(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_WORD_SEPARATOR, lex_word_separator },
 		{ CHAR_BACKSLASH, NULL },
 		{ CHAR_ASCII_PRINTABLE, NULL },
@@ -382,7 +383,7 @@ struct state_transition lex_statement_separator(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_STATEMENT_SEPARATOR, lex_statement_separator },
 		{ CHAR_ASCII_PRINTABLE, NULL },
 		{ CHAR_UTF8_START, NULL },
@@ -408,7 +409,7 @@ struct state_transition lex_quoted_string(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_quoted_string },
 		{ CHAR_UTF8_START, lex_quoted_utf8_start },
 		{ CHAR_WORD_SEPARATOR, lex_quoted_string },
@@ -433,7 +434,7 @@ struct state_transition lex_end_quoted_string(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_WORD_SEPARATOR, NULL },
 		{ CHAR_STATEMENT_SEPARATOR, NULL },
 		{ CHAR_ASCII_PRINTABLE, lex_word },
@@ -458,7 +459,7 @@ struct state_transition lex_double_quoted_utf8_start(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_UTF8_CONT, lex_double_quoted_utf8_cont },
 	};
 	token.token = SCALLOP_TOKEN_WORD;
@@ -473,7 +474,7 @@ struct state_transition lex_double_quoted_utf8_cont(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_double_quoted_string },
 		{ CHAR_WORD_SEPARATOR, lex_double_quoted_string },
 		{ CHAR_STATEMENT_SEPARATOR, lex_double_quoted_string },
@@ -497,7 +498,7 @@ struct state_transition lex_double_quoted_string(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_double_quoted_string },
 		{ CHAR_WORD_SEPARATOR, lex_double_quoted_string },
 		{ CHAR_STATEMENT_SEPARATOR, lex_double_quoted_string },
@@ -532,6 +533,7 @@ struct state_transition lex_open_curly_bracket(
 	enum CHAR_TYPE type
 )
 {
+	(void)type;
 	token.token = SCALLOP_TOKEN_OPEN_CURLY_BRACKET;
 	return (struct state_transition) {
 		NULL,
@@ -544,6 +546,7 @@ struct state_transition lex_close_curly_bracket(
 	enum CHAR_TYPE type
 )
 {
+	(void)type;
 	token.token = SCALLOP_TOKEN_CLOSE_CURLY_BRACKET;
 	return (struct state_transition) {
 		NULL,
@@ -556,6 +559,7 @@ struct state_transition lex_open_square_bracket(
 	enum CHAR_TYPE type
 )
 {
+	(void)type;
 	token.token = SCALLOP_TOKEN_OPEN_SQUARE_BRACKET;
 	return (struct state_transition) {
 		NULL,
@@ -568,6 +572,7 @@ struct state_transition lex_close_square_bracket(
 	enum CHAR_TYPE type
 )
 {
+	(void)type;
 	token.token = SCALLOP_TOKEN_CLOSE_SQUARE_BRACKET;
 	return (struct state_transition) {
 		NULL,
@@ -580,7 +585,7 @@ struct state_transition lex_word(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_word },
 		{ CHAR_UTF8_START, lex_utf8_start },
 		{ CHAR_BACKSLASH, lex_escape_word },
@@ -648,7 +653,7 @@ struct state_transition lex_begin(
 	enum CHAR_TYPE type
 )
 {
-	const static struct transition_row rows[] = {
+	static const struct transition_row rows[] = {
 		{ CHAR_ASCII_PRINTABLE, lex_word },
 		{ CHAR_UTF8_START, lex_utf8_start },
 		{ CHAR_QUOTE, lex_quoted_string },

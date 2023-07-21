@@ -7,8 +7,8 @@ int main()
 	static const char script[] = " \t";
 	
 	expect(script,
-		{ SCALLOP_TOKEN_WORD_SEPARATOR, 0, 0, 2 },
-		{ SCALLOP_TOKEN_EOF, 0, 2, 3 }
+		make_token(SCALLOP_TOKEN_WORD_SEPARATOR, 0, 2),
+		make_token(SCALLOP_TOKEN_EOF, 2, 3)
 	);
 }
 

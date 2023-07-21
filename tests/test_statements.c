@@ -7,16 +7,16 @@ int main()
 	static const char script[] = "foo; bar baz\nbarry;";
 
 	expect(script,
-		{ SCALLOP_TOKEN_WORD, 0, 0, 3 },
-		{ SCALLOP_TOKEN_STATEMENT_SEPARATOR, 0, 3, 4 },
-		{ SCALLOP_TOKEN_WORD_SEPARATOR, 0, 4, 5 },
-		{ SCALLOP_TOKEN_WORD, 0, 5, 8 },
-		{ SCALLOP_TOKEN_WORD_SEPARATOR, 0, 8, 9 },
-		{ SCALLOP_TOKEN_WORD, 0, 9, 12 },
-		{ SCALLOP_TOKEN_STATEMENT_SEPARATOR, 0, 12, 13 },
-		{ SCALLOP_TOKEN_WORD, 0, 13, 18 },
-		{ SCALLOP_TOKEN_STATEMENT_SEPARATOR, 0, 18, 19 },
-		{ SCALLOP_TOKEN_EOF, 0, 19, 20 }
+		make_token(SCALLOP_TOKEN_WORD, 0, 3),
+		make_token(SCALLOP_TOKEN_STATEMENT_SEPARATOR, 3, 4),
+		make_token(SCALLOP_TOKEN_WORD_SEPARATOR, 4, 5),
+		make_token(SCALLOP_TOKEN_WORD, 5, 8),
+		make_token(SCALLOP_TOKEN_WORD_SEPARATOR, 8, 9),
+		make_token(SCALLOP_TOKEN_WORD, 9, 12),
+		make_token(SCALLOP_TOKEN_STATEMENT_SEPARATOR, 12, 13),
+		make_token(SCALLOP_TOKEN_WORD, 13, 18),
+		make_token(SCALLOP_TOKEN_STATEMENT_SEPARATOR, 18, 19),
+		make_token(SCALLOP_TOKEN_EOF, 19, 20)
 	);
 }
 

@@ -5,6 +5,7 @@
 
 ssize_t not_ready_read(csalt_store *store, void *buffer, ssize_t size)
 {
+	(void)store;
 	// first read reports 0 bytes, subsequent reads report size bytes
 	static int ready = 0;
 	if (!ready++) {
@@ -17,11 +18,14 @@ ssize_t not_ready_read(csalt_store *store, void *buffer, ssize_t size)
 
 ssize_t not_ready_write(csalt_store *store, const void *buffer, ssize_t size)
 {
+	(void)store;
+	(void)buffer;
 	return size;
 }
 
 ssize_t not_ready_size(csalt_store *store)
 {
+	(void)store;
 	return 0;
 }
 
@@ -33,6 +37,9 @@ int not_ready_split(
 	void *param
 )
 {
+	(void)store;
+	(void)begin;
+	(void)end;
 	return block(store, param);
 }
 
@@ -47,6 +54,7 @@ csalt_store not_ready = &not_ready_interface;
 
 int main()
 {
+	(void)token_types;
 	csalt_store *store = &not_ready;
 	struct scallop_parse_token token = { 0 };
 

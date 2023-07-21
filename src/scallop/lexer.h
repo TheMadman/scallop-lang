@@ -97,7 +97,7 @@ struct scallop_parse_token {
 	 * \brief Single character of push-back. Used
 	 * 	internally.
 	 */
-	int32_t pushback_char;
+	uint32_t pushback_char;
 
 	/**
 	 * \brief The byte offset that the value for
