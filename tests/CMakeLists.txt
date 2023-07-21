@@ -1,6 +1,6 @@
 function(testcase target)
 	add_executable(${target} ${target}.c)
-	target_link_libraries(${target} csalt lexer)
+	target_link_libraries(${target} csalt scalloplexer)
 	add_test(NAME ${target} COMMAND ${target})
 endfunction(testcase)
 

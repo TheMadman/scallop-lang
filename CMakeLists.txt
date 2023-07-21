@@ -8,7 +8,7 @@ add_subdirectory(src)
 
 ## Refactor this out into a separate file?
 ## Lots of noise for just "install a CMake target"
-install(TARGETS lexer
+install(TARGETS scalloplexer
 	EXPORT ScallopLangTargets
 	DESTINATION lib)
 install(EXPORT ScallopLangTargets
