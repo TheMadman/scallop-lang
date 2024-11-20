@@ -18,7 +18,29 @@
 \
 #include "macros.h"
 
+#include <scallop-lang/lex.h>
+#include <stdio.h>
+
+#define fn scallop_lang_lex_fn
+
+#define word scallop_lang_lex_word
+#define word_separator scallop_lang_lex_word_separator
+#define end scallop_lang_lex_end
+#define escape scallop_lang_lex_escape
+#define single_quote scallop_lang_lex_single_quote
+#define unexpected scallop_lang_lex_unexpected
+
+void test_word()
+{
+	assert((fn*)word(WEOF) == end);
+	assert((fn*)word('a') == word);
+	assert((fn*)word(' ') == word_separator);
+	assert((fn*)word('\\') == escape);
+	assert((fn*)word('\'') == single_quote);
+	assert((fn*)word(1) == unexpected);
+}
+
 int main()
 {
-	assert(false);
+	test_word();
 }
