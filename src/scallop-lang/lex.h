@@ -30,6 +30,15 @@ extern "C" {
  */
 
 /**
+ * \brief Type definition of a "void function pointer".
+ *
+ * This should be used similar to a void pointer: its only
+ * use is to be passed along to something else, or to be
+ * cast to a more useful type.
+ */
+typedef void *scallop_lang_void_fn();
+
+/**
  * \brief Type definition for a lexer state function.
  *
  * The lexer state machine functions take a wide character input and
@@ -55,12 +64,39 @@ extern "C" {
  * Example:
  * \include lex-example.c
  */
-typedef void *scallop_lang_void_fn();
 typedef void *(*scallop_lang_lex_fn(wint_t))();
 
+/**
+ * \brief The default entry point of the state machine.
+ *
+ * Call this on the first character of your shell script
+ * to get the first lexed state.
+ */
 scallop_lang_lex_fn *scallop_lang_lex_begin(wint_t input);
 
+/**
+ * \brief Represents the end of a lex script.
+ *
+ * In most cases, this is hit when encountering a WEOF character.
+ *
+ * Some states expect a closing state before encountering
+ * a WEOF character, particularly quoted strings.
+ *
+ * You should use this to terminate your lex loop.
+ *
+ * \sa scallop_lang_lex_fn for an example.
+ */
 extern scallop_lang_lex_fn *const scallop_lang_lex_end;
+
+/**
+ * \brief Represents an unexpected input for the current state.
+ *
+ * Use this to test for lex errors in the script, such as
+ * a WEOF in a quoted string, or an unrecognized character.
+ *
+ * This should be used for checking for errors in your loop and
+ * handling them accordingly.
+ */
 extern scallop_lang_lex_fn *const scallop_lang_lex_unexpected;
 
 /**
