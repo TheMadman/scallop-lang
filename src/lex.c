@@ -35,26 +35,26 @@ static CHARACTER_CLASS get_class(wint_t c)
 	}
 
 	switch (c) {
-		case ' ':
-		case '\t':
+		case L' ':
+		case L'\t':
 			return CLASS_WORD_SEPARATOR;
-		case '\r':
-		case '\n':
-		case ';':
+		case L'\r':
+		case L'\n':
+		case L';':
 			return CLASS_STATEMENT_SEPARATOR;
-		case '\\':
+		case L'\\':
 			return CLASS_ESCAPE;
-		case '\'':
+		case L'\'':
 			return CLASS_SINGLE_QUOTE;
-		case '"':
+		case L'"':
 			return CLASS_DOUBLE_QUOTE;
-		case '{':
+		case L'{':
 			return CLASS_BEGIN_CURLY_BLOCK;
-		case '}':
+		case L'}':
 			return CLASS_END_CURLY_BLOCK;
-		case '[':
+		case L'[':
 			return CLASS_BEGIN_SQUARE_BLOCK;
-		case ']':
+		case L']':
 			return CLASS_END_SQUARE_BLOCK;
 		case WEOF:
 			return CLASS_EOF;
