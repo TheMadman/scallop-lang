@@ -56,10 +56,9 @@ static CHARACTER_CLASS get_class(wint_t c)
 			return CLASS_BEGIN_SQUARE_BLOCK;
 		case ']':
 			return CLASS_END_SQUARE_BLOCK;
+		case WEOF:
+			return CLASS_EOF;
 	}
-
-	if (c == WEOF)
-		return CLASS_EOF;
 
 	return CLASS_UNKNOWN;
 }
