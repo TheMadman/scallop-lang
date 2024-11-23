@@ -104,6 +104,21 @@ static lex_fn *double_quote_context(wint_t input)
 static void_fn *lex_end_impl(wint_t c)
 {
 	(void)c;
+	/*
+	 * abort()? In MY library code?!
+	 *
+	 * Yes.
+	 *
+	 * If you didn't check for lex_end the first time, you
+	 * won't check the next time, or the time after
+	 * that either.
+	 *
+	 * Returning NULL from here is _often_ the same
+	 * as calling abort(), and sometimes _worse_.
+	 *
+	 * Just returning &lex_end_impl again will trap
+	 * the program in an infinite loop.
+	 */
 	abort();
 	return (void_fn *)&lex_end_impl;
 }

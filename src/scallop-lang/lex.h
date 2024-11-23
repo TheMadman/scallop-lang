@@ -27,25 +27,16 @@ extern "C" {
 
 /**
  * \file
- */
-
-/**
- * \brief Type definition of a "void function pointer".
+ * \brief This file provides the interface for the lexer.
  *
- * This should be used similar to a void pointer: its only
- * use is to be passed along to something else, or to be
- * cast to a more useful type.
- */
-typedef void *scallop_lang_void_fn();
-
-/**
- * \brief Type definition for a lexer state function.
+ * The lexer is a finite state machine, where each state is a
+ * function. Each state takes an input and returns the next state.
  *
  * The lexer state machine functions take a wide character input and
  * return a lexer state function. The return value should
  * be cast to a scallop_lang_lex_fn* before use.
  *
- * The entry of the finite state machine is
+ * The entry point of the finite state machine is
  * scallop_lang_lex_begin().
  *
  * If the current state receives an unexpected input, it will
@@ -63,6 +54,19 @@ typedef void *scallop_lang_void_fn();
  *
  * Example:
  * \include lex-example.c
+ */
+
+/**
+ * \brief Type definition of a "void function pointer".
+ *
+ * This should be used similar to a void pointer: its only
+ * use is to be passed along to something else, or to be
+ * cast to a more useful type.
+ */
+typedef void *scallop_lang_void_fn();
+
+/**
+ * \brief Type definition for a lexer state function.
  */
 typedef scallop_lang_void_fn *scallop_lang_lex_fn(wint_t);
 
