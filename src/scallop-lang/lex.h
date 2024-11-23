@@ -64,7 +64,7 @@ typedef void *scallop_lang_void_fn();
  * Example:
  * \include lex-example.c
  */
-typedef void *(*scallop_lang_lex_fn(wint_t))();
+typedef scallop_lang_void_fn *scallop_lang_lex_fn(wint_t);
 
 /**
  * \brief The default entry point of the state machine.
