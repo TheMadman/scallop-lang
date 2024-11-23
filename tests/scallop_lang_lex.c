@@ -81,9 +81,29 @@ void test_single_quote(void)
 	single_quote_context_asserts(single_quote);
 }
 
+void test_single_quote_word(void)
+{
+	single_quote_context_asserts(single_quote_word);
+}
+
 void test_single_quote_end(void)
 {
 	default_context_asserts(single_quote_end);
+}
+
+void test_double_quote(void)
+{
+	double_quote_context_asserts(double_quote);
+}
+
+void test_double_quote_word(void)
+{
+	double_quote_context_asserts(double_quote_word);
+}
+
+void test_double_quote_end(void)
+{
+	default_context_asserts(double_quote_end);
 }
 
 void test_curly_block(void)
