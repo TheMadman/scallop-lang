@@ -74,6 +74,9 @@ $(function() {
 <div class="title">lex.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>This file provides the interface for the lexer.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;wchar.h&gt;</code><br />
 </div>
 <p><a href="lex_8h_source.html">Go to the source code of this file.</a></p>
@@ -83,8 +86,9 @@ Typedefs</h2></td></tr>
 <tr class="memitem:a728f220afc9ce3aad027edfdb6ccc562"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a>()</td></tr>
 <tr class="memdesc:a728f220afc9ce3aad027edfdb6ccc562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition of a "void function pointer".  <a href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">More...</a><br /></td></tr>
 <tr class="separator:a728f220afc9ce3aad027edfdb6ccc562"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af89bdd01ace41bc8ff5613c91f229ebc"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#af89bdd01ace41bc8ff5613c91f229ebc">scallop_lang_lex_fn</a>(wint_t)</td></tr>
-<tr class="memdesc:af89bdd01ace41bc8ff5613c91f229ebc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition for a lexer state function.  <a href="lex_8h.html#af89bdd01ace41bc8ff5613c91f229ebc">More...</a><br /></td></tr>
+<tr class="memitem:af89bdd01ace41bc8ff5613c91f229ebc"><td class="memItemLeft" align="right" valign="top"><a id="af89bdd01ace41bc8ff5613c91f229ebc"></a>
+typedef <a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#af89bdd01ace41bc8ff5613c91f229ebc">scallop_lang_lex_fn</a>(wint_t)</td></tr>
+<tr class="memdesc:af89bdd01ace41bc8ff5613c91f229ebc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition for a lexer state function. <br /></td></tr>
 <tr class="separator:af89bdd01ace41bc8ff5613c91f229ebc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
@@ -144,22 +148,11 @@ Variables</h2></td></tr>
 <tr class="memdesc:a77c3f41c01a8d1e4446810d22e2493db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unexpected input for the current state.  <a href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">More...</a><br /></td></tr>
 <tr class="separator:a77c3f41c01a8d1e4446810d22e2493db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Typedef Documentation</h2>
-<a id="af89bdd01ace41bc8ff5613c91f229ebc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af89bdd01ace41bc8ff5613c91f229ebc">&#9670;&nbsp;</a></span>scallop_lang_lex_fn</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef <a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a>* scallop_lang_lex_fn(wint_t)</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type definition for a lexer state function. </p>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>This file provides the interface for the lexer. </p>
+<p>The lexer is a finite state machine, where each state is a function. Each state takes an input and returns the next state.</p>
 <p>The lexer state machine functions take a wide character input and return a lexer state function. The return value should be cast to a scallop_lang_lex_fn* before use.</p>
-<p>The entry of the finite state machine is <a class="el" href="lex_8h.html#aae5bddce8fdf143710d8c318b63f57a4" title="The default entry point of the state machine.">scallop_lang_lex_begin()</a>.</p>
+<p>The entry point of the finite state machine is <a class="el" href="lex_8h.html#aae5bddce8fdf143710d8c318b63f57a4" title="The default entry point of the state machine.">scallop_lang_lex_begin()</a>.</p>
 <p>If the current state receives an unexpected input, it will return <a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a>.</p>
 <p>You <em>must</em> check that the return value of the current state is <a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> and handle it correctly. Calling <a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> will call abort().</p>
 <p><a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> to indicate that processing finished successfully.</p>
@@ -208,10 +201,8 @@ Variables</h2></td></tr>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="line"> </div>
-<div class="ttc" id="alex_8h_html"><div class="ttname"><a href="lex_8h.html">lex.h</a></div></div>
-</div><!-- fragment --> 
-</div>
-</div>
+<div class="ttc" id="alex_8h_html"><div class="ttname"><a href="lex_8h.html">lex.h</a></div><div class="ttdoc">This file provides the interface for the lexer.</div></div>
+</div><!-- fragment --> </div><h2 class="groupheader">Typedef Documentation</h2>
 <a id="a728f220afc9ce3aad027edfdb6ccc562"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a728f220afc9ce3aad027edfdb6ccc562">&#9670;&nbsp;</a></span>scallop_lang_void_fn</h2>
 
