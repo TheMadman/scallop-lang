@@ -87,7 +87,7 @@ static lex_fn *single_quoted_context(wint_t input)
 	if (input == WEOF)
 		return scallop_lang_lex_unexpected;
 	if (input == '\'')
-		return scallop_lang_lex_end_single_quote;
+		return scallop_lang_lex_single_quote_end;
 	return scallop_lang_lex_single_quoted_word;
 }
 
@@ -96,7 +96,7 @@ static lex_fn *double_quoted_context(wint_t input)
 	if (input == WEOF)
 		return scallop_lang_lex_unexpected;
 	if (input == '"')
-		return scallop_lang_lex_end_double_quote;
+		return scallop_lang_lex_double_quote_end;
 	return scallop_lang_lex_double_quoted_word;
 }
 
@@ -147,7 +147,7 @@ void_fn *scallop_lang_lex_single_quoted_word(wint_t input)
 	return (void_fn *)single_quoted_context(input);
 }
 
-void_fn *scallop_lang_lex_end_single_quote(wint_t input)
+void_fn *scallop_lang_lex_single_quote_end(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }
@@ -162,27 +162,27 @@ void_fn *scallop_lang_lex_double_quoted_word(wint_t input)
 	return (void_fn *)double_quoted_context(input);
 }
 
-void_fn *scallop_lang_lex_end_double_quote(wint_t input)
+void_fn *scallop_lang_lex_double_quote_end(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }
 
-void_fn *scallop_lang_lex_begin_curly_block(wint_t input)
+void_fn *scallop_lang_lex_curly_block(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }
 
-void_fn *scallop_lang_lex_end_curly_block(wint_t input)
+void_fn *scallop_lang_lex_curly_block_end(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }
 
-void_fn *scallop_lang_lex_begin_square_block(wint_t input)
+void_fn *scallop_lang_lex_square_block(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }
 
-void_fn *scallop_lang_lex_end_square_block(wint_t input)
+void_fn *scallop_lang_lex_square_block_end(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }

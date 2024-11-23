@@ -29,18 +29,67 @@
 #define escape scallop_lang_lex_escape
 #define single_quote scallop_lang_lex_single_quote
 #define unexpected scallop_lang_lex_unexpected
+#define single_quote scallop_lang_lex_single_quote
+#define single_quote_end scallop_lang_lex_single_quote_end
+#define double_quote scallop_lang_lex_double_quote
+#define double_quote_end scallop_lang_lex_double_quote_end
+#define curly_block scallop_lang_lex_curly_block
+#define curly_block_end scallop_lang_lex_curly_block_end
+#define square_block scallop_lang_lex_square_block
+#define square_block_end scallop_lang_lex_square_block_end
 
-void test_word()
+void default_context_asserts(fn *state)
 {
-	assert((fn*)word(WEOF) == end);
-	assert((fn*)word('a') == word);
-	assert((fn*)word(' ') == word_separator);
-	assert((fn*)word('\\') == escape);
-	assert((fn*)word('\'') == single_quote);
-	assert((fn*)word(1) == unexpected);
+	assert((fn*)state(WEOF) == end);
+	assert((fn*)state('a') == word);
+	assert((fn*)state(' ') == word_separator);
+	assert((fn*)state('\\') == escape);
+	assert((fn*)state('\'') == single_quote);
+	assert((fn*)state(1) == unexpected);
+}
+
+void test_word(void)
+{
+	default_context_asserts(word);
+}
+
+void test_word_separator(void)
+{
+	default_context_asserts(word_separator);
+}
+
+void test_single_quote_end(void)
+{
+	default_context_asserts(single_quote_end);
+}
+
+void test_curly_block(void)
+{
+	default_context_asserts(curly_block);
+}
+
+void test_curly_block_end(void)
+{
+	default_context_asserts(curly_block_end);
+}
+
+void test_square_block(void)
+{
+	default_context_asserts(square_block);
+}
+
+void test_square_block_end(void)
+{
+	default_context_asserts(square_block_end);
 }
 
 int main()
 {
 	test_word();
+	test_word_separator();
+	test_single_quote_end();
+	test_curly_block();
+	test_curly_block_end();
+	test_square_block();
+	test_square_block_end();
 }

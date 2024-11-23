@@ -101,7 +101,7 @@ scallop_lang_void_fn *scallop_lang_lex_single_quote(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_end_single_quote(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_single_quote_end(wint_t input);
 
 /**
  * \brief Represents characters in a single-quoted string
@@ -126,7 +126,7 @@ scallop_lang_void_fn *scallop_lang_lex_double_quote(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_end_double_quote(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_double_quote_end(wint_t input);
 
 /**
  * \brief Represents characters in a double-quoted string
@@ -143,7 +143,7 @@ scallop_lang_void_fn *scallop_lang_lex_double_quoted_word(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_open_curly_block(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_curly_block(wint_t input);
 
 /**
  * \brief Represents the closing of a curly bracket block '}'.
@@ -151,23 +151,23 @@ scallop_lang_void_fn *scallop_lang_lex_open_curly_block(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_close_curly_block(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_curly_block_end(wint_t input);
 
 /**
- * \brief Represents the opening of a squre bracket block '['.
+ * \brief Represents the opening of a square bracket block '['.
  *
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_open_squre_block(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_square_block(wint_t input);
 
 /**
- * \brief Represents the closing of a squre bracket block ']'.
+ * \brief Represents the closing of a square bracket block ']'.
  *
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_close_squre_block(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_square_block_end(wint_t input);
 
 
 #ifdef __cplusplus
