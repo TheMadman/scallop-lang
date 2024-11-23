@@ -39,6 +39,7 @@
 #define curly_block_end scallop_lang_lex_curly_block_end
 #define square_block scallop_lang_lex_square_block
 #define square_block_end scallop_lang_lex_square_block_end
+#define statement_separator scallop_lang_lex_statement_separator
 
 void default_context_asserts(fn *state)
 {
@@ -47,6 +48,7 @@ void default_context_asserts(fn *state)
 	assert((fn*)state(' ') == word_separator);
 	assert((fn*)state('\\') == escape);
 	assert((fn*)state('\'') == single_quote);
+	assert((fn*)state(';') == statement_separator);
 	assert((fn*)state(1) == unexpected);
 }
 

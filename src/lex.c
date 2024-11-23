@@ -77,6 +77,8 @@ static lex_fn *default_context(wint_t input)
 			return scallop_lang_lex_escape;
 		case CLASS_SINGLE_QUOTE:
 			return scallop_lang_lex_single_quote;
+		case CLASS_STATEMENT_SEPARATOR:
+			return scallop_lang_lex_statement_separator;
 		default:
 			return scallop_lang_lex_unexpected;
 	}
@@ -126,6 +128,11 @@ void_fn *scallop_lang_lex_word(wint_t input)
 }
 
 void_fn *scallop_lang_lex_word_separator(wint_t input)
+{
+	return (void_fn *)default_context(input);
+}
+
+void_fn *scallop_lang_lex_statement_separator(wint_t input)
 {
 	return (void_fn *)default_context(input);
 }

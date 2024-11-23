@@ -205,6 +205,14 @@ scallop_lang_void_fn *scallop_lang_lex_square_block(wint_t input);
  */
 scallop_lang_void_fn *scallop_lang_lex_square_block_end(wint_t input);
 
+/**
+ * \brief Represents a statement separator, such as ';' or newline.
+ *
+ * \param input The next wide character input.
+ * \returns A pointer to the next state function.
+ */
+scallop_lang_void_fn *scallop_lang_lex_statement_separator(wint_t input);
+
 
 #ifdef __cplusplus
 } // extern "C"
