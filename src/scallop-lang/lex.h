@@ -96,7 +96,7 @@ scallop_lang_void_fn *scallop_lang_lex_escape(wint_t input);
 scallop_lang_void_fn *scallop_lang_lex_single_quote(wint_t input);
 
 /**
- * \brief Represents a single quote, closing a single-quote string.
+ * \brief Represents a single quote, closing a single-quoted string.
  *
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
@@ -110,7 +110,7 @@ scallop_lang_void_fn *scallop_lang_lex_single_quote_end(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_single_quoted_word(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_single_quote_word(wint_t input);
 
 /**
  * \brief Represents an opening double quote.
@@ -121,7 +121,7 @@ scallop_lang_void_fn *scallop_lang_lex_single_quoted_word(wint_t input);
 scallop_lang_void_fn *scallop_lang_lex_double_quote(wint_t input);
 
 /**
- * \brief Represents a double quote, closing a double-quote string.
+ * \brief Represents a double quote, closing a double-quoted string.
  *
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
@@ -135,7 +135,7 @@ scallop_lang_void_fn *scallop_lang_lex_double_quote_end(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_double_quoted_word(wint_t input);
+scallop_lang_void_fn *scallop_lang_lex_double_quote_word(wint_t input);
 
 /**
  * \brief Represents the opening of a curly bracket block '{'.

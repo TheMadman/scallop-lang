@@ -82,22 +82,22 @@ static lex_fn *default_context(wint_t input)
 	}
 }
 
-static lex_fn *single_quoted_context(wint_t input)
+static lex_fn *single_quote_context(wint_t input)
 {
 	if (input == WEOF)
 		return scallop_lang_lex_unexpected;
 	if (input == '\'')
 		return scallop_lang_lex_single_quote_end;
-	return scallop_lang_lex_single_quoted_word;
+	return scallop_lang_lex_single_quote_word;
 }
 
-static lex_fn *double_quoted_context(wint_t input)
+static lex_fn *double_quote_context(wint_t input)
 {
 	if (input == WEOF)
 		return scallop_lang_lex_unexpected;
 	if (input == '"')
 		return scallop_lang_lex_double_quote_end;
-	return scallop_lang_lex_double_quoted_word;
+	return scallop_lang_lex_double_quote_word;
 }
 
 static void_fn *lex_end_impl(wint_t c)
@@ -139,12 +139,12 @@ void_fn *scallop_lang_lex_escape(wint_t input)
 
 void_fn *scallop_lang_lex_single_quote(wint_t input)
 {
-	return (void_fn *)single_quoted_context(input);
+	return (void_fn *)single_quote_context(input);
 }
 
-void_fn *scallop_lang_lex_single_quoted_word(wint_t input)
+void_fn *scallop_lang_lex_single_quote_word(wint_t input)
 {
-	return (void_fn *)single_quoted_context(input);
+	return (void_fn *)single_quote_context(input);
 }
 
 void_fn *scallop_lang_lex_single_quote_end(wint_t input)
@@ -154,12 +154,12 @@ void_fn *scallop_lang_lex_single_quote_end(wint_t input)
 
 void_fn *scallop_lang_lex_double_quote(wint_t input)
 {
-	return (void_fn *)double_quoted_context(input);
+	return (void_fn *)double_quote_context(input);
 }
 
-void_fn *scallop_lang_lex_double_quoted_word(wint_t input)
+void_fn *scallop_lang_lex_double_quote_word(wint_t input)
 {
-	return (void_fn *)double_quoted_context(input);
+	return (void_fn *)double_quote_context(input);
 }
 
 void_fn *scallop_lang_lex_double_quote_end(wint_t input)
