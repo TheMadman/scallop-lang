@@ -138,6 +138,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ae04d70481d22db6a774aa22cc5d83300"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae04d70481d22db6a774aa22cc5d83300">scallop_lang_lex_statement_separator</a> (wint_t input)</td></tr>
 <tr class="memdesc:ae04d70481d22db6a774aa22cc5d83300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a statement separator, such as ';' or newline.  <a href="lex_8h.html#ae04d70481d22db6a774aa22cc5d83300">More...</a><br /></td></tr>
 <tr class="separator:ae04d70481d22db6a774aa22cc5d83300"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae01f73fe7ea5c6c811d017d860a0a09d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae01f73fe7ea5c6c811d017d860a0a09d">scallop_lang_lex_line_comment</a> (wint_t input)</td></tr>
+<tr class="memdesc:ae01f73fe7ea5c6c811d017d860a0a09d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line comment, starting with a hash '#'.  <a href="lex_8h.html#ae01f73fe7ea5c6c811d017d860a0a09d">More...</a><br /></td></tr>
+<tr class="separator:ae01f73fe7ea5c6c811d017d860a0a09d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -158,6 +161,7 @@ Variables</h2></td></tr>
 <p><a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> to indicate that processing finished successfully.</p>
 <p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="lex_8h.html">scallop-lang/lex.h</a>&gt;</span></div>
 <div class="line"> </div>
@@ -394,6 +398,33 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Represents an escape character, '\'. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
+
+</div>
+</div>
+<a id="ae01f73fe7ea5c6c811d017d860a0a09d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae01f73fe7ea5c6c811d017d860a0a09d">&#9670;&nbsp;</a></span>scallop_lang_lex_line_comment()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="lex_8h.html#a728f220afc9ce3aad027edfdb6ccc562">scallop_lang_void_fn</a>* scallop_lang_lex_line_comment </td>
+          <td>(</td>
+          <td class="paramtype">wint_t&#160;</td>
+          <td class="paramname"><em>input</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Represents a line comment, starting with a hash '#'. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
