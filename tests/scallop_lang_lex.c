@@ -41,6 +41,7 @@
 #define square_block_end scallop_lang_lex_square_block_end
 #define statement_separator scallop_lang_lex_statement_separator
 #define escape scallop_lang_lex_escape
+#define line_comment scallop_lang_lex_line_comment
 
 void default_context_asserts(fn *state)
 {
@@ -50,6 +51,7 @@ void default_context_asserts(fn *state)
 	assert((fn*)state('\\') == escape);
 	assert((fn*)state('\'') == single_quote);
 	assert((fn*)state(';') == statement_separator);
+	assert((fn*)state('#') == line_comment);
 	assert((fn*)state(1) == unexpected);
 }
 
@@ -143,6 +145,18 @@ void test_escape(void)
 	assert((fn*)escape(WEOF) == unexpected);
 }
 
+void test_line_comment(void)
+{
+	assert((fn*)line_comment('a') == line_comment);
+	assert((fn*)line_comment(' ') == line_comment);
+	assert((fn*)line_comment(';') == line_comment);
+	assert((fn*)line_comment('\'') == line_comment);
+	assert((fn*)line_comment('"') == line_comment);
+	assert((fn*)line_comment('\r') == statement_separator);
+	assert((fn*)line_comment('\n') == statement_separator);
+	assert((fn*)line_comment(WEOF) == end);
+}
+
 int main()
 {
 	test_word();
@@ -154,4 +168,5 @@ int main()
 	test_square_block_end();
 	test_single_quote();
 	test_escape();
+	test_line_comment();
 }

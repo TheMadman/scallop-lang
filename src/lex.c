@@ -19,6 +19,7 @@ typedef enum {
 	CLASS_END_CURLY_BLOCK,
 	CLASS_BEGIN_SQUARE_BLOCK,
 	CLASS_END_SQUARE_BLOCK,
+	CLASS_LINE_COMMENT,
 
 	CLASS_UNKNOWN,
 } CHARACTER_CLASS;
@@ -56,6 +57,8 @@ static CHARACTER_CLASS get_class(wint_t c)
 			return CLASS_BEGIN_SQUARE_BLOCK;
 		case L']':
 			return CLASS_END_SQUARE_BLOCK;
+		case L'#':
+			return CLASS_LINE_COMMENT;
 		case WEOF:
 			return CLASS_EOF;
 	}
@@ -78,6 +81,8 @@ static lex_fn *default_context(wint_t input)
 			return scallop_lang_lex_single_quote;
 		case CLASS_STATEMENT_SEPARATOR:
 			return scallop_lang_lex_statement_separator;
+		case CLASS_LINE_COMMENT:
+			return scallop_lang_lex_line_comment;
 		default:
 			return scallop_lang_lex_unexpected;
 	}
@@ -206,4 +211,19 @@ void_fn *scallop_lang_lex_square_block(wint_t input)
 void_fn *scallop_lang_lex_square_block_end(wint_t input)
 {
 	return (void_fn *)default_context(input);
+}
+
+void_fn *scallop_lang_lex_line_comment(wint_t input)
+{
+	// We have to treat input specially here, since
+	// the only way to end a line comment is a newline
+	switch (input) {
+		case '\r':
+		case '\n':
+			return (void_fn *)scallop_lang_lex_statement_separator;
+		case WEOF:
+			return (void_fn *)scallop_lang_lex_end;
+		default:
+			return (void_fn *)scallop_lang_lex_line_comment;
+	}
 }
