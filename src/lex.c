@@ -24,12 +24,19 @@ typedef enum {
 	CLASS_UNKNOWN,
 } CHARACTER_CLASS;
 
+static bool in(wchar_t c, wchar_t *set)
+{
+	for (; *set; set++)
+		if (c == *set)
+			return true;
+	return false;
+}
+
 static CHARACTER_CLASS get_class(wint_t c)
 {
 	const bool is_word
 		= iswalnum(c)
-		|| c == '-'
-		|| c == '_';
+		|| in((wchar_t)c, L"-_.:");
 
 	if (is_word) {
 		return CLASS_WORD;
@@ -90,20 +97,28 @@ static lex_fn *default_context(wint_t input)
 
 static lex_fn *single_quote_context(wint_t input)
 {
-	if (input == WEOF)
-		return scallop_lang_lex_unexpected;
-	if (input == '\'')
-		return scallop_lang_lex_single_quote_end;
-	return scallop_lang_lex_single_quote_word;
+	const CHARACTER_CLASS class = get_class(input);
+	switch (class) {
+		case CLASS_EOF:
+			return scallop_lang_lex_unexpected;
+		case CLASS_SINGLE_QUOTE:
+			return scallop_lang_lex_single_quote_end;
+		default:
+			return scallop_lang_lex_single_quote_word;
+	}
 }
 
 static lex_fn *double_quote_context(wint_t input)
 {
-	if (input == WEOF)
-		return scallop_lang_lex_unexpected;
-	if (input == '"')
-		return scallop_lang_lex_double_quote_end;
-	return scallop_lang_lex_double_quote_word;
+	const CHARACTER_CLASS class = get_class(input);
+	switch (class) {
+		case CLASS_EOF:
+			return scallop_lang_lex_unexpected;
+		case CLASS_DOUBLE_QUOTE:
+			return scallop_lang_lex_double_quote_end;
+		default:
+			return scallop_lang_lex_double_quote_word;
+	}
 }
 
 static void_fn *lex_end_impl(wint_t c)
