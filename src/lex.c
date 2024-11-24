@@ -2,7 +2,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
-#include <ctype.h>
+#include <wctype.h>
 
 #define void_fn scallop_lang_void_fn
 #define lex_fn scallop_lang_lex_fn
@@ -26,7 +26,7 @@ typedef enum {
 static CHARACTER_CLASS get_class(wint_t c)
 {
 	const bool is_word
-		= isalnum(c)
+		= iswalnum(c)
 		|| c == '-'
 		|| c == '_';
 
