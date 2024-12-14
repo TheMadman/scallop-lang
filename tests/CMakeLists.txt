@@ -5,3 +5,4 @@ function(testcase target)
 endfunction()
 
 testcase(scallop_lang_lex)
+testcase(scallop_lang_token)

@@ -1,14 +1,14 @@
-set(SOURCES lex.c)
+set(SOURCES lex.c token.c)
 
 add_library(scallopobj OBJECT ${SOURCES})
 
 set_property(TARGET scallopobj PROPERTY POSITION_INDEPENDENT_CODE 1)
 
 add_library(scalloplang SHARED)
-target_link_libraries(scalloplang scallopobj)
+target_link_libraries(scalloplang scallopobj adt)
 
 add_library(scalloplangstatic STATIC)
-target_link_libraries(scalloplangstatic scallopobj)
+target_link_libraries(scalloplangstatic scallopobj adt)
 
 target_include_directories(scalloplang
 	PUBLIC
