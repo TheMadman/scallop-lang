@@ -5,7 +5,7 @@ size_t _scallop_mbrtowc(
 	struct libadt_const_lptr string,
 	mbstate_t *_mbstate
 );
-bool _scallop_read_error(size_t read);
+bool _scallop_read_error(_scallop_read_t read);
 _scallop_read_t _scallop_read(
 	struct libadt_const_lptr script,
 	scallop_lang_lex_fn *const previous
@@ -16,6 +16,9 @@ scallop_lang_lex_fn *_scallop_type(
 struct scallop_lang_token scallop_lang_token_init(
 	struct libadt_const_lptr script
 );
+struct scallop_lang_token scallop_lang_token_next_raw(
+	struct scallop_lang_token previous_token
+);
 struct scallop_lang_token scallop_lang_token_next(
 	struct scallop_lang_token previous_token
 );
@@ -24,4 +27,3 @@ size_t _scallop_mbrtowc(
 	struct libadt_const_lptr string,
 	mbstate_t *_mbstate
 );
-bool _scallop_read_error(size_t read);

@@ -76,6 +76,11 @@ inline size_t _scallop_mbrtowc(
 	mbstate_t *_mbstate
 )
 {
+	if (string.length <= 0) {
+		// when does this break?
+		*result = (wchar_t)WEOF;
+		return 0;
+	}
 	return mbrtowc(
 		result,
 		string.buffer,
@@ -85,15 +90,16 @@ inline size_t _scallop_mbrtowc(
 }
 
 typedef struct {
-	size_t read;
+	size_t amount;
 	scallop_lang_lex_fn *type;
 	struct libadt_const_lptr script;
 } _scallop_read_t;
 
-inline bool _scallop_read_error(size_t read)
+inline bool _scallop_read_error(_scallop_read_t read)
 {
-	return read == (size_t)-1
-		|| read == (size_t)-2;
+	return read.amount == (size_t)-1
+		|| read.amount == (size_t)-2
+		|| read.type == scallop_lang_lex_unexpected;
 }
 
 inline _scallop_read_t _scallop_read(
@@ -104,23 +110,21 @@ inline _scallop_read_t _scallop_read(
 	wchar_t c = 0;
 	mbstate_t mbs = { 0 };
 	_scallop_read_t result = { 0 };
-	result.read = _scallop_mbrtowc(&c, script, &mbs);
-	if (_scallop_read_error(result.read))
+	result.amount = _scallop_mbrtowc(&c, script, &mbs);
+	if (_scallop_read_error(result))
 		result.type = (scallop_lang_lex_fn*)scallop_lang_lex_unexpected;
 	else
 		result.type = (scallop_lang_lex_fn*)previous((wint_t)c);
 
-	result.script = libadt_const_lptr_index(script, (ssize_t)result.read);
+	result.script = libadt_const_lptr_index(script, (ssize_t)result.amount);
 	return result;
 }
 
-inline scallop_lang_lex_fn *_scallop_type(
-	scallop_lang_lex_fn *type
-)
-{
-	return scallop_lang_lex_is_word(type) ? scallop_lang_lex_word : type;
-}
-
+/**
+ * \brief Initializes a token object for use in scallop_lang_token_next().
+ *
+ *
+ */
 inline struct scallop_lang_token scallop_lang_token_init(
 	struct libadt_const_lptr script
 )
@@ -133,7 +137,74 @@ inline struct scallop_lang_token scallop_lang_token_init(
 }
 
 /**
- * \brief Initializes a new token object from a script.
+ * \brief Returns the next, raw token in the script referred to by
+ * 	previous.
+ *
+ * Raw tokens contain raw types, such as scallop_lang_lex_double_quote.
+ * Separate tokens are returned for beginning quote, the quoted word,
+ * and end quote, as well as any consecutive word tokens without
+ * separators.
+ *
+ * It is recommended to use scallop_lang_token_next(), which will
+ * return a single scallop_lang_lex_word token in that scenario.
+ *
+ * \param previous A token returned by scallop_lang_token_init() or
+ * 	scallop_lang_token_next_raw().
+ *
+ * \returns A new token.
+ */
+inline struct scallop_lang_token scallop_lang_token_next_raw(
+	struct scallop_lang_token previous
+)
+{
+	const ssize_t value_offset = (char *)previous.value.buffer
+		- (char *)previous.script.buffer;
+	struct libadt_const_lptr next = libadt_const_lptr_index(
+		previous.script,
+		value_offset + previous.value.length
+	);
+
+	_scallop_read_t
+		read = _scallop_read(next, previous.type),
+		previous_read = read;
+
+	if (_scallop_read_error(read))
+		return (struct scallop_lang_token) {
+			.script = previous.script,
+			.type = scallop_lang_lex_unexpected,
+			.value = libadt_const_lptr_truncate(next, 0),
+		};
+
+	if (read.type == scallop_lang_lex_end) {
+		return (struct scallop_lang_token) {
+			.script = previous.script,
+			.type = read.type,
+			.value = libadt_const_lptr_truncate(next, read.amount)
+		};
+	}
+
+	size_t value_length = read.amount;
+	for (
+		read = _scallop_read(read.script, read.type);
+		!_scallop_read_error(read);
+		read = _scallop_read(read.script, read.type)
+	) {
+		if (read.type != previous_read.type)
+			break;
+
+		previous_read = read;
+		value_length += read.amount;
+	}
+
+	return (struct scallop_lang_token) {
+		.script = previous.script,
+		.type = previous_read.type,
+		.value = libadt_const_lptr_truncate(next, value_length),
+	};
+}
+
+/**
+ * \brief Returns the next token in the script referred to by previous.
  *
  * \param previous A token previously returned by
  * 	scallop_lang_token_next(), or initialized from
@@ -144,50 +215,40 @@ inline struct scallop_lang_token scallop_lang_token_init(
  * 	character was encountered.
  */
 inline struct scallop_lang_token scallop_lang_token_next(
-	struct scallop_lang_token previous_token
+	struct scallop_lang_token previous
 )
 {
-	const ssize_t value_offset = (char *)previous_token.value.buffer
-		- (char *)previous_token.script.buffer;
-	struct libadt_const_lptr next = libadt_const_lptr_index(
-		previous_token.script,
-		value_offset + previous_token.value.length
+	struct scallop_lang_token result = scallop_lang_token_next_raw(
+		previous
 	);
 
-	_scallop_read_t read = _scallop_read(next, previous_token.type);
+	const bool end = result.type == scallop_lang_lex_end
+		|| result.type == scallop_lang_lex_unexpected;
+	if (end)
+		return result;
 
-	if (_scallop_read_error(read.read)) {
-		return (struct scallop_lang_token) {
-			.type = scallop_lang_lex_unexpected,
-			.script = previous_token.script,
-			.value = libadt_const_lptr_truncate(next, 0),
-		};
+	// This does a tonne more work than necessary but
+	// I'm lazy
+	struct scallop_lang_token next = scallop_lang_token_next(
+		result
+	);
+
+	const bool is_word = scallop_lang_lex_is_word(result.type)
+		&& scallop_lang_lex_is_word(next.type);
+	if (is_word)
+		result.value.length += next.value.length;
+
+	const bool has_word_separator
+		= result.type == scallop_lang_lex_word_separator
+		|| next.type == scallop_lang_lex_word_separator;
+	const bool has_statement_separator
+		= result.type == scallop_lang_lex_statement_separator
+		|| next.type == scallop_lang_lex_statement_separator;
+	if (has_word_separator && has_statement_separator) {
+		result.type = scallop_lang_lex_statement_separator;
+		result.value.length += next.value.length;
 	}
-
-	size_t total_read = read.read;
-	scallop_lang_lex_fn *type = read.type;
-	for (
-		read = _scallop_read(
-			read.script,
-			previous_token.type
-		);
-		!_scallop_read_error(read.read);
-		read = _scallop_read(read.script, read.type)
-	) {
-		if (_scallop_type(type) != _scallop_type(read.type))
-			break;
-
-		total_read += read.read;
-
-		if (type == scallop_lang_lex_end)
-			break;
-	}
-
-	return (struct scallop_lang_token) {
-		.type = type,
-		.script = previous_token.script,
-		.value = libadt_const_lptr_truncate(next, total_read),
-	};
+	return result;
 }
 
 #ifdef __cplusplus

@@ -41,22 +41,41 @@ void test_token_init(void)
 	assert(token.script.length == sizeof(TEST_SCRIPT) - 1);
 }
 
-void test_token_next(void)
+void test_token_next_simple(void)
 {
 	token_t token = token_init(lit(TEST_SCRIPT));
 	token = token_next(token);
 
 	assert(token.type == scallop_lang_lex_word);
-	assert(token.value.length == 4);
+	assert(token.value.length == sizeof("word") - 1);
 
 	token = token_next(token);
 
 	assert(token.type == scallop_lang_lex_word_separator);
-	assert(token.value.length == 1);
+	assert(token.value.length == sizeof(" ") - 1);
+
+	token = token_next(token);
+	assert(token.type == scallop_lang_lex_word);
+	assert(token.value.length == sizeof("second_word") - 1);
+
+	token = token_next(token);
+	assert(token.type == scallop_lang_lex_end);
+}
+
+#define WORD_STATEMENT_SEPARATOR "  ;\n  "
+
+void test_token_next_statement_separator_promotion(void)
+{
+	token_t token = token_init(lit(WORD_STATEMENT_SEPARATOR));
+	token = token_next(token);
+
+	assert(token.type == scallop_lang_lex_statement_separator);
+	assert(token.value.length == sizeof(WORD_STATEMENT_SEPARATOR) - 1);
 }
 
 int main()
 {
 	test_token_init();
-	test_token_next();
+	test_token_next_simple();
+	test_token_next_statement_separator_promotion();
 }
