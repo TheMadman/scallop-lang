@@ -42,18 +42,6 @@ extern "C" {
 struct scallop_lang_token {
 	/**
 	 * \brief Represents the type of token lexed.
-	 *
-	 * Word tokens will always have scallop_lang_lex_word
-	 * type, even for words that contain quoted words or
-	 * escaped characters.
-	 *
-	 * Separators will be grouped into a single token.
-	 * If the value contains a statement separator, the
-	 * type is always scallop_lang_lex_statement_separator,
-	 * even if it also contains word separators.
-	 *
-	 * If it contains only word separators, the value is
-	 * scallop_lang_lex_word_separator.
 	 */
 	scallop_lang_lex_fn *type;
 
@@ -205,6 +193,18 @@ inline struct scallop_lang_token scallop_lang_token_next_raw(
 
 /**
  * \brief Returns the next token in the script referred to by previous.
+ *
+ * Word tokens will always have scallop_lang_lex_word
+ * type, even for words that contain quoted words or
+ * escaped characters.
+ *
+ * Separators will be grouped into a single token.
+ * If the value contains a statement separator, the
+ * type is always scallop_lang_lex_statement_separator,
+ * even if it also contains word separators.
+ *
+ * If it contains only word separators, the value is
+ * scallop_lang_lex_word_separator.
  *
  * \param previous A token previously returned by
  * 	scallop_lang_token_next(), or initialized from
