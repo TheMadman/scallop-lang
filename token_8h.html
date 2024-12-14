@@ -146,6 +146,9 @@ struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</
 </div><div class="memdoc">
 
 <p>Returns the next token in the script referred to by previous. </p>
+<p>Word tokens will always have scallop_lang_lex_word type, even for words that contain quoted words or escaped characters.</p>
+<p>Separators will be grouped into a single token. If the value contains a statement separator, the type is always scallop_lang_lex_statement_separator, even if it also contains word separators.</p>
+<p>If it contains only word separators, the value is scallop_lang_lex_word_separator.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">previous</td><td>A token previously returned by <a class="el" href="token_8h.html#a77e6a972eb1af7c3c7ebea16809fc62f" title="Returns the next token in the script referred to by previous.">scallop_lang_token_next()</a>, or initialized from <a class="el" href="token_8h.html#a9d2e119e13e10d3f463d964cb038fbbd" title="Initializes a token object for use in scallop_lang_token_next().">scallop_lang_token_init()</a>.</td></tr>
