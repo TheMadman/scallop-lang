@@ -251,6 +251,72 @@ inline struct scallop_lang_token scallop_lang_token_next(
 	return result;
 }
 
+/**
+ * \brief Takes a word value from scallop_lang_token_next() and
+ * 	normalizes it to the raw word value.
+ *
+ * The result is written to `out`. Writing stops when the end of
+ * the word is reached, or when `out` runs out of space.
+ *
+ * `word` is not tested for actual word contents. The behaviour for
+ * `word` containing non-word values is undefined.
+ *
+ * \param word A value from scallop_lang_token_next() that contains
+ * 	a word.
+ * \param out A pointer to the location to write to.
+ *
+ * \returns The number of characters written, or -1 if an error
+ * 	occurred.
+ */
+inline ssize_t scallop_lang_token_normalize_word(
+	struct libadt_const_lptr word,
+	struct libadt_lptr out
+)
+{
+	size_t read_amount = 0;
+	ssize_t total_read_amount = 0;
+
+	scallop_lang_lex_fn
+		*current = (scallop_lang_lex_fn *)scallop_lang_lex_begin;
+	for (
+		;
+		libadt_const_lptr_in_bounds(word)
+		&& libadt_lptr_in_bounds(out);
+		word = libadt_const_lptr_index(word, (ssize_t)read_amount)
+	) {
+		wchar_t c = 0;
+		mbstate_t state = { 0 };
+		read_amount = _scallop_mbrtowc(&c, word, &state);
+
+		const bool read_error = read_amount == (size_t)-1
+			|| read_amount == (size_t)-2;
+
+		if (read_error)
+			return -1;
+
+		current = (scallop_lang_lex_fn *)current((wint_t)c);
+
+		const bool is_error_type = current == scallop_lang_lex_unexpected;
+
+		if (is_error_type)
+			return -1;
+
+		const bool skip_type = current == scallop_lang_lex_single_quote
+			|| current == scallop_lang_lex_single_quote_end
+			|| current == scallop_lang_lex_double_quote
+			|| current == scallop_lang_lex_double_quote_end
+			|| current == scallop_lang_lex_escape;
+
+		if (!skip_type) {
+			libadt_lptr_memmove(out, libadt_const_lptr_truncate(word, read_amount));
+			out = libadt_lptr_index(out, (ssize_t)read_amount);
+			total_read_amount += (ssize_t)read_amount;
+		}
+	}
+
+	return total_read_amount;
+}
+
 #ifdef __cplusplus
 } // extern "C"
 #endif

@@ -27,3 +27,7 @@ size_t _scallop_mbrtowc(
 	struct libadt_const_lptr string,
 	mbstate_t *_mbstate
 );
+ssize_t scallop_lang_token_normalize_word(
+	struct libadt_const_lptr word,
+	struct libadt_lptr out
+);

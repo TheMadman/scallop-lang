@@ -31,6 +31,8 @@ inline struct scallop_lang_token scallop_lang_token_next(
 #define token_init scallop_lang_token_init
 #define token_next scallop_lang_token_next
 typedef struct scallop_lang_token token_t;
+typedef struct libadt_const_lptr const_lptr_t;
+typedef struct libadt_lptr lptr_t;
 
 #define TEST_SCRIPT "word second_word"
 
@@ -73,9 +75,24 @@ void test_token_next_statement_separator_promotion(void)
 	assert(token.value.length == sizeof(WORD_STATEMENT_SEPARATOR) - 1);
 }
 
+void test_token_normalize_word(void)
+{
+	const char word_buffer[] = "\"Hello, \"'world'\\!";
+	char out_buffer[255] = { 0 };
+
+	const_lptr_t word = lit(word_buffer);
+	lptr_t out = libadt_lptr_init_array(out_buffer);
+
+	ssize_t result = scallop_lang_token_normalize_word(word, out);
+
+	assert(result == sizeof("Hello, world!") - 1);
+	assert(0 == strcmp(out_buffer, "Hello, world!"));
+}
+
 int main()
 {
 	test_token_init();
 	test_token_next_simple();
 	test_token_next_statement_separator_promotion();
+	test_token_normalize_word();
 }
