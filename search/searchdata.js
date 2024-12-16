@@ -1,10 +1,11 @@
 var indexSectionsWithContent =
 {
-  0: "_stv",
+  0: "_lstv",
   1: "_s",
-  2: "t",
+  2: "lt",
   3: "s",
-  4: "stv"
+  4: "stv",
+  5: "s"
 };
 
 var indexSectionNames =
@@ -13,7 +14,8 @@ var indexSectionNames =
   1: "classes",
   2: "files",
   3: "functions",
-  4: "variables"
+  4: "variables",
+  5: "typedefs"
 };
 
 var indexSectionLabels =
@@ -22,6 +24,7 @@ var indexSectionLabels =
   1: "Data Structures",
   2: "Files",
   3: "Functions",
-  4: "Variables"
+  4: "Variables",
+  5: "Typedefs"
 };
 

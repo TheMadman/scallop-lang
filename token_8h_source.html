@@ -110,11 +110,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="preprocessor">#include &lt;libadt/lptr.h&gt;</span></div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;lex.h&quot;</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span><span class="preprocessor">#include &quot;<a class="code" href="lex_8h.html">lex.h</a>&quot;</span></div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="foldopen" id="foldopen00042" data-start="{" data-end="};">
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno"><a class="line" href="structscallop__lang__token.html">   42</a></span><span class="keyword">struct </span><a class="code hl_struct" href="structscallop__lang__token.html">scallop_lang_token</a> {</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">   46</a></span>    scallop_lang_lex_fn *<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a>;</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">   46</a></span>    <a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a>;</div>
 <div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span> </div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="structscallop__lang__token.html#a1a7ee83edb894970e41cffee377cbeb6">   51</a></span>    <span class="keyword">struct </span>libadt_const_lptr <a class="code hl_variable" href="structscallop__lang__token.html#a1a7ee83edb894970e41cffee377cbeb6">script</a>;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
@@ -144,7 +144,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="foldopen" id="foldopen00080" data-start="{" data-end="};">
 <div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="struct__scallop__read__t.html">   80</a></span><span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keywordtype">size_t</span> amount;</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    scallop_lang_lex_fn *type;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *type;</div>
 <div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="keyword">struct </span>libadt_const_lptr script;</div>
 <div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>} <a class="code hl_struct" href="struct__scallop__read__t.html">_scallop_read_t</a>;</div>
 </div>
@@ -153,12 +153,12 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>{</div>
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">return</span> read.amount == (size_t)-1</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>        || read.amount == (<span class="keywordtype">size_t</span>)-2</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        || read.type == scallop_lang_lex_unexpected;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        || read.type == <a class="code hl_variable" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a>;</div>
 <div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>}</div>
 <div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span> </div>
 <div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span><span class="keyword">inline</span> <a class="code hl_struct" href="struct__scallop__read__t.html">_scallop_read_t</a> _scallop_read(</div>
 <div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>    <span class="keyword">struct</span> libadt_const_lptr script,</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    scallop_lang_lex_fn *<span class="keyword">const</span> previous</div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *<span class="keyword">const</span> previous</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>)</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>{</div>
 <div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>    <span class="keywordtype">wchar_t</span> c = 0;</div>
@@ -166,9 +166,9 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>    <a class="code hl_struct" href="struct__scallop__read__t.html">_scallop_read_t</a> result = { 0 };</div>
 <div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>    result.amount = _scallop_mbrtowc(&amp;c, script, &amp;mbs);</div>
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keywordflow">if</span> (_scallop_read_error(result))</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        result.type = (scallop_lang_lex_fn*)scallop_lang_lex_unexpected;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>        result.type = (<a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>*)<a class="code hl_variable" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a>;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>    <span class="keywordflow">else</span></div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        result.type = (scallop_lang_lex_fn*)previous((wint_t)c);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        result.type = (<a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>*)previous((wint_t)c);</div>
 <div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
 <div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>    result.script = libadt_const_lptr_index(script, (ssize_t)result.amount);</div>
 <div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>    <span class="keywordflow">return</span> result;</div>
@@ -180,7 +180,7 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>)</div>
 <div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>{</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keywordflow">return</span> (<span class="keyword">struct</span> <a class="code hl_struct" href="structscallop__lang__token.html">scallop_lang_token</a>) {</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        .<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> = (scallop_lang_lex_fn*)scallop_lang_lex_begin,</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        .<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> = (<a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>*)<a class="code hl_function" href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861">scallop_lang_lex_begin</a>,</div>
 <div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        .<a class="code hl_variable" href="structscallop__lang__token.html#a1a7ee83edb894970e41cffee377cbeb6">script</a> = <a class="code hl_variable" href="structscallop__lang__token.html#a1a7ee83edb894970e41cffee377cbeb6">script</a>,</div>
 <div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        .<a class="code hl_variable" href="structscallop__lang__token.html#a90906372615c069c0e081f135f1bafc5">value</a> = libadt_const_lptr_truncate(<a class="code hl_variable" href="structscallop__lang__token.html#a1a7ee83edb894970e41cffee377cbeb6">script</a>, 0),</div>
 <div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    };</div>
@@ -206,11 +206,11 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>    <span class="keywordflow">if</span> (_scallop_read_error(read))</div>
 <div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>        <span class="keywordflow">return</span> (<span class="keyword">struct</span> <a class="code hl_struct" href="structscallop__lang__token.html">scallop_lang_token</a>) {</div>
 <div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>            .script = previous.script,</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            .type = scallop_lang_lex_unexpected,</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>            .type = <a class="code hl_variable" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a>,</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>            .value = libadt_const_lptr_truncate(next, 0),</div>
 <div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        };</div>
 <div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span> </div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">if</span> (read.type == scallop_lang_lex_end) {</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>    <span class="keywordflow">if</span> (read.type == <a class="code hl_variable" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f">scallop_lang_lex_end</a>) {</div>
 <div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        <span class="keywordflow">return</span> (<span class="keyword">struct</span> <a class="code hl_struct" href="structscallop__lang__token.html">scallop_lang_token</a>) {</div>
 <div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>            .script = previous.script,</div>
 <div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>            .type = read.type,</div>
@@ -248,8 +248,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        previous</div>
 <div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>    );</div>
 <div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> end = result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == scallop_lang_lex_end</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        || result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == scallop_lang_lex_unexpected;</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> end = result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == <a class="code hl_variable" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f">scallop_lang_lex_end</a></div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>        || result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == <a class="code hl_variable" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a>;</div>
 <div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>    <span class="keywordflow">if</span> (end)</div>
 <div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>        <span class="keywordflow">return</span> result;</div>
 <div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
@@ -259,19 +259,19 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>        result</div>
 <div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>    );</div>
 <div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> is_word = scallop_lang_lex_is_word(result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a>)</div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        &amp;&amp; scallop_lang_lex_is_word(next.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a>);</div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> is_word = <a class="code hl_function" href="lex_8h.html#a5e814af6799b916e82d5bc37d13fb096">scallop_lang_lex_is_word</a>(result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a>)</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>        &amp;&amp; <a class="code hl_function" href="lex_8h.html#a5e814af6799b916e82d5bc37d13fb096">scallop_lang_lex_is_word</a>(next.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a>);</div>
 <div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>    <span class="keywordflow">if</span> (is_word)</div>
 <div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>        result.<a class="code hl_variable" href="structscallop__lang__token.html#a90906372615c069c0e081f135f1bafc5">value</a>.length += next.<a class="code hl_variable" href="structscallop__lang__token.html#a90906372615c069c0e081f135f1bafc5">value</a>.length;</div>
 <div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
 <div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> has_word_separator</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        = result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == scallop_lang_lex_word_separator</div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        || next.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == scallop_lang_lex_word_separator;</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>        = result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == <a class="code hl_function" href="lex_8h.html#a7a4ba160001923c9752ee5cc74db3b46">scallop_lang_lex_word_separator</a></div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>        || next.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == <a class="code hl_function" href="lex_8h.html#a7a4ba160001923c9752ee5cc74db3b46">scallop_lang_lex_word_separator</a>;</div>
 <div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>    <span class="keyword">const</span> <span class="keywordtype">bool</span> has_statement_separator</div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        = result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == scallop_lang_lex_statement_separator</div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        || next.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == scallop_lang_lex_statement_separator;</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>        = result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == <a class="code hl_function" href="lex_8h.html#a9b2665fd631b22bafcd543091261ef88">scallop_lang_lex_statement_separator</a></div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>        || next.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> == <a class="code hl_function" href="lex_8h.html#a9b2665fd631b22bafcd543091261ef88">scallop_lang_lex_statement_separator</a>;</div>
 <div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">if</span> (has_word_separator &amp;&amp; has_statement_separator) {</div>
-<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> = scallop_lang_lex_statement_separator;</div>
+<div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span>        result.<a class="code hl_variable" href="structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd">type</a> = <a class="code hl_function" href="lex_8h.html#a9b2665fd631b22bafcd543091261ef88">scallop_lang_lex_statement_separator</a>;</div>
 <div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        result.<a class="code hl_variable" href="structscallop__lang__token.html#a90906372615c069c0e081f135f1bafc5">value</a>.length += next.<a class="code hl_variable" href="structscallop__lang__token.html#a90906372615c069c0e081f135f1bafc5">value</a>.length;</div>
 <div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>    }</div>
 <div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>    <span class="keywordflow">return</span> result;</div>
@@ -287,8 +287,8 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordtype">size_t</span> read_amount = 0;</div>
 <div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>    ssize_t total_read_amount = 0;</div>
 <div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    scallop_lang_lex_fn</div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        *current = (scallop_lang_lex_fn *)scallop_lang_lex_begin;</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>    <a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a></div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        *current = (<a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *)<a class="code hl_function" href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861">scallop_lang_lex_begin</a>;</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>    <span class="keywordflow">for</span> (</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>        ;</div>
 <div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>        libadt_const_lptr_in_bounds(word)</div>
@@ -305,18 +305,18 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span>        <span class="keywordflow">if</span> (read_error)</div>
 <div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span>            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00296" name="l00296"></a><span class="lineno">  296</span> </div>
-<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        current = (scallop_lang_lex_fn *)current((wint_t)c);</div>
+<div class="line"><a id="l00297" name="l00297"></a><span class="lineno">  297</span>        current = (<a class="code hl_typedef" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *)current((wint_t)c);</div>
 <div class="line"><a id="l00298" name="l00298"></a><span class="lineno">  298</span> </div>
-<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> is_error_type = current == scallop_lang_lex_unexpected;</div>
+<div class="line"><a id="l00299" name="l00299"></a><span class="lineno">  299</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> is_error_type = current == <a class="code hl_variable" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a>;</div>
 <div class="line"><a id="l00300" name="l00300"></a><span class="lineno">  300</span> </div>
 <div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>        <span class="keywordflow">if</span> (is_error_type)</div>
 <div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span>            <span class="keywordflow">return</span> -1;</div>
 <div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span> </div>
-<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> skip_type = current == scallop_lang_lex_single_quote</div>
-<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            || current == scallop_lang_lex_single_quote_end</div>
-<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            || current == scallop_lang_lex_double_quote</div>
-<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            || current == scallop_lang_lex_double_quote_end</div>
-<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            || current == scallop_lang_lex_escape;</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>        <span class="keyword">const</span> <span class="keywordtype">bool</span> skip_type = current == <a class="code hl_function" href="lex_8h.html#a4107dcfeaab6cc9b821decd12e931483">scallop_lang_lex_single_quote</a></div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>            || current == <a class="code hl_function" href="lex_8h.html#a4e40e8929e0c798bb72528514e404da1">scallop_lang_lex_single_quote_end</a></div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>            || current == <a class="code hl_function" href="lex_8h.html#a164a2ee41d31f3f18e25e25b0c74e906">scallop_lang_lex_double_quote</a></div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span>            || current == <a class="code hl_function" href="lex_8h.html#a117a3aed4ed98be1439018d03f04e512">scallop_lang_lex_double_quote_end</a></div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>            || current == <a class="code hl_function" href="lex_8h.html#a4df52daa59752dd7e31c3067ba799b90">scallop_lang_lex_escape</a>;</div>
 <div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span> </div>
 <div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        <span class="keywordflow">if</span> (!skip_type) {</div>
 <div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span>            libadt_lptr_memmove(out, libadt_const_lptr_truncate(word, read_amount));</div>
@@ -334,6 +334,19 @@ $(document).ready(function() { init_codefold(0); });
 <div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span> </div>
 <div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">#endif </span><span class="comment">// SCALLOP_LANG_TOKEN</span></div>
+<div class="ttc" id="alex_8h_html"><div class="ttname"><a href="lex_8h.html">lex.h</a></div><div class="ttdoc">This file provides the interface for the lexer.</div></div>
+<div class="ttc" id="alex_8h_html_a117a3aed4ed98be1439018d03f04e512"><div class="ttname"><a href="lex_8h.html#a117a3aed4ed98be1439018d03f04e512">scallop_lang_lex_double_quote_end</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_double_quote_end(wint_t input)</div><div class="ttdoc">Represents a double quote, closing a double-quoted string.</div></div>
+<div class="ttc" id="alex_8h_html_a164a2ee41d31f3f18e25e25b0c74e906"><div class="ttname"><a href="lex_8h.html#a164a2ee41d31f3f18e25e25b0c74e906">scallop_lang_lex_double_quote</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_double_quote(wint_t input)</div><div class="ttdoc">Represents an opening double quote.</div></div>
+<div class="ttc" id="alex_8h_html_a1994f23c0a2715d02f378d25140f8861"><div class="ttname"><a href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861">scallop_lang_lex_begin</a></div><div class="ttdeci">scallop_lang_lex_fn * scallop_lang_lex_begin(wint_t input)</div><div class="ttdoc">The default entry point of the state machine.</div></div>
+<div class="ttc" id="alex_8h_html_a4107dcfeaab6cc9b821decd12e931483"><div class="ttname"><a href="lex_8h.html#a4107dcfeaab6cc9b821decd12e931483">scallop_lang_lex_single_quote</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_single_quote(wint_t input)</div><div class="ttdoc">Represents an opening single quote.</div></div>
+<div class="ttc" id="alex_8h_html_a4df52daa59752dd7e31c3067ba799b90"><div class="ttname"><a href="lex_8h.html#a4df52daa59752dd7e31c3067ba799b90">scallop_lang_lex_escape</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_escape(wint_t input)</div><div class="ttdoc">Represents an escape character, '\'.</div></div>
+<div class="ttc" id="alex_8h_html_a4e40e8929e0c798bb72528514e404da1"><div class="ttname"><a href="lex_8h.html#a4e40e8929e0c798bb72528514e404da1">scallop_lang_lex_single_quote_end</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_single_quote_end(wint_t input)</div><div class="ttdoc">Represents a single quote, closing a single-quoted string.</div></div>
+<div class="ttc" id="alex_8h_html_a5e814af6799b916e82d5bc37d13fb096"><div class="ttname"><a href="lex_8h.html#a5e814af6799b916e82d5bc37d13fb096">scallop_lang_lex_is_word</a></div><div class="ttdeci">bool scallop_lang_lex_is_word(scallop_lang_lex_fn *type)</div><div class="ttdoc">Tests if a token type contributes to a word.</div><div class="ttdef"><b>Definition</b> lex.h:236</div></div>
+<div class="ttc" id="alex_8h_html_a77c3f41c01a8d1e4446810d22e2493db"><div class="ttname"><a href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a></div><div class="ttdeci">scallop_lang_lex_fn *const scallop_lang_lex_unexpected</div><div class="ttdoc">Represents an unexpected input for the current state.</div></div>
+<div class="ttc" id="alex_8h_html_a7a4ba160001923c9752ee5cc74db3b46"><div class="ttname"><a href="lex_8h.html#a7a4ba160001923c9752ee5cc74db3b46">scallop_lang_lex_word_separator</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_word_separator(wint_t input)</div><div class="ttdoc">Represents a word separator.</div></div>
+<div class="ttc" id="alex_8h_html_a891429c080b6598a0ff9b878a0a2707f"><div class="ttname"><a href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f">scallop_lang_lex_end</a></div><div class="ttdeci">scallop_lang_lex_fn *const scallop_lang_lex_end</div><div class="ttdoc">Represents the end of a lex script.</div></div>
+<div class="ttc" id="alex_8h_html_a8fa294b521b053f9b1bcd9d9a3396d8f"><div class="ttname"><a href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_fn(wint_t)</div><div class="ttdoc">Type definition for a lexer state function.</div><div class="ttdef"><b>Definition</b> lex.h:72</div></div>
+<div class="ttc" id="alex_8h_html_a9b2665fd631b22bafcd543091261ef88"><div class="ttname"><a href="lex_8h.html#a9b2665fd631b22bafcd543091261ef88">scallop_lang_lex_statement_separator</a></div><div class="ttdeci">scallop_lang_void_fn * scallop_lang_lex_statement_separator(wint_t input)</div><div class="ttdoc">Represents a statement separator, such as ';' or newline.</div></div>
 <div class="ttc" id="astruct__scallop__read__t_html"><div class="ttname"><a href="struct__scallop__read__t.html">_scallop_read_t</a></div><div class="ttdef"><b>Definition</b> token.h:80</div></div>
 <div class="ttc" id="astructscallop__lang__token_html"><div class="ttname"><a href="structscallop__lang__token.html">scallop_lang_token</a></div><div class="ttdoc">Represents a single token.</div><div class="ttdef"><b>Definition</b> token.h:42</div></div>
 <div class="ttc" id="astructscallop__lang__token_html_a1a7ee83edb894970e41cffee377cbeb6"><div class="ttname"><a href="structscallop__lang__token.html#a1a7ee83edb894970e41cffee377cbeb6">scallop_lang_token::script</a></div><div class="ttdeci">struct libadt_const_lptr script</div><div class="ttdoc">A pointer to the full script.</div><div class="ttdef"><b>Definition</b> token.h:51</div></div>
