@@ -111,7 +111,9 @@ inline _scallop_read_t _scallop_read(
 /**
  * \brief Initializes a token object for use in scallop_lang_token_next().
  *
+ * \param script The script to create a token from.
  *
+ * \returns A token, valid for passing to scallop_lang_token_next().
  */
 inline struct scallop_lang_token scallop_lang_token_init(
 	struct libadt_const_lptr script
