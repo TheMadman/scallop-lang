@@ -107,9 +107,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_scallop_read_error</
 <tr class="memitem:a655197fc15e3176d3a91ab5e0b366f88" id="r_a655197fc15e3176d3a91ab5e0b366f88"><td class="memItemLeft" align="right" valign="top"><a id="a655197fc15e3176d3a91ab5e0b366f88" name="a655197fc15e3176d3a91ab5e0b366f88"></a>
 <a class="el" href="struct__scallop__read__t.html">_scallop_read_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_scallop_read</b> (struct libadt_const_lptr script, <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const previous)</td></tr>
 <tr class="separator:a655197fc15e3176d3a91ab5e0b366f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d2e119e13e10d3f463d964cb038fbbd" id="r_a9d2e119e13e10d3f463d964cb038fbbd"><td class="memItemLeft" align="right" valign="top"><a id="a9d2e119e13e10d3f463d964cb038fbbd" name="a9d2e119e13e10d3f463d964cb038fbbd"></a>
-struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</a>&#160;</td><td class="memItemRight" valign="bottom"><b>scallop_lang_token_init</b> (struct libadt_const_lptr script)</td></tr>
-<tr class="memdesc:a9d2e119e13e10d3f463d964cb038fbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a token object for use in <a class="el" href="token_8h.html#a77e6a972eb1af7c3c7ebea16809fc62f" title="Returns the next token in the script referred to by previous.">scallop_lang_token_next()</a>. <br /></td></tr>
+<tr class="memitem:a9d2e119e13e10d3f463d964cb038fbbd" id="r_a9d2e119e13e10d3f463d964cb038fbbd"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="token_8h.html#a9d2e119e13e10d3f463d964cb038fbbd">scallop_lang_token_init</a> (struct libadt_const_lptr script)</td></tr>
+<tr class="memdesc:a9d2e119e13e10d3f463d964cb038fbbd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a token object for use in <a class="el" href="token_8h.html#a77e6a972eb1af7c3c7ebea16809fc62f" title="Returns the next token in the script referred to by previous.">scallop_lang_token_next()</a>.  <br /></td></tr>
 <tr class="separator:a9d2e119e13e10d3f463d964cb038fbbd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1580273010a6f1b767be3379094fec29" id="r_a1580273010a6f1b767be3379094fec29"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="token_8h.html#a1580273010a6f1b767be3379094fec29">scallop_lang_token_next_raw</a> (struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</a> previous)</td></tr>
 <tr class="memdesc:a1580273010a6f1b767be3379094fec29"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next, raw token in the script referred to by previous.  <br /></td></tr>
@@ -124,6 +123,41 @@ struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This module provides an API over the lex finite state machine, generating tokens from multibyte character scripts. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a id="a9d2e119e13e10d3f463d964cb038fbbd" name="a9d2e119e13e10d3f463d964cb038fbbd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d2e119e13e10d3f463d964cb038fbbd">&#9670;&#160;</a></span>scallop_lang_token_init()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct <a class="el" href="structscallop__lang__token.html">scallop_lang_token</a> scallop_lang_token_init </td>
+          <td>(</td>
+          <td class="paramtype">struct libadt_const_lptr&#160;</td>
+          <td class="paramname"><em>script</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes a token object for use in <a class="el" href="token_8h.html#a77e6a972eb1af7c3c7ebea16809fc62f" title="Returns the next token in the script referred to by previous.">scallop_lang_token_next()</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">script</td><td>The script to create a token from.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A token, valid for passing to <a class="el" href="token_8h.html#a77e6a972eb1af7c3c7ebea16809fc62f" title="Returns the next token in the script referred to by previous.">scallop_lang_token_next()</a>. </dd></dl>
+
+</div>
+</div>
 <a id="a77e6a972eb1af7c3c7ebea16809fc62f" name="a77e6a972eb1af7c3c7ebea16809fc62f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a77e6a972eb1af7c3c7ebea16809fc62f">&#9670;&#160;</a></span>scallop_lang_token_next()</h2>
 
