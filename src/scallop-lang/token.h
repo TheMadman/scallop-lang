@@ -267,8 +267,10 @@ inline struct scallop_lang_token scallop_lang_token_next(
  * 	a word.
  * \param out A pointer to the location to write to.
  *
- * \returns The number of characters written, or -1 if an error
- * 	occurred.
+ * \returns If out is large enough for the result, the number of
+ * 	characters actually written. If out is smaller than the
+ * 	result, the number of characters that would have been written.
+ * 	If an error occurred, -1 is returned.
  */
 inline ssize_t scallop_lang_token_normalize_word(
 	struct libadt_const_lptr word,
@@ -282,8 +284,7 @@ inline ssize_t scallop_lang_token_normalize_word(
 		*current = (scallop_lang_lex_fn *)scallop_lang_lex_begin;
 	for (
 		;
-		libadt_const_lptr_in_bounds(word)
-		&& libadt_lptr_in_bounds(out);
+		libadt_const_lptr_in_bounds(word);
 		word = libadt_const_lptr_index(word, (ssize_t)read_amount)
 	) {
 		wchar_t c = 0;
@@ -310,8 +311,10 @@ inline ssize_t scallop_lang_token_normalize_word(
 			|| current == scallop_lang_lex_escape;
 
 		if (!skip_type) {
-			libadt_lptr_memmove(out, libadt_const_lptr_truncate(word, read_amount));
-			out = libadt_lptr_index(out, (ssize_t)read_amount);
+			if (libadt_lptr_in_bounds(out)) {
+				libadt_lptr_memmove(out, libadt_const_lptr_truncate(word, read_amount));
+				out = libadt_lptr_index(out, (ssize_t)read_amount);
+			}
 			total_read_amount += (ssize_t)read_amount;
 		}
 	}

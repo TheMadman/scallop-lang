@@ -92,6 +92,14 @@ static lex_fn *default_context(wint_t input)
 			return scallop_lang_lex_statement_separator;
 		case CLASS_LINE_COMMENT:
 			return scallop_lang_lex_line_comment;
+		case CLASS_BEGIN_CURLY_BLOCK:
+			return scallop_lang_lex_curly_block;
+		case CLASS_END_CURLY_BLOCK:
+			return scallop_lang_lex_curly_block_end;
+		case CLASS_BEGIN_SQUARE_BLOCK:
+			return scallop_lang_lex_square_block;
+		case CLASS_END_SQUARE_BLOCK:
+			return scallop_lang_lex_square_block_end;
 		default:
 			return scallop_lang_lex_unexpected;
 	}
