@@ -23,6 +23,8 @@
 extern "C" {
 #endif
 
+#include <libadt/init.h>
+
 #include <stdbool.h>
 #include <wchar.h>
 
@@ -91,7 +93,7 @@ scallop_lang_lex_fn *scallop_lang_lex_begin(wint_t input);
  *
  * \sa scallop_lang_lex_fn for an example.
  */
-extern scallop_lang_lex_fn *const scallop_lang_lex_end;
+EXPORT extern scallop_lang_lex_fn *const scallop_lang_lex_end;
 
 /**
  * \brief Represents an unexpected input for the current state.
@@ -102,7 +104,7 @@ extern scallop_lang_lex_fn *const scallop_lang_lex_end;
  * This should be used for checking for errors in your loop and
  * handling them accordingly.
  */
-extern scallop_lang_lex_fn *const scallop_lang_lex_unexpected;
+EXPORT extern scallop_lang_lex_fn *const scallop_lang_lex_unexpected;
 
 /**
  * \brief Represents an unquoted word.
@@ -110,7 +112,7 @@ extern scallop_lang_lex_fn *const scallop_lang_lex_unexpected;
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_word(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_word(wint_t input);
 
 /**
  * \brief Represents a word separator.
@@ -118,7 +120,7 @@ scallop_lang_void_fn *scallop_lang_lex_word(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_word_separator(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_word_separator(wint_t input);
 
 /**
  * \brief Represents an escape character, '\'.
@@ -126,7 +128,7 @@ scallop_lang_void_fn *scallop_lang_lex_word_separator(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_escape(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_escape(wint_t input);
 
 /**
  * \brief Represents an opening single quote.
@@ -134,7 +136,7 @@ scallop_lang_void_fn *scallop_lang_lex_escape(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_single_quote(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_single_quote(wint_t input);
 
 /**
  * \brief Represents a single quote, closing a single-quoted string.
@@ -142,7 +144,7 @@ scallop_lang_void_fn *scallop_lang_lex_single_quote(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_single_quote_end(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_single_quote_end(wint_t input);
 
 /**
  * \brief Represents characters in a single-quoted string
@@ -151,7 +153,7 @@ scallop_lang_void_fn *scallop_lang_lex_single_quote_end(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_single_quote_word(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_single_quote_word(wint_t input);
 
 /**
  * \brief Represents an opening double quote.
@@ -159,7 +161,7 @@ scallop_lang_void_fn *scallop_lang_lex_single_quote_word(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_double_quote(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_double_quote(wint_t input);
 
 /**
  * \brief Represents a double quote, closing a double-quoted string.
@@ -167,7 +169,7 @@ scallop_lang_void_fn *scallop_lang_lex_double_quote(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_double_quote_end(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_double_quote_end(wint_t input);
 
 /**
  * \brief Represents characters in a double-quoted string
@@ -176,7 +178,7 @@ scallop_lang_void_fn *scallop_lang_lex_double_quote_end(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_double_quote_word(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_double_quote_word(wint_t input);
 
 /**
  * \brief Represents the opening of a curly bracket block '{'.
@@ -184,7 +186,7 @@ scallop_lang_void_fn *scallop_lang_lex_double_quote_word(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_curly_block(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_curly_block(wint_t input);
 
 /**
  * \brief Represents the closing of a curly bracket block '}'.
@@ -192,7 +194,7 @@ scallop_lang_void_fn *scallop_lang_lex_curly_block(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_curly_block_end(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_curly_block_end(wint_t input);
 
 /**
  * \brief Represents the opening of a square bracket block '['.
@@ -200,7 +202,7 @@ scallop_lang_void_fn *scallop_lang_lex_curly_block_end(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_square_block(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_square_block(wint_t input);
 
 /**
  * \brief Represents the closing of a square bracket block ']'.
@@ -208,7 +210,7 @@ scallop_lang_void_fn *scallop_lang_lex_square_block(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_square_block_end(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_square_block_end(wint_t input);
 
 /**
  * \brief Represents a statement separator, such as ';' or newline.
@@ -216,7 +218,7 @@ scallop_lang_void_fn *scallop_lang_lex_square_block_end(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_statement_separator(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_statement_separator(wint_t input);
 
 /**
  * \brief Represents a line comment, starting with a hash '#'.
@@ -224,7 +226,7 @@ scallop_lang_void_fn *scallop_lang_lex_statement_separator(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-scallop_lang_void_fn *scallop_lang_lex_line_comment(wint_t input);
+EXPORT scallop_lang_void_fn *scallop_lang_lex_line_comment(wint_t input);
 
 /**
  * \brief Tests if a token type contributes to a word.
@@ -233,7 +235,7 @@ scallop_lang_void_fn *scallop_lang_lex_line_comment(wint_t input);
  *
  * \returns True if the type contributes to a word, false otherwise.
  */
-inline bool scallop_lang_lex_is_word(scallop_lang_lex_fn *type)
+EXPORT inline bool scallop_lang_lex_is_word(scallop_lang_lex_fn *type)
 {
 	return type == scallop_lang_lex_word
 		|| type == scallop_lang_lex_single_quote

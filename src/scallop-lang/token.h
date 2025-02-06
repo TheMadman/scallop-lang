@@ -25,6 +25,7 @@ extern "C" {
 
 #include <wchar.h>
 
+#include <libadt/init.h>
 #include <libadt/lptr.h>
 
 #include "lex.h"
@@ -115,7 +116,7 @@ inline _scallop_read_t _scallop_read(
  *
  * \returns A token, valid for passing to scallop_lang_token_next().
  */
-inline struct scallop_lang_token scallop_lang_token_init(
+EXPORT inline struct scallop_lang_token scallop_lang_token_init(
 	struct libadt_const_lptr script
 )
 {
@@ -143,7 +144,7 @@ inline struct scallop_lang_token scallop_lang_token_init(
  *
  * \returns A new token.
  */
-inline struct scallop_lang_token scallop_lang_token_next_raw(
+EXPORT inline struct scallop_lang_token scallop_lang_token_next_raw(
 	struct scallop_lang_token previous
 )
 {
@@ -216,7 +217,7 @@ inline struct scallop_lang_token scallop_lang_token_next_raw(
  * 	if successful, or failing if an incomplete multibyte
  * 	character was encountered.
  */
-inline struct scallop_lang_token scallop_lang_token_next(
+EXPORT inline struct scallop_lang_token scallop_lang_token_next(
 	struct scallop_lang_token previous
 )
 {
@@ -272,7 +273,7 @@ inline struct scallop_lang_token scallop_lang_token_next(
  * 	result, the number of characters that would have been written.
  * 	If an error occurred, -1 is returned.
  */
-inline ssize_t scallop_lang_token_normalize_word(
+EXPORT inline ssize_t scallop_lang_token_normalize_word(
 	struct libadt_const_lptr word,
 	struct libadt_lptr out
 )
