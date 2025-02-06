@@ -83,7 +83,8 @@ $(function() {
 
 <p>This file provides the interface for the lexer.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;libadt/init.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;wchar.h&gt;</code><br />
 </div>
 <p><a href="lex_8h_source.html">Go to the source code of this file.</a></p>
@@ -103,72 +104,72 @@ Functions</h2></td></tr>
 <tr class="memitem:a1994f23c0a2715d02f378d25140f8861" id="r_a1994f23c0a2715d02f378d25140f8861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861">scallop_lang_lex_begin</a> (wint_t input)</td></tr>
 <tr class="memdesc:a1994f23c0a2715d02f378d25140f8861"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default entry point of the state machine.  <br /></td></tr>
 <tr class="separator:a1994f23c0a2715d02f378d25140f8861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abfad4588a89436dd91741ebd46036923" id="r_abfad4588a89436dd91741ebd46036923"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#abfad4588a89436dd91741ebd46036923">scallop_lang_lex_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:abfad4588a89436dd91741ebd46036923"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unquoted word.  <br /></td></tr>
-<tr class="separator:abfad4588a89436dd91741ebd46036923"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a4ba160001923c9752ee5cc74db3b46" id="r_a7a4ba160001923c9752ee5cc74db3b46"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a7a4ba160001923c9752ee5cc74db3b46">scallop_lang_lex_word_separator</a> (wint_t input)</td></tr>
-<tr class="memdesc:a7a4ba160001923c9752ee5cc74db3b46"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a word separator.  <br /></td></tr>
-<tr class="separator:a7a4ba160001923c9752ee5cc74db3b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4df52daa59752dd7e31c3067ba799b90" id="r_a4df52daa59752dd7e31c3067ba799b90"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a4df52daa59752dd7e31c3067ba799b90">scallop_lang_lex_escape</a> (wint_t input)</td></tr>
-<tr class="memdesc:a4df52daa59752dd7e31c3067ba799b90"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an escape character, '\'.  <br /></td></tr>
-<tr class="separator:a4df52daa59752dd7e31c3067ba799b90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4107dcfeaab6cc9b821decd12e931483" id="r_a4107dcfeaab6cc9b821decd12e931483"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a4107dcfeaab6cc9b821decd12e931483">scallop_lang_lex_single_quote</a> (wint_t input)</td></tr>
-<tr class="memdesc:a4107dcfeaab6cc9b821decd12e931483"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening single quote.  <br /></td></tr>
-<tr class="separator:a4107dcfeaab6cc9b821decd12e931483"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e40e8929e0c798bb72528514e404da1" id="r_a4e40e8929e0c798bb72528514e404da1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a4e40e8929e0c798bb72528514e404da1">scallop_lang_lex_single_quote_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:a4e40e8929e0c798bb72528514e404da1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single quote, closing a single-quoted string.  <br /></td></tr>
-<tr class="separator:a4e40e8929e0c798bb72528514e404da1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ed30b2b2aa33f9064968838a082a8d9" id="r_a4ed30b2b2aa33f9064968838a082a8d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a4ed30b2b2aa33f9064968838a082a8d9">scallop_lang_lex_single_quote_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:a4ed30b2b2aa33f9064968838a082a8d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a single-quoted string which contribute to a word.  <br /></td></tr>
-<tr class="separator:a4ed30b2b2aa33f9064968838a082a8d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a164a2ee41d31f3f18e25e25b0c74e906" id="r_a164a2ee41d31f3f18e25e25b0c74e906"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a164a2ee41d31f3f18e25e25b0c74e906">scallop_lang_lex_double_quote</a> (wint_t input)</td></tr>
-<tr class="memdesc:a164a2ee41d31f3f18e25e25b0c74e906"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening double quote.  <br /></td></tr>
-<tr class="separator:a164a2ee41d31f3f18e25e25b0c74e906"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a117a3aed4ed98be1439018d03f04e512" id="r_a117a3aed4ed98be1439018d03f04e512"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a117a3aed4ed98be1439018d03f04e512">scallop_lang_lex_double_quote_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:a117a3aed4ed98be1439018d03f04e512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a double quote, closing a double-quoted string.  <br /></td></tr>
-<tr class="separator:a117a3aed4ed98be1439018d03f04e512"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa917537419c8af5d56e8ae5b580a732b" id="r_aa917537419c8af5d56e8ae5b580a732b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#aa917537419c8af5d56e8ae5b580a732b">scallop_lang_lex_double_quote_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:aa917537419c8af5d56e8ae5b580a732b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a double-quoted string which contribute to a word.  <br /></td></tr>
-<tr class="separator:aa917537419c8af5d56e8ae5b580a732b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ade5e4f5dce55f0cabe3dfc78134752c1" id="r_ade5e4f5dce55f0cabe3dfc78134752c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ade5e4f5dce55f0cabe3dfc78134752c1">scallop_lang_lex_curly_block</a> (wint_t input)</td></tr>
-<tr class="memdesc:ade5e4f5dce55f0cabe3dfc78134752c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a curly bracket block '{'.  <br /></td></tr>
-<tr class="separator:ade5e4f5dce55f0cabe3dfc78134752c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae2f0662ee6fed368c34dbaf13e094f45" id="r_ae2f0662ee6fed368c34dbaf13e094f45"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae2f0662ee6fed368c34dbaf13e094f45">scallop_lang_lex_curly_block_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:ae2f0662ee6fed368c34dbaf13e094f45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a curly bracket block '}'.  <br /></td></tr>
-<tr class="separator:ae2f0662ee6fed368c34dbaf13e094f45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae65575eef5004e5a42bd89c16636036d" id="r_ae65575eef5004e5a42bd89c16636036d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae65575eef5004e5a42bd89c16636036d">scallop_lang_lex_square_block</a> (wint_t input)</td></tr>
-<tr class="memdesc:ae65575eef5004e5a42bd89c16636036d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a square bracket block '['.  <br /></td></tr>
-<tr class="separator:ae65575eef5004e5a42bd89c16636036d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e3299811c1e34f6aceb2195c5c9487d" id="r_a8e3299811c1e34f6aceb2195c5c9487d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a8e3299811c1e34f6aceb2195c5c9487d">scallop_lang_lex_square_block_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:a8e3299811c1e34f6aceb2195c5c9487d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a square bracket block ']'.  <br /></td></tr>
-<tr class="separator:a8e3299811c1e34f6aceb2195c5c9487d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9b2665fd631b22bafcd543091261ef88" id="r_a9b2665fd631b22bafcd543091261ef88"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a9b2665fd631b22bafcd543091261ef88">scallop_lang_lex_statement_separator</a> (wint_t input)</td></tr>
-<tr class="memdesc:a9b2665fd631b22bafcd543091261ef88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a statement separator, such as ';' or newline.  <br /></td></tr>
-<tr class="separator:a9b2665fd631b22bafcd543091261ef88"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9bad004a3c8fa7e72279e4d81db306e4" id="r_a9bad004a3c8fa7e72279e4d81db306e4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a9bad004a3c8fa7e72279e4d81db306e4">scallop_lang_lex_line_comment</a> (wint_t input)</td></tr>
-<tr class="memdesc:a9bad004a3c8fa7e72279e4d81db306e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line comment, starting with a hash '#'.  <br /></td></tr>
-<tr class="separator:a9bad004a3c8fa7e72279e4d81db306e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5e814af6799b916e82d5bc37d13fb096" id="r_a5e814af6799b916e82d5bc37d13fb096"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a5e814af6799b916e82d5bc37d13fb096">scallop_lang_lex_is_word</a> (<a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *type)</td></tr>
-<tr class="memdesc:a5e814af6799b916e82d5bc37d13fb096"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if a token type contributes to a word.  <br /></td></tr>
-<tr class="separator:a5e814af6799b916e82d5bc37d13fb096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0467c131c34136961a0e0f0858dad31" id="r_ab0467c131c34136961a0e0f0858dad31"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ab0467c131c34136961a0e0f0858dad31">scallop_lang_lex_word</a> (wint_t input)</td></tr>
+<tr class="memdesc:ab0467c131c34136961a0e0f0858dad31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unquoted word.  <br /></td></tr>
+<tr class="separator:ab0467c131c34136961a0e0f0858dad31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae212aa8c0904d09239491749340db5db" id="r_ae212aa8c0904d09239491749340db5db"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae212aa8c0904d09239491749340db5db">scallop_lang_lex_word_separator</a> (wint_t input)</td></tr>
+<tr class="memdesc:ae212aa8c0904d09239491749340db5db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a word separator.  <br /></td></tr>
+<tr class="separator:ae212aa8c0904d09239491749340db5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a84aaa993858ff3030401f3b6a9546f38" id="r_a84aaa993858ff3030401f3b6a9546f38"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a84aaa993858ff3030401f3b6a9546f38">scallop_lang_lex_escape</a> (wint_t input)</td></tr>
+<tr class="memdesc:a84aaa993858ff3030401f3b6a9546f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an escape character, '\'.  <br /></td></tr>
+<tr class="separator:a84aaa993858ff3030401f3b6a9546f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6b3b2120673a95dd344c86ceb540a89" id="r_ab6b3b2120673a95dd344c86ceb540a89"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ab6b3b2120673a95dd344c86ceb540a89">scallop_lang_lex_single_quote</a> (wint_t input)</td></tr>
+<tr class="memdesc:ab6b3b2120673a95dd344c86ceb540a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening single quote.  <br /></td></tr>
+<tr class="separator:ab6b3b2120673a95dd344c86ceb540a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeafa3a7a1c86f923692dabecbca74c3" id="r_abeafa3a7a1c86f923692dabecbca74c3"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#abeafa3a7a1c86f923692dabecbca74c3">scallop_lang_lex_single_quote_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:abeafa3a7a1c86f923692dabecbca74c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single quote, closing a single-quoted string.  <br /></td></tr>
+<tr class="separator:abeafa3a7a1c86f923692dabecbca74c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab507ff130f0b57263caaf4132f7511" id="r_a9ab507ff130f0b57263caaf4132f7511"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a9ab507ff130f0b57263caaf4132f7511">scallop_lang_lex_single_quote_word</a> (wint_t input)</td></tr>
+<tr class="memdesc:a9ab507ff130f0b57263caaf4132f7511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a single-quoted string which contribute to a word.  <br /></td></tr>
+<tr class="separator:a9ab507ff130f0b57263caaf4132f7511"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24befdfefa6f14d37c18ecbefdb830bf" id="r_a24befdfefa6f14d37c18ecbefdb830bf"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a24befdfefa6f14d37c18ecbefdb830bf">scallop_lang_lex_double_quote</a> (wint_t input)</td></tr>
+<tr class="memdesc:a24befdfefa6f14d37c18ecbefdb830bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening double quote.  <br /></td></tr>
+<tr class="separator:a24befdfefa6f14d37c18ecbefdb830bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adc91381dc397e90b26e8950cc9946a4f" id="r_adc91381dc397e90b26e8950cc9946a4f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#adc91381dc397e90b26e8950cc9946a4f">scallop_lang_lex_double_quote_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:adc91381dc397e90b26e8950cc9946a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a double quote, closing a double-quoted string.  <br /></td></tr>
+<tr class="separator:adc91381dc397e90b26e8950cc9946a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aea6102266c08546a2fe7eef84a10f59c" id="r_aea6102266c08546a2fe7eef84a10f59c"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#aea6102266c08546a2fe7eef84a10f59c">scallop_lang_lex_double_quote_word</a> (wint_t input)</td></tr>
+<tr class="memdesc:aea6102266c08546a2fe7eef84a10f59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a double-quoted string which contribute to a word.  <br /></td></tr>
+<tr class="separator:aea6102266c08546a2fe7eef84a10f59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa9649dedf7b5558676dda4455781c8e8" id="r_aa9649dedf7b5558676dda4455781c8e8"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#aa9649dedf7b5558676dda4455781c8e8">scallop_lang_lex_curly_block</a> (wint_t input)</td></tr>
+<tr class="memdesc:aa9649dedf7b5558676dda4455781c8e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a curly bracket block '{'.  <br /></td></tr>
+<tr class="separator:aa9649dedf7b5558676dda4455781c8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68b892bc634351793e8d4f96e615a449" id="r_a68b892bc634351793e8d4f96e615a449"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a68b892bc634351793e8d4f96e615a449">scallop_lang_lex_curly_block_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:a68b892bc634351793e8d4f96e615a449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a curly bracket block '}'.  <br /></td></tr>
+<tr class="separator:a68b892bc634351793e8d4f96e615a449"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f2f557b31df0034473ff28392dfea6f" id="r_a7f2f557b31df0034473ff28392dfea6f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a7f2f557b31df0034473ff28392dfea6f">scallop_lang_lex_square_block</a> (wint_t input)</td></tr>
+<tr class="memdesc:a7f2f557b31df0034473ff28392dfea6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a square bracket block '['.  <br /></td></tr>
+<tr class="separator:a7f2f557b31df0034473ff28392dfea6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a977ea781528d780c7c056cb3147ca0bf" id="r_a977ea781528d780c7c056cb3147ca0bf"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a977ea781528d780c7c056cb3147ca0bf">scallop_lang_lex_square_block_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:a977ea781528d780c7c056cb3147ca0bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a square bracket block ']'.  <br /></td></tr>
+<tr class="separator:a977ea781528d780c7c056cb3147ca0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2bed5bef6f647d9604943d1f8859025f" id="r_a2bed5bef6f647d9604943d1f8859025f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a2bed5bef6f647d9604943d1f8859025f">scallop_lang_lex_statement_separator</a> (wint_t input)</td></tr>
+<tr class="memdesc:a2bed5bef6f647d9604943d1f8859025f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a statement separator, such as ';' or newline.  <br /></td></tr>
+<tr class="separator:a2bed5bef6f647d9604943d1f8859025f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6fcf8a856d8a5d549587af671fc94363" id="r_a6fcf8a856d8a5d549587af671fc94363"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a6fcf8a856d8a5d549587af671fc94363">scallop_lang_lex_line_comment</a> (wint_t input)</td></tr>
+<tr class="memdesc:a6fcf8a856d8a5d549587af671fc94363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line comment, starting with a hash '#'.  <br /></td></tr>
+<tr class="separator:a6fcf8a856d8a5d549587af671fc94363"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a073be8b01670a43705bcde8a04598eba" id="r_a073be8b01670a43705bcde8a04598eba"><td class="memItemLeft" align="right" valign="top">EXPORT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a073be8b01670a43705bcde8a04598eba">scallop_lang_lex_is_word</a> (<a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *type)</td></tr>
+<tr class="memdesc:a073be8b01670a43705bcde8a04598eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if a token type contributes to a word.  <br /></td></tr>
+<tr class="separator:a073be8b01670a43705bcde8a04598eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:a891429c080b6598a0ff9b878a0a2707f" id="r_a891429c080b6598a0ff9b878a0a2707f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f">scallop_lang_lex_end</a></td></tr>
-<tr class="memdesc:a891429c080b6598a0ff9b878a0a2707f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the end of a lex script.  <br /></td></tr>
-<tr class="separator:a891429c080b6598a0ff9b878a0a2707f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a77c3f41c01a8d1e4446810d22e2493db" id="r_a77c3f41c01a8d1e4446810d22e2493db"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db">scallop_lang_lex_unexpected</a></td></tr>
-<tr class="memdesc:a77c3f41c01a8d1e4446810d22e2493db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unexpected input for the current state.  <br /></td></tr>
-<tr class="separator:a77c3f41c01a8d1e4446810d22e2493db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24657848aa4d392941663ede448b8240" id="r_a24657848aa4d392941663ede448b8240"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a24657848aa4d392941663ede448b8240">scallop_lang_lex_end</a></td></tr>
+<tr class="memdesc:a24657848aa4d392941663ede448b8240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the end of a lex script.  <br /></td></tr>
+<tr class="separator:a24657848aa4d392941663ede448b8240"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57d9ce009946369599d577295e769359" id="r_a57d9ce009946369599d577295e769359"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359">scallop_lang_lex_unexpected</a></td></tr>
+<tr class="memdesc:a57d9ce009946369599d577295e769359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unexpected input for the current state.  <br /></td></tr>
+<tr class="separator:a57d9ce009946369599d577295e769359"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file provides the interface for the lexer. </p>
 <p>The lexer is a finite state machine, where each state is a function. Each state takes an input and returns the next state.</p>
 <p>The lexer state machine functions take a wide character input and return a lexer state function. The return value should be cast to a scallop_lang_lex_fn* before use.</p>
 <p>The entry point of the finite state machine is <a class="el" href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861" title="The default entry point of the state machine.">scallop_lang_lex_begin()</a>.</p>
-<p>If the current state receives an unexpected input, it will return <a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a>.</p>
-<p>You <em>must</em> check that the return value of the current state is <a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> and handle it correctly. Calling <a class="el" href="lex_8h.html#a77c3f41c01a8d1e4446810d22e2493db" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> will call abort().</p>
-<p><a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="lex_8h.html#a891429c080b6598a0ff9b878a0a2707f" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> to indicate that processing finished successfully.</p>
+<p>If the current state receives an unexpected input, it will return <a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a>.</p>
+<p>You <em>must</em> check that the return value of the current state is <a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> and handle it correctly. Calling <a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> will call abort().</p>
+<p><a class="el" href="lex_8h.html#a24657848aa4d392941663ede448b8240" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="lex_8h.html#a24657848aa4d392941663ede448b8240" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> to indicate that processing finished successfully.</p>
 <p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
@@ -256,14 +257,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ade5e4f5dce55f0cabe3dfc78134752c1" name="ade5e4f5dce55f0cabe3dfc78134752c1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ade5e4f5dce55f0cabe3dfc78134752c1">&#9670;&#160;</a></span>scallop_lang_lex_curly_block()</h2>
+<a id="aa9649dedf7b5558676dda4455781c8e8" name="aa9649dedf7b5558676dda4455781c8e8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9649dedf7b5558676dda4455781c8e8">&#9670;&#160;</a></span>scallop_lang_lex_curly_block()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_curly_block </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_curly_block </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -283,14 +284,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae2f0662ee6fed368c34dbaf13e094f45" name="ae2f0662ee6fed368c34dbaf13e094f45"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae2f0662ee6fed368c34dbaf13e094f45">&#9670;&#160;</a></span>scallop_lang_lex_curly_block_end()</h2>
+<a id="a68b892bc634351793e8d4f96e615a449" name="a68b892bc634351793e8d4f96e615a449"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68b892bc634351793e8d4f96e615a449">&#9670;&#160;</a></span>scallop_lang_lex_curly_block_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_curly_block_end </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_curly_block_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -310,14 +311,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a164a2ee41d31f3f18e25e25b0c74e906" name="a164a2ee41d31f3f18e25e25b0c74e906"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a164a2ee41d31f3f18e25e25b0c74e906">&#9670;&#160;</a></span>scallop_lang_lex_double_quote()</h2>
+<a id="a24befdfefa6f14d37c18ecbefdb830bf" name="a24befdfefa6f14d37c18ecbefdb830bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24befdfefa6f14d37c18ecbefdb830bf">&#9670;&#160;</a></span>scallop_lang_lex_double_quote()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -337,14 +338,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a117a3aed4ed98be1439018d03f04e512" name="a117a3aed4ed98be1439018d03f04e512"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a117a3aed4ed98be1439018d03f04e512">&#9670;&#160;</a></span>scallop_lang_lex_double_quote_end()</h2>
+<a id="adc91381dc397e90b26e8950cc9946a4f" name="adc91381dc397e90b26e8950cc9946a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adc91381dc397e90b26e8950cc9946a4f">&#9670;&#160;</a></span>scallop_lang_lex_double_quote_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote_end </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -364,14 +365,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa917537419c8af5d56e8ae5b580a732b" name="aa917537419c8af5d56e8ae5b580a732b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa917537419c8af5d56e8ae5b580a732b">&#9670;&#160;</a></span>scallop_lang_lex_double_quote_word()</h2>
+<a id="aea6102266c08546a2fe7eef84a10f59c" name="aea6102266c08546a2fe7eef84a10f59c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aea6102266c08546a2fe7eef84a10f59c">&#9670;&#160;</a></span>scallop_lang_lex_double_quote_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote_word </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote_word </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -391,14 +392,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4df52daa59752dd7e31c3067ba799b90" name="a4df52daa59752dd7e31c3067ba799b90"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4df52daa59752dd7e31c3067ba799b90">&#9670;&#160;</a></span>scallop_lang_lex_escape()</h2>
+<a id="a84aaa993858ff3030401f3b6a9546f38" name="a84aaa993858ff3030401f3b6a9546f38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84aaa993858ff3030401f3b6a9546f38">&#9670;&#160;</a></span>scallop_lang_lex_escape()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_escape </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_escape </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -418,8 +419,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5e814af6799b916e82d5bc37d13fb096" name="a5e814af6799b916e82d5bc37d13fb096"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5e814af6799b916e82d5bc37d13fb096">&#9670;&#160;</a></span>scallop_lang_lex_is_word()</h2>
+<a id="a073be8b01670a43705bcde8a04598eba" name="a073be8b01670a43705bcde8a04598eba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a073be8b01670a43705bcde8a04598eba">&#9670;&#160;</a></span>scallop_lang_lex_is_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -428,7 +429,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool scallop_lang_lex_is_word </td>
+          <td class="memname">EXPORT bool scallop_lang_lex_is_word </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
@@ -453,14 +454,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9bad004a3c8fa7e72279e4d81db306e4" name="a9bad004a3c8fa7e72279e4d81db306e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9bad004a3c8fa7e72279e4d81db306e4">&#9670;&#160;</a></span>scallop_lang_lex_line_comment()</h2>
+<a id="a6fcf8a856d8a5d549587af671fc94363" name="a6fcf8a856d8a5d549587af671fc94363"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fcf8a856d8a5d549587af671fc94363">&#9670;&#160;</a></span>scallop_lang_lex_line_comment()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_line_comment </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_line_comment </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -480,14 +481,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4107dcfeaab6cc9b821decd12e931483" name="a4107dcfeaab6cc9b821decd12e931483"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4107dcfeaab6cc9b821decd12e931483">&#9670;&#160;</a></span>scallop_lang_lex_single_quote()</h2>
+<a id="ab6b3b2120673a95dd344c86ceb540a89" name="ab6b3b2120673a95dd344c86ceb540a89"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6b3b2120673a95dd344c86ceb540a89">&#9670;&#160;</a></span>scallop_lang_lex_single_quote()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -507,14 +508,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4e40e8929e0c798bb72528514e404da1" name="a4e40e8929e0c798bb72528514e404da1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4e40e8929e0c798bb72528514e404da1">&#9670;&#160;</a></span>scallop_lang_lex_single_quote_end()</h2>
+<a id="abeafa3a7a1c86f923692dabecbca74c3" name="abeafa3a7a1c86f923692dabecbca74c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeafa3a7a1c86f923692dabecbca74c3">&#9670;&#160;</a></span>scallop_lang_lex_single_quote_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote_end </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -534,14 +535,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a4ed30b2b2aa33f9064968838a082a8d9" name="a4ed30b2b2aa33f9064968838a082a8d9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ed30b2b2aa33f9064968838a082a8d9">&#9670;&#160;</a></span>scallop_lang_lex_single_quote_word()</h2>
+<a id="a9ab507ff130f0b57263caaf4132f7511" name="a9ab507ff130f0b57263caaf4132f7511"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ab507ff130f0b57263caaf4132f7511">&#9670;&#160;</a></span>scallop_lang_lex_single_quote_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote_word </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote_word </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -561,14 +562,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae65575eef5004e5a42bd89c16636036d" name="ae65575eef5004e5a42bd89c16636036d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae65575eef5004e5a42bd89c16636036d">&#9670;&#160;</a></span>scallop_lang_lex_square_block()</h2>
+<a id="a7f2f557b31df0034473ff28392dfea6f" name="a7f2f557b31df0034473ff28392dfea6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f2f557b31df0034473ff28392dfea6f">&#9670;&#160;</a></span>scallop_lang_lex_square_block()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_square_block </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_square_block </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -588,14 +589,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a8e3299811c1e34f6aceb2195c5c9487d" name="a8e3299811c1e34f6aceb2195c5c9487d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8e3299811c1e34f6aceb2195c5c9487d">&#9670;&#160;</a></span>scallop_lang_lex_square_block_end()</h2>
+<a id="a977ea781528d780c7c056cb3147ca0bf" name="a977ea781528d780c7c056cb3147ca0bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a977ea781528d780c7c056cb3147ca0bf">&#9670;&#160;</a></span>scallop_lang_lex_square_block_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_square_block_end </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_square_block_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -615,14 +616,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a9b2665fd631b22bafcd543091261ef88" name="a9b2665fd631b22bafcd543091261ef88"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9b2665fd631b22bafcd543091261ef88">&#9670;&#160;</a></span>scallop_lang_lex_statement_separator()</h2>
+<a id="a2bed5bef6f647d9604943d1f8859025f" name="a2bed5bef6f647d9604943d1f8859025f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2bed5bef6f647d9604943d1f8859025f">&#9670;&#160;</a></span>scallop_lang_lex_statement_separator()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_statement_separator </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_statement_separator </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -642,14 +643,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="abfad4588a89436dd91741ebd46036923" name="abfad4588a89436dd91741ebd46036923"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abfad4588a89436dd91741ebd46036923">&#9670;&#160;</a></span>scallop_lang_lex_word()</h2>
+<a id="ab0467c131c34136961a0e0f0858dad31" name="ab0467c131c34136961a0e0f0858dad31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0467c131c34136961a0e0f0858dad31">&#9670;&#160;</a></span>scallop_lang_lex_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_word </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_word </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -669,14 +670,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a7a4ba160001923c9752ee5cc74db3b46" name="a7a4ba160001923c9752ee5cc74db3b46"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7a4ba160001923c9752ee5cc74db3b46">&#9670;&#160;</a></span>scallop_lang_lex_word_separator()</h2>
+<a id="ae212aa8c0904d09239491749340db5db" name="ae212aa8c0904d09239491749340db5db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae212aa8c0904d09239491749340db5db">&#9670;&#160;</a></span>scallop_lang_lex_word_separator()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_word_separator </td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_word_separator </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -697,8 +698,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a891429c080b6598a0ff9b878a0a2707f" name="a891429c080b6598a0ff9b878a0a2707f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a891429c080b6598a0ff9b878a0a2707f">&#9670;&#160;</a></span>scallop_lang_lex_end</h2>
+<a id="a24657848aa4d392941663ede448b8240" name="a24657848aa4d392941663ede448b8240"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24657848aa4d392941663ede448b8240">&#9670;&#160;</a></span>scallop_lang_lex_end</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -707,7 +708,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>* const scallop_lang_lex_end</td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>* const scallop_lang_lex_end</td>
         </tr>
       </table>
   </td>
@@ -725,8 +726,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a77c3f41c01a8d1e4446810d22e2493db" name="a77c3f41c01a8d1e4446810d22e2493db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a77c3f41c01a8d1e4446810d22e2493db">&#9670;&#160;</a></span>scallop_lang_lex_unexpected</h2>
+<a id="a57d9ce009946369599d577295e769359" name="a57d9ce009946369599d577295e769359"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57d9ce009946369599d577295e769359">&#9670;&#160;</a></span>scallop_lang_lex_unexpected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -735,7 +736,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>* const scallop_lang_lex_unexpected</td>
+          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>* const scallop_lang_lex_unexpected</td>
         </tr>
       </table>
   </td>
