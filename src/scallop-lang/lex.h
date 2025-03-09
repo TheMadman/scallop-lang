@@ -60,11 +60,11 @@ extern "C" {
  */
 
 /**
- * \brief Type definition of a "void function pointer".
+ * \brief Type definition of a "void function".
  *
- * This should be used similar to a void pointer: its only
- * use is to be passed along to something else, or to be
- * cast to a more useful type.
+ * A pointer to this should be used similarly to a pointer
+ * to void: its only use is to be passed along to something
+ * else, or to be cast to a more useful type.
  */
 typedef void *scallop_lang_void_fn();
 
