@@ -1,5 +1,30 @@
 var searchData=
 [
-  ['token_2eh_0',['token.h',['../token_8h.html',1,'']]],
-  ['type_1',['type',['../structscallop__lang__token.html#a4332b25a7cae4dd71d87202a419864fd',1,'scallop_lang_token']]]
+  ['scallop_5flang_5fclassifier_5fbegin_0',['scallop_lang_classifier_begin',['../classifier_8h.html#ae5363b45889cdd4ca9425b06cafa4b67',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fcurly_5fblock_1',['scallop_lang_classifier_curly_block',['../classifier_8h.html#a11ffb9506feaa466abffe414bb2a530f',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fcurly_5fblock_5fend_2',['scallop_lang_classifier_curly_block_end',['../classifier_8h.html#aeed922b9c7481b393d40b892f1072391',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fdouble_5fquote_3',['scallop_lang_classifier_double_quote',['../classifier_8h.html#a19c949fd0727b8ca82c5cb60ae3fd601',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fdouble_5fquote_5fend_4',['scallop_lang_classifier_double_quote_end',['../classifier_8h.html#ae3d46129a67ae4e657191cd44ec16d98',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fdouble_5fquote_5fword_5',['scallop_lang_classifier_double_quote_word',['../classifier_8h.html#a39ed29c91b61393b451e78b3d61fa460',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fend_6',['scallop_lang_classifier_end',['../classifier_8h.html#ae54fde6068016e3f89efb3e3e5aebffb',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fescape_7',['scallop_lang_classifier_escape',['../classifier_8h.html#aeb4cc83ceb87bd28d90d5a800b1d302e',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5ffn_8',['scallop_lang_classifier_fn',['../classifier_8h.html#afab7527638d738a8124cdc23a2319136',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fis_5fword_9',['scallop_lang_classifier_is_word',['../classifier_8h.html#a3c002ccdbf1c2bf88aa0d8021ab41de9',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fline_5fcomment_10',['scallop_lang_classifier_line_comment',['../classifier_8h.html#a6d515be52452f6362414cdaa347584a1',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fsingle_5fquote_11',['scallop_lang_classifier_single_quote',['../classifier_8h.html#ab271422e4288b98f99c85bb366cb863c',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fsingle_5fquote_5fend_12',['scallop_lang_classifier_single_quote_end',['../classifier_8h.html#aa2cd2732491ac4fab9a9f9c42e510123',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fsingle_5fquote_5fword_13',['scallop_lang_classifier_single_quote_word',['../classifier_8h.html#a375ac97510b48f0937794f6a9b6b939d',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fsquare_5fblock_14',['scallop_lang_classifier_square_block',['../classifier_8h.html#ad0395a5d80fbba1afc361b47289103bd',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fsquare_5fblock_5fend_15',['scallop_lang_classifier_square_block_end',['../classifier_8h.html#af0bf846117e00625652ba8d0d827d937',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fstatement_5fseparator_16',['scallop_lang_classifier_statement_separator',['../classifier_8h.html#ac57a9cc2d559a1f3b3286856136afcc4',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5funexpected_17',['scallop_lang_classifier_unexpected',['../classifier_8h.html#ad028d5cfe30feef49e36e0b645318b44',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fword_18',['scallop_lang_classifier_word',['../classifier_8h.html#af5e704bc6cb16c5be9c15538e8b7d36d',1,'classifier.h']]],
+  ['scallop_5flang_5fclassifier_5fword_5fseparator_19',['scallop_lang_classifier_word_separator',['../classifier_8h.html#a7e25b9b2194d3701033ff988a62f24e8',1,'classifier.h']]],
+  ['scallop_5flang_5flex_20',['scallop_lang_lex',['../structscallop__lang__lex.html',1,'']]],
+  ['scallop_5flang_5flex_5finit_21',['scallop_lang_lex_init',['../lex_8h.html#ae98047736a254d8c5e82666d3e777a1f',1,'lex.h']]],
+  ['scallop_5flang_5flex_5fnext_22',['scallop_lang_lex_next',['../lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382',1,'lex.h']]],
+  ['scallop_5flang_5flex_5fnext_5fraw_23',['scallop_lang_lex_next_raw',['../lex_8h.html#a419a81689a933546f8324682690c3f4e',1,'lex.h']]],
+  ['scallop_5flang_5flex_5fnormalize_5fword_24',['scallop_lang_lex_normalize_word',['../lex_8h.html#a2d6d471f3b44e918f6975410310746d6',1,'lex.h']]],
+  ['scallop_5flang_5fvoid_5ffn_25',['scallop_lang_void_fn',['../classifier_8h.html#a1532e4494aaf84200c51794e83070016',1,'classifier.h']]],
+  ['script_26',['script',['../structscallop__lang__lex.html#a83abb6aa3676db7a68766c604fdefee4',1,'scallop_lang_lex']]]
 ];

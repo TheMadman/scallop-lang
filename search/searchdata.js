@@ -1,8 +1,8 @@
 var indexSectionsWithContent =
 {
-  0: "_lstv",
+  0: "_clstv",
   1: "_s",
-  2: "lt",
+  2: "cl",
   3: "s",
   4: "stv",
   5: "s"

@@ -74,353 +74,58 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#typedef-members">Typedefs</a> &#124;
-<a href="#func-members">Functions</a> &#124;
-<a href="#var-members">Variables</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle"><div class="title">lex.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
 
-<p>This file provides the interface for the lexer.  
+<p>This module provides an API over the classifier finite state machine, generating lexs from multibyte character scripts.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;libadt/init.h&gt;</code><br />
-<code>#include &lt;stdbool.h&gt;</code><br />
-<code>#include &lt;wchar.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;wchar.h&gt;</code><br />
+<code>#include &lt;libadt/init.h&gt;</code><br />
+<code>#include &lt;libadt/lptr.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="classifier_8h_source.html">classifier.h</a>&quot;</code><br />
 </div>
 <p><a href="lex_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
-Typedefs</h2></td></tr>
-<tr class="memitem:a1532e4494aaf84200c51794e83070016" id="r_a1532e4494aaf84200c51794e83070016"><td class="memItemLeft" align="right" valign="top">typedef void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a>()</td></tr>
-<tr class="memdesc:a1532e4494aaf84200c51794e83070016"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition of a "void function".  <br /></td></tr>
-<tr class="separator:a1532e4494aaf84200c51794e83070016"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fa294b521b053f9b1bcd9d9a3396d8f" id="r_a8fa294b521b053f9b1bcd9d9a3396d8f"><td class="memItemLeft" align="right" valign="top"><a id="a8fa294b521b053f9b1bcd9d9a3396d8f" name="a8fa294b521b053f9b1bcd9d9a3396d8f"></a>
-typedef <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>scallop_lang_lex_fn</b>(wint_t)</td></tr>
-<tr class="memdesc:a8fa294b521b053f9b1bcd9d9a3396d8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type definition for a lexer state function. <br /></td></tr>
-<tr class="separator:a8fa294b521b053f9b1bcd9d9a3396d8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single lex.  <a href="structscallop__lang__lex.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__scallop__read__t.html">_scallop_read_t</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a1994f23c0a2715d02f378d25140f8861" id="r_a1994f23c0a2715d02f378d25140f8861"><td class="memItemLeft" align="right" valign="top"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861">scallop_lang_lex_begin</a> (wint_t input)</td></tr>
-<tr class="memdesc:a1994f23c0a2715d02f378d25140f8861"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default entry point of the state machine.  <br /></td></tr>
-<tr class="separator:a1994f23c0a2715d02f378d25140f8861"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0467c131c34136961a0e0f0858dad31" id="r_ab0467c131c34136961a0e0f0858dad31"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ab0467c131c34136961a0e0f0858dad31">scallop_lang_lex_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:ab0467c131c34136961a0e0f0858dad31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unquoted word.  <br /></td></tr>
-<tr class="separator:ab0467c131c34136961a0e0f0858dad31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae212aa8c0904d09239491749340db5db" id="r_ae212aa8c0904d09239491749340db5db"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae212aa8c0904d09239491749340db5db">scallop_lang_lex_word_separator</a> (wint_t input)</td></tr>
-<tr class="memdesc:ae212aa8c0904d09239491749340db5db"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a word separator.  <br /></td></tr>
-<tr class="separator:ae212aa8c0904d09239491749340db5db"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84aaa993858ff3030401f3b6a9546f38" id="r_a84aaa993858ff3030401f3b6a9546f38"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a84aaa993858ff3030401f3b6a9546f38">scallop_lang_lex_escape</a> (wint_t input)</td></tr>
-<tr class="memdesc:a84aaa993858ff3030401f3b6a9546f38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an escape character, '\'.  <br /></td></tr>
-<tr class="separator:a84aaa993858ff3030401f3b6a9546f38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab6b3b2120673a95dd344c86ceb540a89" id="r_ab6b3b2120673a95dd344c86ceb540a89"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ab6b3b2120673a95dd344c86ceb540a89">scallop_lang_lex_single_quote</a> (wint_t input)</td></tr>
-<tr class="memdesc:ab6b3b2120673a95dd344c86ceb540a89"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening single quote.  <br /></td></tr>
-<tr class="separator:ab6b3b2120673a95dd344c86ceb540a89"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abeafa3a7a1c86f923692dabecbca74c3" id="r_abeafa3a7a1c86f923692dabecbca74c3"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#abeafa3a7a1c86f923692dabecbca74c3">scallop_lang_lex_single_quote_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:abeafa3a7a1c86f923692dabecbca74c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single quote, closing a single-quoted string.  <br /></td></tr>
-<tr class="separator:abeafa3a7a1c86f923692dabecbca74c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ab507ff130f0b57263caaf4132f7511" id="r_a9ab507ff130f0b57263caaf4132f7511"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a9ab507ff130f0b57263caaf4132f7511">scallop_lang_lex_single_quote_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:a9ab507ff130f0b57263caaf4132f7511"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a single-quoted string which contribute to a word.  <br /></td></tr>
-<tr class="separator:a9ab507ff130f0b57263caaf4132f7511"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24befdfefa6f14d37c18ecbefdb830bf" id="r_a24befdfefa6f14d37c18ecbefdb830bf"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a24befdfefa6f14d37c18ecbefdb830bf">scallop_lang_lex_double_quote</a> (wint_t input)</td></tr>
-<tr class="memdesc:a24befdfefa6f14d37c18ecbefdb830bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening double quote.  <br /></td></tr>
-<tr class="separator:a24befdfefa6f14d37c18ecbefdb830bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adc91381dc397e90b26e8950cc9946a4f" id="r_adc91381dc397e90b26e8950cc9946a4f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#adc91381dc397e90b26e8950cc9946a4f">scallop_lang_lex_double_quote_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:adc91381dc397e90b26e8950cc9946a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a double quote, closing a double-quoted string.  <br /></td></tr>
-<tr class="separator:adc91381dc397e90b26e8950cc9946a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aea6102266c08546a2fe7eef84a10f59c" id="r_aea6102266c08546a2fe7eef84a10f59c"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#aea6102266c08546a2fe7eef84a10f59c">scallop_lang_lex_double_quote_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:aea6102266c08546a2fe7eef84a10f59c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a double-quoted string which contribute to a word.  <br /></td></tr>
-<tr class="separator:aea6102266c08546a2fe7eef84a10f59c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9649dedf7b5558676dda4455781c8e8" id="r_aa9649dedf7b5558676dda4455781c8e8"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#aa9649dedf7b5558676dda4455781c8e8">scallop_lang_lex_curly_block</a> (wint_t input)</td></tr>
-<tr class="memdesc:aa9649dedf7b5558676dda4455781c8e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a curly bracket block '{'.  <br /></td></tr>
-<tr class="separator:aa9649dedf7b5558676dda4455781c8e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a68b892bc634351793e8d4f96e615a449" id="r_a68b892bc634351793e8d4f96e615a449"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a68b892bc634351793e8d4f96e615a449">scallop_lang_lex_curly_block_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:a68b892bc634351793e8d4f96e615a449"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a curly bracket block '}'.  <br /></td></tr>
-<tr class="separator:a68b892bc634351793e8d4f96e615a449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7f2f557b31df0034473ff28392dfea6f" id="r_a7f2f557b31df0034473ff28392dfea6f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a7f2f557b31df0034473ff28392dfea6f">scallop_lang_lex_square_block</a> (wint_t input)</td></tr>
-<tr class="memdesc:a7f2f557b31df0034473ff28392dfea6f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a square bracket block '['.  <br /></td></tr>
-<tr class="separator:a7f2f557b31df0034473ff28392dfea6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a977ea781528d780c7c056cb3147ca0bf" id="r_a977ea781528d780c7c056cb3147ca0bf"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a977ea781528d780c7c056cb3147ca0bf">scallop_lang_lex_square_block_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:a977ea781528d780c7c056cb3147ca0bf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a square bracket block ']'.  <br /></td></tr>
-<tr class="separator:a977ea781528d780c7c056cb3147ca0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2bed5bef6f647d9604943d1f8859025f" id="r_a2bed5bef6f647d9604943d1f8859025f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a2bed5bef6f647d9604943d1f8859025f">scallop_lang_lex_statement_separator</a> (wint_t input)</td></tr>
-<tr class="memdesc:a2bed5bef6f647d9604943d1f8859025f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a statement separator, such as ';' or newline.  <br /></td></tr>
-<tr class="separator:a2bed5bef6f647d9604943d1f8859025f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6fcf8a856d8a5d549587af671fc94363" id="r_a6fcf8a856d8a5d549587af671fc94363"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a6fcf8a856d8a5d549587af671fc94363">scallop_lang_lex_line_comment</a> (wint_t input)</td></tr>
-<tr class="memdesc:a6fcf8a856d8a5d549587af671fc94363"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line comment, starting with a hash '#'.  <br /></td></tr>
-<tr class="separator:a6fcf8a856d8a5d549587af671fc94363"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a073be8b01670a43705bcde8a04598eba" id="r_a073be8b01670a43705bcde8a04598eba"><td class="memItemLeft" align="right" valign="top">EXPORT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a073be8b01670a43705bcde8a04598eba">scallop_lang_lex_is_word</a> (<a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *type)</td></tr>
-<tr class="memdesc:a073be8b01670a43705bcde8a04598eba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if a token type contributes to a word.  <br /></td></tr>
-<tr class="separator:a073be8b01670a43705bcde8a04598eba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
-Variables</h2></td></tr>
-<tr class="memitem:a24657848aa4d392941663ede448b8240" id="r_a24657848aa4d392941663ede448b8240"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a24657848aa4d392941663ede448b8240">scallop_lang_lex_end</a></td></tr>
-<tr class="memdesc:a24657848aa4d392941663ede448b8240"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the end of a lex script.  <br /></td></tr>
-<tr class="separator:a24657848aa4d392941663ede448b8240"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57d9ce009946369599d577295e769359" id="r_a57d9ce009946369599d577295e769359"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359">scallop_lang_lex_unexpected</a></td></tr>
-<tr class="memdesc:a57d9ce009946369599d577295e769359"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unexpected input for the current state.  <br /></td></tr>
-<tr class="separator:a57d9ce009946369599d577295e769359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a662e099f43cfefd6785ce52a67810f49" id="r_a662e099f43cfefd6785ce52a67810f49"><td class="memItemLeft" align="right" valign="top"><a id="a662e099f43cfefd6785ce52a67810f49" name="a662e099f43cfefd6785ce52a67810f49"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>_scallop_mbrtowc</b> (wchar_t *result, struct libadt_const_lptr string, mbstate_t *_mbstate)</td></tr>
+<tr class="separator:a662e099f43cfefd6785ce52a67810f49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae209736ef8412a94eff11662d2b524e9" id="r_ae209736ef8412a94eff11662d2b524e9"><td class="memItemLeft" align="right" valign="top"><a id="ae209736ef8412a94eff11662d2b524e9" name="ae209736ef8412a94eff11662d2b524e9"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>_scallop_read_error</b> (<a class="el" href="struct__scallop__read__t.html">_scallop_read_t</a> read)</td></tr>
+<tr class="separator:ae209736ef8412a94eff11662d2b524e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8a944007dd3f4e7ed0283d3761d8f23" id="r_ac8a944007dd3f4e7ed0283d3761d8f23"><td class="memItemLeft" align="right" valign="top"><a id="ac8a944007dd3f4e7ed0283d3761d8f23" name="ac8a944007dd3f4e7ed0283d3761d8f23"></a>
+<a class="el" href="struct__scallop__read__t.html">_scallop_read_t</a>&#160;</td><td class="memItemRight" valign="bottom"><b>_scallop_read</b> (struct libadt_const_lptr script, <a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *const previous)</td></tr>
+<tr class="separator:ac8a944007dd3f4e7ed0283d3761d8f23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98047736a254d8c5e82666d3e777a1f" id="r_ae98047736a254d8c5e82666d3e777a1f"><td class="memItemLeft" align="right" valign="top">EXPORT struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#ae98047736a254d8c5e82666d3e777a1f">scallop_lang_lex_init</a> (struct libadt_const_lptr script)</td></tr>
+<tr class="memdesc:ae98047736a254d8c5e82666d3e777a1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a lex object for use in <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a>.  <br /></td></tr>
+<tr class="separator:ae98047736a254d8c5e82666d3e777a1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a419a81689a933546f8324682690c3f4e" id="r_a419a81689a933546f8324682690c3f4e"><td class="memItemLeft" align="right" valign="top">EXPORT struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a419a81689a933546f8324682690c3f4e">scallop_lang_lex_next_raw</a> (struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a> previous)</td></tr>
+<tr class="memdesc:a419a81689a933546f8324682690c3f4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next, raw lex in the script referred to by previous.  <br /></td></tr>
+<tr class="separator:a419a81689a933546f8324682690c3f4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a488ffdcfb0f264cee1dede81d96382" id="r_a3a488ffdcfb0f264cee1dede81d96382"><td class="memItemLeft" align="right" valign="top">EXPORT struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382">scallop_lang_lex_next</a> (struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a> previous)</td></tr>
+<tr class="memdesc:a3a488ffdcfb0f264cee1dede81d96382"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the next lex in the script referred to by previous.  <br /></td></tr>
+<tr class="separator:a3a488ffdcfb0f264cee1dede81d96382"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d6d471f3b44e918f6975410310746d6" id="r_a2d6d471f3b44e918f6975410310746d6"><td class="memItemLeft" align="right" valign="top">EXPORT ssize_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html#a2d6d471f3b44e918f6975410310746d6">scallop_lang_lex_normalize_word</a> (struct libadt_const_lptr word, struct libadt_lptr out)</td></tr>
+<tr class="memdesc:a2d6d471f3b44e918f6975410310746d6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Takes a word value from <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a> and normalizes it to the raw word value.  <br /></td></tr>
+<tr class="separator:a2d6d471f3b44e918f6975410310746d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This file provides the interface for the lexer. </p>
-<p>The lexer is a finite state machine, where each state is a function. Each state takes an input and returns the next state.</p>
-<p>The lexer state machine functions take a wide character input and return a lexer state function. The return value should be cast to a scallop_lang_lex_fn* before use.</p>
-<p>The entry point of the finite state machine is <a class="el" href="lex_8h.html#a1994f23c0a2715d02f378d25140f8861" title="The default entry point of the state machine.">scallop_lang_lex_begin()</a>.</p>
-<p>If the current state receives an unexpected input, it will return <a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a>.</p>
-<p>You <em>must</em> check that the return value of the current state is <a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> and handle it correctly. Calling <a class="el" href="lex_8h.html#a57d9ce009946369599d577295e769359" title="Represents an unexpected input for the current state.">scallop_lang_lex_unexpected()</a> will call abort().</p>
-<p><a class="el" href="lex_8h.html#a24657848aa4d392941663ede448b8240" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="lex_8h.html#a24657848aa4d392941663ede448b8240" title="Represents the end of a lex script.">scallop_lang_lex_end()</a> to indicate that processing finished successfully.</p>
-<p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="lex_8h.html">scallop-lang/lex.h</a>&gt;</span></div>
-<div class="line"> </div>
-<div class="line"><span class="preprocessor">#define lex_fn scallop_lang_lex_fn</span></div>
-<div class="line"><span class="preprocessor">#define begin scallop_lang_lex_begin</span></div>
-<div class="line"><span class="preprocessor">#define end scallop_lang_lex_end</span></div>
-<div class="line"><span class="preprocessor">#define unexpected scallop_lang_lex_unexpected</span></div>
-<div class="line"> </div>
-<div class="line"><span class="keywordtype">int</span> main()</div>
-<div class="line">{</div>
-<div class="line">    lex_fn *old_current = NULL;</div>
-<div class="line">    <span class="keywordtype">int</span> current_character = 0;</div>
-<div class="line">    <span class="keywordtype">int</span> current_state_character = 0;</div>
-<div class="line">    <span class="keywordflow">for</span> (</div>
-<div class="line">        lex_fn *current = begin(getwchar());</div>
-<div class="line">        current != end;</div>
-<div class="line">        current = (lex_fn*)current(getwchar())</div>
-<div class="line">    ) {</div>
-<div class="line">        <span class="keywordflow">if</span> (current == unexpected) {</div>
-<div class="line">            <span class="comment">// Handle error</span></div>
-<div class="line">            <span class="keywordflow">return</span> 1;</div>
-<div class="line">        }</div>
-<div class="line"> </div>
-<div class="line">        <span class="comment">// do processing</span></div>
-<div class="line">        <span class="comment">// In this example, we&#39;re just reporting</span></div>
-<div class="line">        <span class="comment">// new state transitions, nothing more complex</span></div>
-<div class="line">        <span class="keywordflow">if</span> (current != old_current) {</div>
-<div class="line">            printf(</div>
-<div class="line">                <span class="stringliteral">&quot;State change at: %d\n&quot;</span></div>
-<div class="line">                <span class="stringliteral">&quot;Previous state length: %d\n&quot;</span>,</div>
-<div class="line">                current_character,</div>
-<div class="line">                current_state_character</div>
-<div class="line">            );</div>
-<div class="line">            current_state_character = 0;</div>
-<div class="line">            old_current = current;</div>
-<div class="line">        }</div>
-<div class="line">        current_character++;</div>
-<div class="line">        current_state_character++;</div>
-<div class="line">    }</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="ttc" id="alex_8h_html"><div class="ttname"><a href="lex_8h.html">lex.h</a></div><div class="ttdoc">This file provides the interface for the lexer.</div></div>
-</div><!-- fragment --> </div><h2 class="groupheader">Typedef Documentation</h2>
-<a id="a1532e4494aaf84200c51794e83070016" name="a1532e4494aaf84200c51794e83070016"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1532e4494aaf84200c51794e83070016">&#9670;&#160;</a></span>scallop_lang_void_fn</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">typedef void * scallop_lang_void_fn()</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Type definition of a "void function". </p>
-<p>A pointer to this should be used similarly to a pointer to void: its only use is to be passed along to something else, or to be cast to a more useful type. </p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
-<a id="a1994f23c0a2715d02f378d25140f8861" name="a1994f23c0a2715d02f378d25140f8861"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1994f23c0a2715d02f378d25140f8861">&#9670;&#160;</a></span>scallop_lang_lex_begin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> * scallop_lang_lex_begin </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The default entry point of the state machine. </p>
-<p>Call this on the first character of your shell script to get the first lexed state. </p>
-
-</div>
-</div>
-<a id="aa9649dedf7b5558676dda4455781c8e8" name="aa9649dedf7b5558676dda4455781c8e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9649dedf7b5558676dda4455781c8e8">&#9670;&#160;</a></span>scallop_lang_lex_curly_block()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_curly_block </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents the opening of a curly bracket block '{'. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a68b892bc634351793e8d4f96e615a449" name="a68b892bc634351793e8d4f96e615a449"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a68b892bc634351793e8d4f96e615a449">&#9670;&#160;</a></span>scallop_lang_lex_curly_block_end()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_curly_block_end </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents the closing of a curly bracket block '}'. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a24befdfefa6f14d37c18ecbefdb830bf" name="a24befdfefa6f14d37c18ecbefdb830bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24befdfefa6f14d37c18ecbefdb830bf">&#9670;&#160;</a></span>scallop_lang_lex_double_quote()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents an opening double quote. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="adc91381dc397e90b26e8950cc9946a4f" name="adc91381dc397e90b26e8950cc9946a4f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc91381dc397e90b26e8950cc9946a4f">&#9670;&#160;</a></span>scallop_lang_lex_double_quote_end()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote_end </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a double quote, closing a double-quoted string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="aea6102266c08546a2fe7eef84a10f59c" name="aea6102266c08546a2fe7eef84a10f59c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aea6102266c08546a2fe7eef84a10f59c">&#9670;&#160;</a></span>scallop_lang_lex_double_quote_word()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_double_quote_word </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents characters in a double-quoted string which contribute to a word. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a84aaa993858ff3030401f3b6a9546f38" name="a84aaa993858ff3030401f3b6a9546f38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a84aaa993858ff3030401f3b6a9546f38">&#9670;&#160;</a></span>scallop_lang_lex_escape()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_escape </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents an escape character, '\'. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a073be8b01670a43705bcde8a04598eba" name="a073be8b01670a43705bcde8a04598eba"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a073be8b01670a43705bcde8a04598eba">&#9670;&#160;</a></span>scallop_lang_lex_is_word()</h2>
+<div class="textblock"><p>This module provides an API over the classifier finite state machine, generating lexs from multibyte character scripts. </p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="ae98047736a254d8c5e82666d3e777a1f" name="ae98047736a254d8c5e82666d3e777a1f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98047736a254d8c5e82666d3e777a1f">&#9670;&#160;</a></span>scallop_lang_lex_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,10 +134,10 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT bool scallop_lang_lex_is_word </td>
+          <td class="memname">EXPORT struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a> scallop_lang_lex_init </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a> *&#160;</td>
-          <td class="paramname"><em>type</em></td><td>)</td>
+          <td class="paramtype">struct libadt_const_lptr&#160;</td>
+          <td class="paramname"><em>script</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -443,263 +148,19 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Tests if a token type contributes to a word. </p>
+<p>Initializes a lex object for use in <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type</td><td>The type to test.</td></tr>
+    <tr><td class="paramname">script</td><td>The script to create a lex from.</td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the type contributes to a word, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A lex, valid for passing to <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a>. </dd></dl>
 
 </div>
 </div>
-<a id="a6fcf8a856d8a5d549587af671fc94363" name="a6fcf8a856d8a5d549587af671fc94363"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6fcf8a856d8a5d549587af671fc94363">&#9670;&#160;</a></span>scallop_lang_lex_line_comment()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_line_comment </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a line comment, starting with a hash '#'. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="ab6b3b2120673a95dd344c86ceb540a89" name="ab6b3b2120673a95dd344c86ceb540a89"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6b3b2120673a95dd344c86ceb540a89">&#9670;&#160;</a></span>scallop_lang_lex_single_quote()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents an opening single quote. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="abeafa3a7a1c86f923692dabecbca74c3" name="abeafa3a7a1c86f923692dabecbca74c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abeafa3a7a1c86f923692dabecbca74c3">&#9670;&#160;</a></span>scallop_lang_lex_single_quote_end()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote_end </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a single quote, closing a single-quoted string. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a9ab507ff130f0b57263caaf4132f7511" name="a9ab507ff130f0b57263caaf4132f7511"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9ab507ff130f0b57263caaf4132f7511">&#9670;&#160;</a></span>scallop_lang_lex_single_quote_word()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_single_quote_word </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents characters in a single-quoted string which contribute to a word. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a7f2f557b31df0034473ff28392dfea6f" name="a7f2f557b31df0034473ff28392dfea6f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f2f557b31df0034473ff28392dfea6f">&#9670;&#160;</a></span>scallop_lang_lex_square_block()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_square_block </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents the opening of a square bracket block '['. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a977ea781528d780c7c056cb3147ca0bf" name="a977ea781528d780c7c056cb3147ca0bf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a977ea781528d780c7c056cb3147ca0bf">&#9670;&#160;</a></span>scallop_lang_lex_square_block_end()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_square_block_end </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents the closing of a square bracket block ']'. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="a2bed5bef6f647d9604943d1f8859025f" name="a2bed5bef6f647d9604943d1f8859025f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2bed5bef6f647d9604943d1f8859025f">&#9670;&#160;</a></span>scallop_lang_lex_statement_separator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_statement_separator </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a statement separator, such as ';' or newline. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="ab0467c131c34136961a0e0f0858dad31" name="ab0467c131c34136961a0e0f0858dad31"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0467c131c34136961a0e0f0858dad31">&#9670;&#160;</a></span>scallop_lang_lex_word()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_word </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents an unquoted word. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<a id="ae212aa8c0904d09239491749340db5db" name="ae212aa8c0904d09239491749340db5db"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae212aa8c0904d09239491749340db5db">&#9670;&#160;</a></span>scallop_lang_lex_word_separator()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_lex_word_separator </td>
-          <td>(</td>
-          <td class="paramtype">wint_t&#160;</td>
-          <td class="paramname"><em>input</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Represents a word separator. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">input</td><td>The next wide character input. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>A pointer to the next state function. </dd></dl>
-
-</div>
-</div>
-<h2 class="groupheader">Variable Documentation</h2>
-<a id="a24657848aa4d392941663ede448b8240" name="a24657848aa4d392941663ede448b8240"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a24657848aa4d392941663ede448b8240">&#9670;&#160;</a></span>scallop_lang_lex_end</h2>
+<a id="a3a488ffdcfb0f264cee1dede81d96382" name="a3a488ffdcfb0f264cee1dede81d96382"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a488ffdcfb0f264cee1dede81d96382">&#9670;&#160;</a></span>scallop_lang_lex_next()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -708,26 +169,36 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>* const scallop_lang_lex_end</td>
+          <td class="memname">EXPORT struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a> scallop_lang_lex_next </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a>&#160;</td>
+          <td class="paramname"><em>previous</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Represents the end of a lex script. </p>
-<p>In most cases, this is hit when encountering a WEOF character.</p>
-<p>Some states expect a closing state before encountering a WEOF character, particularly quoted strings.</p>
-<p>You should use this to terminate your lex loop.</p>
-<dl class="section see"><dt>See also</dt><dd><a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f" title="Type definition for a lexer state function.">scallop_lang_lex_fn</a> for an example. </dd></dl>
+<p>Returns the next lex in the script referred to by previous. </p>
+<p>Word lexs will always have scallop_lang_classifier_word type, even for words that contain quoted words or escaped characters.</p>
+<p>Separators will be grouped into a single lex. If the value contains a statement separator, the type is always scallop_lang_classifier_statement_separator, even if it also contains word separators.</p>
+<p>If it contains only word separators, the value is scallop_lang_classifier_word_separator.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">previous</td><td>A lex previously returned by <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a>, or initialized from <a class="el" href="lex_8h.html#ae98047736a254d8c5e82666d3e777a1f" title="Initializes a lex object for use in scallop_lang_lex_next().">scallop_lang_lex_init()</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A lex succeeding scallop_lang_lex_complete() if successful, or failing if an incomplete multibyte character was encountered. </dd></dl>
 
 </div>
 </div>
-<a id="a57d9ce009946369599d577295e769359" name="a57d9ce009946369599d577295e769359"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a57d9ce009946369599d577295e769359">&#9670;&#160;</a></span>scallop_lang_lex_unexpected</h2>
+<a id="a419a81689a933546f8324682690c3f4e" name="a419a81689a933546f8324682690c3f4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a419a81689a933546f8324682690c3f4e">&#9670;&#160;</a></span>scallop_lang_lex_next_raw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -736,19 +207,78 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="lex_8h.html#a8fa294b521b053f9b1bcd9d9a3396d8f">scallop_lang_lex_fn</a>* const scallop_lang_lex_unexpected</td>
+          <td class="memname">EXPORT struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a> scallop_lang_lex_next_raw </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structscallop__lang__lex.html">scallop_lang_lex</a>&#160;</td>
+          <td class="paramname"><em>previous</em></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Represents an unexpected input for the current state. </p>
-<p>Use this to test for lex errors in the script, such as a WEOF in a quoted string, or an unrecognized character.</p>
-<p>This should be used for checking for errors in your loop and handling them accordingly. </p>
+<p>Returns the next, raw lex in the script referred to by previous. </p>
+<p>Raw lexs contain raw types, such as scallop_lang_classifier_double_quote. Separate lexs are returned for beginning quote, the quoted word, and end quote, as well as any consecutive word lexs without separators.</p>
+<p>It is recommended to use <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a>, which will return a single scallop_lang_classifier_word lex in that scenario.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">previous</td><td>A lex returned by <a class="el" href="lex_8h.html#ae98047736a254d8c5e82666d3e777a1f" title="Initializes a lex object for use in scallop_lang_lex_next().">scallop_lang_lex_init()</a> or <a class="el" href="lex_8h.html#a419a81689a933546f8324682690c3f4e" title="Returns the next, raw lex in the script referred to by previous.">scallop_lang_lex_next_raw()</a>.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A new lex. </dd></dl>
+
+</div>
+</div>
+<a id="a2d6d471f3b44e918f6975410310746d6" name="a2d6d471f3b44e918f6975410310746d6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2d6d471f3b44e918f6975410310746d6">&#9670;&#160;</a></span>scallop_lang_lex_normalize_word()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">EXPORT ssize_t scallop_lang_lex_normalize_word </td>
+          <td>(</td>
+          <td class="paramtype">struct libadt_const_lptr&#160;</td>
+          <td class="paramname"><em>word</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct libadt_lptr&#160;</td>
+          <td class="paramname"><em>out</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Takes a word value from <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a> and normalizes it to the raw word value. </p>
+<p>The result is written to <code>out</code>. Writing stops when the end of the word is reached, or when <code>out</code> runs out of space.</p>
+<p><code>word</code> is not tested for actual word contents. The behaviour for <code>word</code> containing non-word values is undefined.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">word</td><td>A value from <a class="el" href="lex_8h.html#a3a488ffdcfb0f264cee1dede81d96382" title="Returns the next lex in the script referred to by previous.">scallop_lang_lex_next()</a> that contains a word. </td></tr>
+    <tr><td class="paramname">out</td><td>A pointer to the location to write to.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>If out is large enough for the result, the number of characters actually written. If out is smaller than the result, the number of characters that would have been written. If an error occurred, -1 is returned. </dd></dl>
 
 </div>
 </div>
