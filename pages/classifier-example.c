@@ -2,22 +2,22 @@
 #include <stdio.h>
 #include <wchar.h>
 
-#include <scallop-lang/lex.h>
+#include <scallop-lang/classifier.h>
 
-#define lex_fn scallop_lang_lex_fn
-#define begin scallop_lang_lex_begin
-#define end scallop_lang_lex_end
-#define unexpected scallop_lang_lex_unexpected
+#define classifier_fn scallop_lang_classifier_fn
+#define begin scallop_lang_classifier_begin
+#define end scallop_lang_classifier_end
+#define unexpected scallop_lang_classifier_unexpected
 
 int main()
 {
-	lex_fn *old_current = NULL;
+	classifier_fn *old_current = NULL;
 	int current_character = 0;
 	int current_state_character = 0;
 	for (
-		lex_fn *current = begin(getwchar());
+		classifier_fn *current = begin(getwchar());
 		current != end;
-		current = (lex_fn*)current(getwchar())
+		current = (classifier_fn*)current(getwchar())
 	) {
 		if (current == unexpected) {
 			// Handle error

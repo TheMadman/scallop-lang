@@ -1,21 +1,21 @@
 /*
  * Scallop - A Shell Language for Parallelization (Language Definition)
  * Copyright (C) 2024  Marcus Harrison
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-\
+
 #ifndef SCALLOP_LANG_LEX
 #define SCALLOP_LANG_LEX
 
@@ -23,228 +23,304 @@
 extern "C" {
 #endif
 
-#include <libadt/init.h>
-
-#include <stdbool.h>
 #include <wchar.h>
+
+#include <libadt/init.h>
+#include <libadt/lptr.h>
+
+#include "classifier.h"
 
 /**
  * \file
- * \brief This file provides the interface for the lexer.
  *
- * The lexer is a finite state machine, where each state is a
- * function. Each state takes an input and returns the next state.
- *
- * The lexer state machine functions take a wide character input and
- * return a lexer state function. The return value should
- * be cast to a scallop_lang_lex_fn* before use.
- *
- * The entry point of the finite state machine is
- * scallop_lang_lex_begin().
- *
- * If the current state receives an unexpected input, it will
- * return scallop_lang_lex_unexpected().
- *
- * You _must_ check that the return value of the current
- * state is scallop_lang_lex_unexpected() and handle it
- * correctly. Calling scallop_lang_lex_unexpected() will
- * call abort().
- *
- * scallop_lang_lex_end() indicates that the state machine
- * has terminated and no further states apply. You
- * _must_ check for scallop_lang_lex_end() to indicate
- * that processing finished successfully.
- *
- * Example:
- * \include lex-example.c
+ * \brief This module provides an API over the classifier finite state
+ * 	machine, generating lexs from multibyte character scripts.
  */
 
 /**
- * \brief Type definition of a "void function".
- *
- * A pointer to this should be used similarly to a pointer
- * to void: its only use is to be passed along to something
- * else, or to be cast to a more useful type.
+ * \brief Represents a single lex.
  */
-typedef void *scallop_lang_void_fn();
+struct scallop_lang_lex {
+	/**
+	 * \brief Represents the type of lex classifiered.
+	 */
+	scallop_lang_classifier_fn *type;
 
-/**
- * \brief Type definition for a lexer state function.
- */
-typedef scallop_lang_void_fn *scallop_lang_lex_fn(wint_t);
+	/**
+	 * \brief A pointer to the full script.
+	 */
+	struct libadt_const_lptr script;
 
-/**
- * \brief The default entry point of the state machine.
- *
- * Call this on the first character of your shell script
- * to get the first lexed state.
- */
-scallop_lang_lex_fn *scallop_lang_lex_begin(wint_t input);
+	/**
+	 * \brief A pointer to the classifiered value.
+	 *
+	 * This will always be a pointer into .script.
+	 */
+	struct libadt_const_lptr value;
+};
 
-/**
- * \brief Represents the end of a lex script.
- *
- * In most cases, this is hit when encountering a WEOF character.
- *
- * Some states expect a closing state before encountering
- * a WEOF character, particularly quoted strings.
- *
- * You should use this to terminate your lex loop.
- *
- * \sa scallop_lang_lex_fn for an example.
- */
-EXPORT extern scallop_lang_lex_fn *const scallop_lang_lex_end;
-
-/**
- * \brief Represents an unexpected input for the current state.
- *
- * Use this to test for lex errors in the script, such as
- * a WEOF in a quoted string, or an unrecognized character.
- *
- * This should be used for checking for errors in your loop and
- * handling them accordingly.
- */
-EXPORT extern scallop_lang_lex_fn *const scallop_lang_lex_unexpected;
-
-/**
- * \brief Represents an unquoted word.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_word(wint_t input);
-
-/**
- * \brief Represents a word separator.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_word_separator(wint_t input);
-
-/**
- * \brief Represents an escape character, '\'.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_escape(wint_t input);
-
-/**
- * \brief Represents an opening single quote.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_single_quote(wint_t input);
-
-/**
- * \brief Represents a single quote, closing a single-quoted string.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_single_quote_end(wint_t input);
-
-/**
- * \brief Represents characters in a single-quoted string
- * 	which contribute to a word.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_single_quote_word(wint_t input);
-
-/**
- * \brief Represents an opening double quote.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_double_quote(wint_t input);
-
-/**
- * \brief Represents a double quote, closing a double-quoted string.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_double_quote_end(wint_t input);
-
-/**
- * \brief Represents characters in a double-quoted string
- * 	which contribute to a word.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_double_quote_word(wint_t input);
-
-/**
- * \brief Represents the opening of a curly bracket block '{'.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_curly_block(wint_t input);
-
-/**
- * \brief Represents the closing of a curly bracket block '}'.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_curly_block_end(wint_t input);
-
-/**
- * \brief Represents the opening of a square bracket block '['.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_square_block(wint_t input);
-
-/**
- * \brief Represents the closing of a square bracket block ']'.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_square_block_end(wint_t input);
-
-/**
- * \brief Represents a statement separator, such as ';' or newline.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_statement_separator(wint_t input);
-
-/**
- * \brief Represents a line comment, starting with a hash '#'.
- *
- * \param input The next wide character input.
- * \returns A pointer to the next state function.
- */
-EXPORT scallop_lang_void_fn *scallop_lang_lex_line_comment(wint_t input);
-
-/**
- * \brief Tests if a token type contributes to a word.
- *
- * \param type The type to test.
- *
- * \returns True if the type contributes to a word, false otherwise.
- */
-EXPORT inline bool scallop_lang_lex_is_word(scallop_lang_lex_fn *type)
+inline size_t _scallop_mbrtowc(
+	wchar_t *result,
+	struct libadt_const_lptr string,
+	mbstate_t *_mbstate
+)
 {
-	return type == scallop_lang_lex_word
-		|| type == scallop_lang_lex_single_quote
-		|| type == scallop_lang_lex_single_quote_word
-		|| type == scallop_lang_lex_single_quote_end
-		|| type == scallop_lang_lex_double_quote
-		|| type == scallop_lang_lex_double_quote_word
-		|| type == scallop_lang_lex_double_quote_end
-		|| type == scallop_lang_lex_escape;
+	if (string.length <= 0) {
+		// when does this break?
+		*result = (wchar_t)WEOF;
+		return 0;
+	}
+	return mbrtowc(
+		result,
+		string.buffer,
+		(size_t)string.length,
+		_mbstate
+	);
+}
+
+typedef struct {
+	size_t amount;
+	scallop_lang_classifier_fn *type;
+	struct libadt_const_lptr script;
+} _scallop_read_t;
+
+inline bool _scallop_read_error(_scallop_read_t read)
+{
+	return read.amount == (size_t)-1
+		|| read.amount == (size_t)-2
+		|| read.type == scallop_lang_classifier_unexpected;
+}
+
+inline _scallop_read_t _scallop_read(
+	struct libadt_const_lptr script,
+	scallop_lang_classifier_fn *const previous
+)
+{
+	wchar_t c = 0;
+	mbstate_t mbs = { 0 };
+	_scallop_read_t result = { 0 };
+	result.amount = _scallop_mbrtowc(&c, script, &mbs);
+	if (_scallop_read_error(result))
+		result.type = (scallop_lang_classifier_fn*)scallop_lang_classifier_unexpected;
+	else
+		result.type = (scallop_lang_classifier_fn*)previous((wint_t)c);
+
+	result.script = libadt_const_lptr_index(script, (ssize_t)result.amount);
+	return result;
+}
+
+/**
+ * \brief Initializes a lex object for use in scallop_lang_lex_next().
+ *
+ * \param script The script to create a lex from.
+ *
+ * \returns A lex, valid for passing to scallop_lang_lex_next().
+ */
+EXPORT inline struct scallop_lang_lex scallop_lang_lex_init(
+	struct libadt_const_lptr script
+)
+{
+	return (struct scallop_lang_lex) {
+		.type = (scallop_lang_classifier_fn*)scallop_lang_classifier_begin,
+		.script = script,
+		.value = libadt_const_lptr_truncate(script, 0),
+	};
+}
+
+/**
+ * \brief Returns the next, raw lex in the script referred to by
+ * 	previous.
+ *
+ * Raw lexs contain raw types, such as scallop_lang_classifier_double_quote.
+ * Separate lexs are returned for beginning quote, the quoted word,
+ * and end quote, as well as any consecutive word lexs without
+ * separators.
+ *
+ * It is recommended to use scallop_lang_lex_next(), which will
+ * return a single scallop_lang_classifier_word lex in that scenario.
+ *
+ * \param previous A lex returned by scallop_lang_lex_init() or
+ * 	scallop_lang_lex_next_raw().
+ *
+ * \returns A new lex.
+ */
+EXPORT inline struct scallop_lang_lex scallop_lang_lex_next_raw(
+	struct scallop_lang_lex previous
+)
+{
+	const ssize_t value_offset = (char *)previous.value.buffer
+		- (char *)previous.script.buffer;
+	struct libadt_const_lptr next = libadt_const_lptr_index(
+		previous.script,
+		value_offset + previous.value.length
+	);
+
+	_scallop_read_t
+		read = _scallop_read(next, previous.type),
+		previous_read = read;
+
+	if (_scallop_read_error(read))
+		return (struct scallop_lang_lex) {
+			.script = previous.script,
+			.type = scallop_lang_classifier_unexpected,
+			.value = libadt_const_lptr_truncate(next, 0),
+		};
+
+	if (read.type == scallop_lang_classifier_end) {
+		return (struct scallop_lang_lex) {
+			.script = previous.script,
+			.type = read.type,
+			.value = libadt_const_lptr_truncate(next, read.amount)
+		};
+	}
+
+	size_t value_length = read.amount;
+	for (
+		read = _scallop_read(read.script, read.type);
+		!_scallop_read_error(read);
+		read = _scallop_read(read.script, read.type)
+	) {
+		if (read.type != previous_read.type)
+			break;
+
+		previous_read = read;
+		value_length += read.amount;
+	}
+
+	return (struct scallop_lang_lex) {
+		.script = previous.script,
+		.type = previous_read.type,
+		.value = libadt_const_lptr_truncate(next, value_length),
+	};
+}
+
+/**
+ * \brief Returns the next lex in the script referred to by previous.
+ *
+ * Word lexs will always have scallop_lang_classifier_word
+ * type, even for words that contain quoted words or
+ * escaped characters.
+ *
+ * Separators will be grouped into a single lex.
+ * If the value contains a statement separator, the
+ * type is always scallop_lang_classifier_statement_separator,
+ * even if it also contains word separators.
+ *
+ * If it contains only word separators, the value is
+ * scallop_lang_classifier_word_separator.
+ *
+ * \param previous A lex previously returned by
+ * 	scallop_lang_lex_next(), or initialized from
+ * 	scallop_lang_lex_init().
+ *
+ * \returns A lex succeeding scallop_lang_lex_complete()
+ * 	if successful, or failing if an incomplete multibyte
+ * 	character was encountered.
+ */
+EXPORT inline struct scallop_lang_lex scallop_lang_lex_next(
+	struct scallop_lang_lex previous
+)
+{
+	struct scallop_lang_lex result = scallop_lang_lex_next_raw(
+		previous
+	);
+
+	const bool end = result.type == scallop_lang_classifier_end
+		|| result.type == scallop_lang_classifier_unexpected;
+	if (end)
+		return result;
+
+	// This does a tonne more work than necessary but
+	// I'm lazy
+	struct scallop_lang_lex next = scallop_lang_lex_next(
+		result
+	);
+
+	const bool is_word = scallop_lang_classifier_is_word(result.type)
+		&& scallop_lang_classifier_is_word(next.type);
+	if (is_word)
+		result.value.length += next.value.length;
+
+	const bool has_word_separator
+		= result.type == scallop_lang_classifier_word_separator
+		|| next.type == scallop_lang_classifier_word_separator;
+	const bool has_statement_separator
+		= result.type == scallop_lang_classifier_statement_separator
+		|| next.type == scallop_lang_classifier_statement_separator;
+	if (has_word_separator && has_statement_separator) {
+		result.type = scallop_lang_classifier_statement_separator;
+		result.value.length += next.value.length;
+	}
+	return result;
+}
+
+/**
+ * \brief Takes a word value from scallop_lang_lex_next() and
+ * 	normalizes it to the raw word value.
+ *
+ * The result is written to `out`. Writing stops when the end of
+ * the word is reached, or when `out` runs out of space.
+ *
+ * `word` is not tested for actual word contents. The behaviour for
+ * `word` containing non-word values is undefined.
+ *
+ * \param word A value from scallop_lang_lex_next() that contains
+ * 	a word.
+ * \param out A pointer to the location to write to.
+ *
+ * \returns If out is large enough for the result, the number of
+ * 	characters actually written. If out is smaller than the
+ * 	result, the number of characters that would have been written.
+ * 	If an error occurred, -1 is returned.
+ */
+EXPORT inline ssize_t scallop_lang_lex_normalize_word(
+	struct libadt_const_lptr word,
+	struct libadt_lptr out
+)
+{
+	size_t read_amount = 0;
+	ssize_t total_read_amount = 0;
+
+	scallop_lang_classifier_fn
+		*current = (scallop_lang_classifier_fn *)scallop_lang_classifier_begin;
+	for (
+		;
+		libadt_const_lptr_in_bounds(word);
+		word = libadt_const_lptr_index(word, (ssize_t)read_amount)
+	) {
+		wchar_t c = 0;
+		mbstate_t state = { 0 };
+		read_amount = _scallop_mbrtowc(&c, word, &state);
+
+		const bool read_error = read_amount == (size_t)-1
+			|| read_amount == (size_t)-2;
+
+		if (read_error)
+			return -1;
+
+		current = (scallop_lang_classifier_fn *)current((wint_t)c);
+
+		const bool is_error_type = current == scallop_lang_classifier_unexpected;
+
+		if (is_error_type)
+			return -1;
+
+		const bool skip_type = current == scallop_lang_classifier_single_quote
+			|| current == scallop_lang_classifier_single_quote_end
+			|| current == scallop_lang_classifier_double_quote
+			|| current == scallop_lang_classifier_double_quote_end
+			|| current == scallop_lang_classifier_escape;
+
+		if (!skip_type) {
+			if (libadt_lptr_in_bounds(out)) {
+				libadt_lptr_memmove(out, libadt_const_lptr_truncate(word, read_amount));
+				out = libadt_lptr_index(out, (ssize_t)read_amount);
+			}
+			total_read_amount += (ssize_t)read_amount;
+		}
+	}
+
+	return total_read_amount;
 }
 
 #ifdef __cplusplus

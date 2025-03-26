@@ -1,3 +1,3 @@
-add_executable(lex-example lex-example.c)
+add_executable(classifier-example classifier-example.c)
 
-target_link_libraries(lex-example scallop-lang)
+target_link_libraries(classifier-example scallop-lang)

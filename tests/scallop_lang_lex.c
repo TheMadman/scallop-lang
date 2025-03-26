@@ -1,172 +1,98 @@
 /*
- * Scallop - A Shell Language for Parallelization (Language Definition)
+ * Project Name - Project Description
  * Copyright (C) 2024
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
- * 
+ *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
- * 
+ *
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-\
-#include "macros.h"
 
-#include <scallop-lang/lex.h>
-#include <stdio.h>
+#include <assert.h>
+#include <stdbool.h>
+#include "scallop-lang/lex.h"
 
-#define fn scallop_lang_lex_fn
+#include <libadt/str.h>
 
-#define word scallop_lang_lex_word
-#define word_separator scallop_lang_lex_word_separator
-#define end scallop_lang_lex_end
-#define escape scallop_lang_lex_escape
-#define single_quote scallop_lang_lex_single_quote
-#define unexpected scallop_lang_lex_unexpected
-#define single_quote scallop_lang_lex_single_quote
-#define single_quote_word scallop_lang_lex_single_quote_word
-#define single_quote_end scallop_lang_lex_single_quote_end
-#define double_quote scallop_lang_lex_double_quote
-#define double_quote_word scallop_lang_lex_double_quote_word
-#define double_quote_end scallop_lang_lex_double_quote_end
-#define curly_block scallop_lang_lex_curly_block
-#define curly_block_end scallop_lang_lex_curly_block_end
-#define square_block scallop_lang_lex_square_block
-#define square_block_end scallop_lang_lex_square_block_end
-#define statement_separator scallop_lang_lex_statement_separator
-#define escape scallop_lang_lex_escape
-#define line_comment scallop_lang_lex_line_comment
+inline struct scallop_lang_lex scallop_lang_lex_init();
+inline struct scallop_lang_lex scallop_lang_lex_next(
+	struct scallop_lang_lex previous_lex
+);
 
-void default_context_asserts(fn *state)
+#define lit libadt_str_literal
+#define lex_init scallop_lang_lex_init
+#define lex_next scallop_lang_lex_next
+typedef struct scallop_lang_lex lex_t;
+typedef struct libadt_const_lptr const_lptr_t;
+typedef struct libadt_lptr lptr_t;
+
+#define TEST_SCRIPT "word second_word"
+
+void test_lex_init(void)
 {
-	assert((fn*)state(WEOF) == end);
-	assert((fn*)state('a') == word);
-	assert((fn*)state(' ') == word_separator);
-	assert((fn*)state('\\') == escape);
-	assert((fn*)state('\'') == single_quote);
-	assert((fn*)state(';') == statement_separator);
-	assert((fn*)state('#') == line_comment);
-	assert((fn*)state(1) == unexpected);
+	lex_t lex = lex_init(lit(TEST_SCRIPT));
+
+	assert(lex.script.length == sizeof(TEST_SCRIPT) - 1);
 }
 
-void single_quote_context_asserts(fn *state)
+void test_lex_next_simple(void)
 {
-	assert((fn*)state(WEOF) == unexpected);
-	assert((fn*)state('\'') == single_quote_end);
-	assert((fn*)state('a') == single_quote_word);
-	assert((fn*)state('"') == single_quote_word);
+	lex_t lex = lex_init(lit(TEST_SCRIPT));
+	lex = lex_next(lex);
+
+	assert(lex.type == scallop_lang_classifier_word);
+	assert(lex.value.length == sizeof("word") - 1);
+
+	lex = lex_next(lex);
+
+	assert(lex.type == scallop_lang_classifier_word_separator);
+	assert(lex.value.length == sizeof(" ") - 1);
+
+	lex = lex_next(lex);
+	assert(lex.type == scallop_lang_classifier_word);
+	assert(lex.value.length == sizeof("second_word") - 1);
+
+	lex = lex_next(lex);
+	assert(lex.type == scallop_lang_classifier_end);
 }
 
-void double_quote_context_asserts(fn *state)
+#define WORD_STATEMENT_SEPARATOR "  ;\n  "
+
+void test_lex_next_statement_separator_promotion(void)
 {
-	assert((fn*)state(WEOF) == unexpected);
-	assert((fn*)state('"') == double_quote_end);
-	assert((fn*)state('\'') == double_quote_word);
-	assert((fn*)state('a') == double_quote_word);
+	lex_t lex = lex_init(lit(WORD_STATEMENT_SEPARATOR));
+	lex = lex_next(lex);
+
+	assert(lex.type == scallop_lang_classifier_statement_separator);
+	assert(lex.value.length == sizeof(WORD_STATEMENT_SEPARATOR) - 1);
 }
 
-void test_word(void)
+void test_lex_normalize_word(void)
 {
-	default_context_asserts(word);
-}
+	const char word_buffer[] = "\"Hello, \"'world'\\!";
+	char out_buffer[255] = { 0 };
 
-void test_word_separator(void)
-{
-	default_context_asserts(word_separator);
-}
+	const_lptr_t word = lit(word_buffer);
+	lptr_t out = libadt_lptr_init_array(out_buffer);
 
-void test_single_quote(void)
-{
-	single_quote_context_asserts(single_quote);
-}
+	ssize_t result = scallop_lang_lex_normalize_word(word, out);
 
-void test_single_quote_word(void)
-{
-	single_quote_context_asserts(single_quote_word);
-}
-
-void test_single_quote_end(void)
-{
-	default_context_asserts(single_quote_end);
-}
-
-void test_double_quote(void)
-{
-	double_quote_context_asserts(double_quote);
-}
-
-void test_double_quote_word(void)
-{
-	double_quote_context_asserts(double_quote_word);
-}
-
-void test_double_quote_end(void)
-{
-	default_context_asserts(double_quote_end);
-}
-
-void test_curly_block(void)
-{
-	default_context_asserts(curly_block);
-}
-
-void test_curly_block_end(void)
-{
-	default_context_asserts(curly_block_end);
-}
-
-void test_square_block(void)
-{
-	default_context_asserts(square_block);
-}
-
-void test_square_block_end(void)
-{
-	default_context_asserts(square_block_end);
-}
-
-void test_statement_separator(void)
-{
-	default_context_asserts(statement_separator);
-}
-
-void test_escape(void)
-{
-	assert((fn*)escape('a') == word);
-	assert((fn*)escape('\\') == word);
-	assert((fn*)escape('\'') == word);
-	assert((fn*)escape('"') == word);
-	assert((fn*)escape(WEOF) == unexpected);
-}
-
-void test_line_comment(void)
-{
-	assert((fn*)line_comment('a') == line_comment);
-	assert((fn*)line_comment(' ') == line_comment);
-	assert((fn*)line_comment(';') == line_comment);
-	assert((fn*)line_comment('\'') == line_comment);
-	assert((fn*)line_comment('"') == line_comment);
-	assert((fn*)line_comment('\r') == statement_separator);
-	assert((fn*)line_comment('\n') == statement_separator);
-	assert((fn*)line_comment(WEOF) == end);
+	assert(result == sizeof("Hello, world!") - 1);
+	assert(0 == strcmp(out_buffer, "Hello, world!"));
 }
 
 int main()
 {
-	test_word();
-	test_word_separator();
-	test_single_quote_end();
-	test_curly_block();
-	test_curly_block_end();
-	test_square_block();
-	test_square_block_end();
-	test_single_quote();
-	test_escape();
-	test_line_comment();
+	test_lex_init();
+	test_lex_next_simple();
+	test_lex_next_statement_separator_promotion();
+	test_lex_normalize_word();
 }

@@ -4,5 +4,5 @@ function(testcase target)
 	add_test(NAME ${target} COMMAND test_${target})
 endfunction()
 
+testcase(scallop_lang_classifier)
 testcase(scallop_lang_lex)
-testcase(scallop_lang_token)

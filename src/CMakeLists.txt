@@ -1,4 +1,4 @@
-set(SOURCES lex.c token.c)
+set(SOURCES classifier.c lex.c)
 
 add_library(scallopobj OBJECT ${SOURCES})
 
