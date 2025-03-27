@@ -34,15 +34,15 @@ extern "C" {
  * \file
  *
  * \brief This module provides an API over the classifier finite state
- * 	machine, generating lexs from multibyte character scripts.
+ * 	machine, generating tokens from multibyte character scripts.
  */
 
 /**
- * \brief Represents a single lex.
+ * \brief Represents a single token.
  */
 struct scallop_lang_lex {
 	/**
-	 * \brief Represents the type of lex classifiered.
+	 * \brief Represents the type of token classifiered.
 	 */
 	scallop_lang_classifier_fn *type;
 
@@ -110,11 +110,11 @@ inline _scallop_read_t _scallop_read(
 }
 
 /**
- * \brief Initializes a lex object for use in scallop_lang_lex_next().
+ * \brief Initializes a token object for use in scallop_lang_lex_next().
  *
- * \param script The script to create a lex from.
+ * \param script The script to create a token from.
  *
- * \returns A lex, valid for passing to scallop_lang_lex_next().
+ * \returns A token, valid for passing to scallop_lang_lex_next().
  */
 EXPORT inline struct scallop_lang_lex scallop_lang_lex_init(
 	struct libadt_const_lptr script
@@ -128,21 +128,21 @@ EXPORT inline struct scallop_lang_lex scallop_lang_lex_init(
 }
 
 /**
- * \brief Returns the next, raw lex in the script referred to by
+ * \brief Returns the next, raw token in the script referred to by
  * 	previous.
  *
- * Raw lexs contain raw types, such as scallop_lang_classifier_double_quote.
- * Separate lexs are returned for beginning quote, the quoted word,
- * and end quote, as well as any consecutive word lexs without
+ * Raw tokens contain raw types, such as scallop_lang_classifier_double_quote.
+ * Separate tokens are returned for beginning quote, the quoted word,
+ * and end quote, as well as any consecutive word tokens without
  * separators.
  *
  * It is recommended to use scallop_lang_lex_next(), which will
- * return a single scallop_lang_classifier_word lex in that scenario.
+ * return a single scallop_lang_classifier_word token in that scenario.
  *
- * \param previous A lex returned by scallop_lang_lex_init() or
+ * \param previous A token returned by scallop_lang_lex_init() or
  * 	scallop_lang_lex_next_raw().
  *
- * \returns A new lex.
+ * \returns A new token.
  */
 EXPORT inline struct scallop_lang_lex scallop_lang_lex_next_raw(
 	struct scallop_lang_lex previous
@@ -195,13 +195,13 @@ EXPORT inline struct scallop_lang_lex scallop_lang_lex_next_raw(
 }
 
 /**
- * \brief Returns the next lex in the script referred to by previous.
+ * \brief Returns the next token in the script referred to by previous.
  *
- * Word lexs will always have scallop_lang_classifier_word
+ * Word tokens will always have scallop_lang_classifier_word
  * type, even for words that contain quoted words or
  * escaped characters.
  *
- * Separators will be grouped into a single lex.
+ * Separators will be grouped into a single token.
  * If the value contains a statement separator, the
  * type is always scallop_lang_classifier_statement_separator,
  * even if it also contains word separators.
@@ -209,11 +209,11 @@ EXPORT inline struct scallop_lang_lex scallop_lang_lex_next_raw(
  * If it contains only word separators, the value is
  * scallop_lang_classifier_word_separator.
  *
- * \param previous A lex previously returned by
+ * \param previous A token previously returned by
  * 	scallop_lang_lex_next(), or initialized from
  * 	scallop_lang_lex_init().
  *
- * \returns A lex succeeding scallop_lang_lex_complete()
+ * \returns A token succeeding scallop_lang_lex_complete()
  * 	if successful, or failing if an incomplete multibyte
  * 	character was encountered.
  */
