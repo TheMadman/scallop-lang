@@ -23,8 +23,6 @@
 extern "C" {
 #endif
 
-#include <libadt/init.h>
-
 #include <stdbool.h>
 #include <wchar.h>
 
@@ -93,7 +91,7 @@ scallop_lang_classifier_fn *scallop_lang_classifier_begin(wint_t input);
  *
  * \sa scallop_lang_classifier_fn for an example.
  */
-EXPORT extern scallop_lang_classifier_fn *const scallop_lang_classifier_end;
+extern scallop_lang_classifier_fn *const scallop_lang_classifier_end;
 
 /**
  * \brief Represents an unexpected input for the current state.
@@ -104,7 +102,7 @@ EXPORT extern scallop_lang_classifier_fn *const scallop_lang_classifier_end;
  * This should be used for checking for errors in your loop and
  * handling them accordingly.
  */
-EXPORT extern scallop_lang_classifier_fn *const scallop_lang_classifier_unexpected;
+extern scallop_lang_classifier_fn *const scallop_lang_classifier_unexpected;
 
 /**
  * \brief Represents an unquoted word.
@@ -112,7 +110,7 @@ EXPORT extern scallop_lang_classifier_fn *const scallop_lang_classifier_unexpect
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_word(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_word(wint_t input);
 
 /**
  * \brief Represents a word separator.
@@ -120,7 +118,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_word(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_word_separator(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_word_separator(wint_t input);
 
 /**
  * \brief Represents an escape character, '\'.
@@ -128,7 +126,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_word_separator(wint_t input
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_escape(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_escape(wint_t input);
 
 /**
  * \brief Represents an opening single quote.
@@ -136,7 +134,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_escape(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_single_quote(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_single_quote(wint_t input);
 
 /**
  * \brief Represents a single quote, closing a single-quoted string.
@@ -144,7 +142,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_single_quote(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_single_quote_end(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_single_quote_end(wint_t input);
 
 /**
  * \brief Represents characters in a single-quoted string
@@ -153,7 +151,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_single_quote_end(wint_t inp
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_single_quote_word(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_single_quote_word(wint_t input);
 
 /**
  * \brief Represents an opening double quote.
@@ -161,7 +159,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_single_quote_word(wint_t in
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_double_quote(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_double_quote(wint_t input);
 
 /**
  * \brief Represents a double quote, closing a double-quoted string.
@@ -169,7 +167,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_double_quote(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_double_quote_end(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_double_quote_end(wint_t input);
 
 /**
  * \brief Represents characters in a double-quoted string
@@ -178,7 +176,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_double_quote_end(wint_t inp
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_double_quote_word(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_double_quote_word(wint_t input);
 
 /**
  * \brief Represents the opening of a curly bracket block '{'.
@@ -186,7 +184,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_double_quote_word(wint_t in
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_curly_block(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_curly_block(wint_t input);
 
 /**
  * \brief Represents the closing of a curly bracket block '}'.
@@ -194,7 +192,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_curly_block(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_curly_block_end(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_curly_block_end(wint_t input);
 
 /**
  * \brief Represents the opening of a square bracket block '['.
@@ -202,7 +200,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_curly_block_end(wint_t inpu
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_square_block(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_square_block(wint_t input);
 
 /**
  * \brief Represents the closing of a square bracket block ']'.
@@ -210,7 +208,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_square_block(wint_t input);
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_square_block_end(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_square_block_end(wint_t input);
 
 /**
  * \brief Represents a statement separator, such as ';' or newline.
@@ -218,7 +216,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_square_block_end(wint_t inp
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_statement_separator(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_statement_separator(wint_t input);
 
 /**
  * \brief Represents a line comment, starting with a hash '#'.
@@ -226,7 +224,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_statement_separator(wint_t 
  * \param input The next wide character input.
  * \returns A pointer to the next state function.
  */
-EXPORT scallop_lang_void_fn *scallop_lang_classifier_line_comment(wint_t input);
+scallop_lang_void_fn *scallop_lang_classifier_line_comment(wint_t input);
 
 /**
  * \brief Tests if a lex type contributes to a word.
@@ -235,7 +233,7 @@ EXPORT scallop_lang_void_fn *scallop_lang_classifier_line_comment(wint_t input);
  *
  * \returns True if the type contributes to a word, false otherwise.
  */
-EXPORT inline bool scallop_lang_classifier_is_word(scallop_lang_classifier_fn *type)
+inline bool scallop_lang_classifier_is_word(scallop_lang_classifier_fn *type)
 {
 	return type == scallop_lang_classifier_word
 		|| type == scallop_lang_classifier_single_quote

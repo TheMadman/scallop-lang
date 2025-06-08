@@ -22,11 +22,6 @@
 
 #include <libadt/str.h>
 
-inline struct scallop_lang_lex scallop_lang_lex_init();
-inline struct scallop_lang_lex scallop_lang_lex_next(
-	struct scallop_lang_lex previous_lex
-);
-
 #define lit libadt_str_literal
 #define lex_init scallop_lang_lex_init
 #define lex_next scallop_lang_lex_next
