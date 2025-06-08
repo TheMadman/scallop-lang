@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>scallop-lang: src/scallop-lang Directory Reference</title>
+<title>scallop-lang: src/scallop-lang/parse.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -73,20 +73,38 @@ $(function() {
 </div>
 </div><!-- top -->
 <div class="header">
-  <div class="headertitle"><div class="title">scallop-lang Directory Reference</div></div>
+  <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#func-members">Functions</a>  </div>
+  <div class="headertitle"><div class="title">parse.h File Reference</div></div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><code>#include &lt;wchar.h&gt;</code><br />
+<code>#include &lt;libadt/lptr.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="classifier_8h_source.html">classifier.h</a>&quot;</code><br />
+</div>
+<p><a href="parse_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="files" name="files"></a>
-Files</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="classifier_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html">classifier.h</a></td></tr>
-<tr class="memdesc:classifier_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">This file provides the interface for the classifierer. <br /></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscallop__lang__parse__lex.html">scallop_lang_parse_lex</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single, classifiered lex, for further use with the parser API.  <a href="structscallop__lang__parse__lex.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="lex_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="lex_8h.html">lex.h</a></td></tr>
-<tr class="memdesc:lex_8h"><td class="mdescLeft">&#160;</td><td class="mdescRight">This module provides an API over the classifier finite state machine, generating tokens from multibyte character scripts. <br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structscallop__lang__parse__parser.html">scallop_lang_parse_parser</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a parser for a single script.  <a href="structscallop__lang__parse__parser.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top"><a href="parse_8h_source.html"><span class="icondoc"></span></a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="parse_8h.html">parse.h</a></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct__scallop__dequeue__t.html">_scallop_dequeue_t</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a9874472b4795c0fec62e93b0c38f8ea7" id="r_a9874472b4795c0fec62e93b0c38f8ea7"><td class="memItemLeft" align="right" valign="top"><a id="a9874472b4795c0fec62e93b0c38f8ea7" name="a9874472b4795c0fec62e93b0c38f8ea7"></a>
+struct <a class="el" href="structscallop__lang__parse__parser.html">scallop_lang_parse_parser</a>&#160;</td><td class="memItemRight" valign="bottom"><b>scallop_lang_parse_parser</b> (struct libadt_const_lptr script)</td></tr>
+<tr class="memdesc:a9874472b4795c0fec62e93b0c38f8ea7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a parser from a multibyte script. <br /></td></tr>
+<tr class="separator:a9874472b4795c0fec62e93b0c38f8ea7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25070456363b77e82e86666ae74a26a8" id="r_a25070456363b77e82e86666ae74a26a8"><td class="memItemLeft" align="right" valign="top"><a id="a25070456363b77e82e86666ae74a26a8" name="a25070456363b77e82e86666ae74a26a8"></a>
+struct <a class="el" href="structscallop__lang__parse__parser.html">scallop_lang_parse_parser</a>&#160;</td><td class="memItemRight" valign="bottom"><b>scallop_lang_parse_next</b> (struct <a class="el" href="structscallop__lang__parse__parser.html">scallop_lang_parse_parser</a> parser)</td></tr>
+<tr class="separator:a25070456363b77e82e86666ae74a26a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->

@@ -83,8 +83,7 @@ $(function() {
 
 <p>This file provides the interface for the classifierer.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;libadt/init.h&gt;</code><br />
-<code>#include &lt;stdbool.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdbool.h&gt;</code><br />
 <code>#include &lt;wchar.h&gt;</code><br />
 </div>
 <p><a href="classifier_8h_source.html">Go to the source code of this file.</a></p>
@@ -104,72 +103,72 @@ Functions</h2></td></tr>
 <tr class="memitem:ae5363b45889cdd4ca9425b06cafa4b67" id="r_ae5363b45889cdd4ca9425b06cafa4b67"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ae5363b45889cdd4ca9425b06cafa4b67">scallop_lang_classifier_begin</a> (wint_t input)</td></tr>
 <tr class="memdesc:ae5363b45889cdd4ca9425b06cafa4b67"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default entry point of the state machine.  <br /></td></tr>
 <tr class="separator:ae5363b45889cdd4ca9425b06cafa4b67"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5e704bc6cb16c5be9c15538e8b7d36d" id="r_af5e704bc6cb16c5be9c15538e8b7d36d"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#af5e704bc6cb16c5be9c15538e8b7d36d">scallop_lang_classifier_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:af5e704bc6cb16c5be9c15538e8b7d36d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unquoted word.  <br /></td></tr>
-<tr class="separator:af5e704bc6cb16c5be9c15538e8b7d36d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e25b9b2194d3701033ff988a62f24e8" id="r_a7e25b9b2194d3701033ff988a62f24e8"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a7e25b9b2194d3701033ff988a62f24e8">scallop_lang_classifier_word_separator</a> (wint_t input)</td></tr>
-<tr class="memdesc:a7e25b9b2194d3701033ff988a62f24e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a word separator.  <br /></td></tr>
-<tr class="separator:a7e25b9b2194d3701033ff988a62f24e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb4cc83ceb87bd28d90d5a800b1d302e" id="r_aeb4cc83ceb87bd28d90d5a800b1d302e"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#aeb4cc83ceb87bd28d90d5a800b1d302e">scallop_lang_classifier_escape</a> (wint_t input)</td></tr>
-<tr class="memdesc:aeb4cc83ceb87bd28d90d5a800b1d302e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an escape character, '\'.  <br /></td></tr>
-<tr class="separator:aeb4cc83ceb87bd28d90d5a800b1d302e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab271422e4288b98f99c85bb366cb863c" id="r_ab271422e4288b98f99c85bb366cb863c"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ab271422e4288b98f99c85bb366cb863c">scallop_lang_classifier_single_quote</a> (wint_t input)</td></tr>
-<tr class="memdesc:ab271422e4288b98f99c85bb366cb863c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening single quote.  <br /></td></tr>
-<tr class="separator:ab271422e4288b98f99c85bb366cb863c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa2cd2732491ac4fab9a9f9c42e510123" id="r_aa2cd2732491ac4fab9a9f9c42e510123"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#aa2cd2732491ac4fab9a9f9c42e510123">scallop_lang_classifier_single_quote_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:aa2cd2732491ac4fab9a9f9c42e510123"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single quote, closing a single-quoted string.  <br /></td></tr>
-<tr class="separator:aa2cd2732491ac4fab9a9f9c42e510123"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a375ac97510b48f0937794f6a9b6b939d" id="r_a375ac97510b48f0937794f6a9b6b939d"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a375ac97510b48f0937794f6a9b6b939d">scallop_lang_classifier_single_quote_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:a375ac97510b48f0937794f6a9b6b939d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a single-quoted string which contribute to a word.  <br /></td></tr>
-<tr class="separator:a375ac97510b48f0937794f6a9b6b939d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a19c949fd0727b8ca82c5cb60ae3fd601" id="r_a19c949fd0727b8ca82c5cb60ae3fd601"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a19c949fd0727b8ca82c5cb60ae3fd601">scallop_lang_classifier_double_quote</a> (wint_t input)</td></tr>
-<tr class="memdesc:a19c949fd0727b8ca82c5cb60ae3fd601"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening double quote.  <br /></td></tr>
-<tr class="separator:a19c949fd0727b8ca82c5cb60ae3fd601"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3d46129a67ae4e657191cd44ec16d98" id="r_ae3d46129a67ae4e657191cd44ec16d98"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ae3d46129a67ae4e657191cd44ec16d98">scallop_lang_classifier_double_quote_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:ae3d46129a67ae4e657191cd44ec16d98"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a double quote, closing a double-quoted string.  <br /></td></tr>
-<tr class="separator:ae3d46129a67ae4e657191cd44ec16d98"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a39ed29c91b61393b451e78b3d61fa460" id="r_a39ed29c91b61393b451e78b3d61fa460"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a39ed29c91b61393b451e78b3d61fa460">scallop_lang_classifier_double_quote_word</a> (wint_t input)</td></tr>
-<tr class="memdesc:a39ed29c91b61393b451e78b3d61fa460"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a double-quoted string which contribute to a word.  <br /></td></tr>
-<tr class="separator:a39ed29c91b61393b451e78b3d61fa460"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11ffb9506feaa466abffe414bb2a530f" id="r_a11ffb9506feaa466abffe414bb2a530f"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a11ffb9506feaa466abffe414bb2a530f">scallop_lang_classifier_curly_block</a> (wint_t input)</td></tr>
-<tr class="memdesc:a11ffb9506feaa466abffe414bb2a530f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a curly bracket block '{'.  <br /></td></tr>
-<tr class="separator:a11ffb9506feaa466abffe414bb2a530f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeed922b9c7481b393d40b892f1072391" id="r_aeed922b9c7481b393d40b892f1072391"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#aeed922b9c7481b393d40b892f1072391">scallop_lang_classifier_curly_block_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:aeed922b9c7481b393d40b892f1072391"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a curly bracket block '}'.  <br /></td></tr>
-<tr class="separator:aeed922b9c7481b393d40b892f1072391"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad0395a5d80fbba1afc361b47289103bd" id="r_ad0395a5d80fbba1afc361b47289103bd"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ad0395a5d80fbba1afc361b47289103bd">scallop_lang_classifier_square_block</a> (wint_t input)</td></tr>
-<tr class="memdesc:ad0395a5d80fbba1afc361b47289103bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a square bracket block '['.  <br /></td></tr>
-<tr class="separator:ad0395a5d80fbba1afc361b47289103bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0bf846117e00625652ba8d0d827d937" id="r_af0bf846117e00625652ba8d0d827d937"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#af0bf846117e00625652ba8d0d827d937">scallop_lang_classifier_square_block_end</a> (wint_t input)</td></tr>
-<tr class="memdesc:af0bf846117e00625652ba8d0d827d937"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a square bracket block ']'.  <br /></td></tr>
-<tr class="separator:af0bf846117e00625652ba8d0d827d937"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac57a9cc2d559a1f3b3286856136afcc4" id="r_ac57a9cc2d559a1f3b3286856136afcc4"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ac57a9cc2d559a1f3b3286856136afcc4">scallop_lang_classifier_statement_separator</a> (wint_t input)</td></tr>
-<tr class="memdesc:ac57a9cc2d559a1f3b3286856136afcc4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a statement separator, such as ';' or newline.  <br /></td></tr>
-<tr class="separator:ac57a9cc2d559a1f3b3286856136afcc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d515be52452f6362414cdaa347584a1" id="r_a6d515be52452f6362414cdaa347584a1"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a6d515be52452f6362414cdaa347584a1">scallop_lang_classifier_line_comment</a> (wint_t input)</td></tr>
-<tr class="memdesc:a6d515be52452f6362414cdaa347584a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line comment, starting with a hash '#'.  <br /></td></tr>
-<tr class="separator:a6d515be52452f6362414cdaa347584a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3c002ccdbf1c2bf88aa0d8021ab41de9" id="r_a3c002ccdbf1c2bf88aa0d8021ab41de9"><td class="memItemLeft" align="right" valign="top">EXPORT bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a3c002ccdbf1c2bf88aa0d8021ab41de9">scallop_lang_classifier_is_word</a> (<a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *type)</td></tr>
-<tr class="memdesc:a3c002ccdbf1c2bf88aa0d8021ab41de9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if a lex type contributes to a word.  <br /></td></tr>
-<tr class="separator:a3c002ccdbf1c2bf88aa0d8021ab41de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f7828534a9d45da19e6e293673e9be1" id="r_a3f7828534a9d45da19e6e293673e9be1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a3f7828534a9d45da19e6e293673e9be1">scallop_lang_classifier_word</a> (wint_t input)</td></tr>
+<tr class="memdesc:a3f7828534a9d45da19e6e293673e9be1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unquoted word.  <br /></td></tr>
+<tr class="separator:a3f7828534a9d45da19e6e293673e9be1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a117992566e8c30fde3da8b220b666bd8" id="r_a117992566e8c30fde3da8b220b666bd8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a117992566e8c30fde3da8b220b666bd8">scallop_lang_classifier_word_separator</a> (wint_t input)</td></tr>
+<tr class="memdesc:a117992566e8c30fde3da8b220b666bd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a word separator.  <br /></td></tr>
+<tr class="separator:a117992566e8c30fde3da8b220b666bd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6b697794c6d386d68e588a6c777f03f" id="r_ae6b697794c6d386d68e588a6c777f03f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ae6b697794c6d386d68e588a6c777f03f">scallop_lang_classifier_escape</a> (wint_t input)</td></tr>
+<tr class="memdesc:ae6b697794c6d386d68e588a6c777f03f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an escape character, '\'.  <br /></td></tr>
+<tr class="separator:ae6b697794c6d386d68e588a6c777f03f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33c3ade503d751793e43dfd91aae4e8e" id="r_a33c3ade503d751793e43dfd91aae4e8e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a33c3ade503d751793e43dfd91aae4e8e">scallop_lang_classifier_single_quote</a> (wint_t input)</td></tr>
+<tr class="memdesc:a33c3ade503d751793e43dfd91aae4e8e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening single quote.  <br /></td></tr>
+<tr class="separator:a33c3ade503d751793e43dfd91aae4e8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12cd71cc8b647db40a878e68aaf01e09" id="r_a12cd71cc8b647db40a878e68aaf01e09"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a12cd71cc8b647db40a878e68aaf01e09">scallop_lang_classifier_single_quote_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:a12cd71cc8b647db40a878e68aaf01e09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a single quote, closing a single-quoted string.  <br /></td></tr>
+<tr class="separator:a12cd71cc8b647db40a878e68aaf01e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7aa2f1e681bb85c22c5bb875eec30699" id="r_a7aa2f1e681bb85c22c5bb875eec30699"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a7aa2f1e681bb85c22c5bb875eec30699">scallop_lang_classifier_single_quote_word</a> (wint_t input)</td></tr>
+<tr class="memdesc:a7aa2f1e681bb85c22c5bb875eec30699"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a single-quoted string which contribute to a word.  <br /></td></tr>
+<tr class="separator:a7aa2f1e681bb85c22c5bb875eec30699"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec394fea5a2bd2b9d6efb1f1a6abb55e" id="r_aec394fea5a2bd2b9d6efb1f1a6abb55e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#aec394fea5a2bd2b9d6efb1f1a6abb55e">scallop_lang_classifier_double_quote</a> (wint_t input)</td></tr>
+<tr class="memdesc:aec394fea5a2bd2b9d6efb1f1a6abb55e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an opening double quote.  <br /></td></tr>
+<tr class="separator:aec394fea5a2bd2b9d6efb1f1a6abb55e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6dbe375fb824700d6b5d0cbc6c69f96" id="r_ab6dbe375fb824700d6b5d0cbc6c69f96"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ab6dbe375fb824700d6b5d0cbc6c69f96">scallop_lang_classifier_double_quote_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:ab6dbe375fb824700d6b5d0cbc6c69f96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a double quote, closing a double-quoted string.  <br /></td></tr>
+<tr class="separator:ab6dbe375fb824700d6b5d0cbc6c69f96"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa369a16adb6d24f068d327dfe61e70b5" id="r_aa369a16adb6d24f068d327dfe61e70b5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#aa369a16adb6d24f068d327dfe61e70b5">scallop_lang_classifier_double_quote_word</a> (wint_t input)</td></tr>
+<tr class="memdesc:aa369a16adb6d24f068d327dfe61e70b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents characters in a double-quoted string which contribute to a word.  <br /></td></tr>
+<tr class="separator:aa369a16adb6d24f068d327dfe61e70b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02e2e268979dbe70c59660a369a92bf2" id="r_a02e2e268979dbe70c59660a369a92bf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a02e2e268979dbe70c59660a369a92bf2">scallop_lang_classifier_curly_block</a> (wint_t input)</td></tr>
+<tr class="memdesc:a02e2e268979dbe70c59660a369a92bf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a curly bracket block '{'.  <br /></td></tr>
+<tr class="separator:a02e2e268979dbe70c59660a369a92bf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a637c2d1c2afac99338002d0c9a5edffb" id="r_a637c2d1c2afac99338002d0c9a5edffb"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a637c2d1c2afac99338002d0c9a5edffb">scallop_lang_classifier_curly_block_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:a637c2d1c2afac99338002d0c9a5edffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a curly bracket block '}'.  <br /></td></tr>
+<tr class="separator:a637c2d1c2afac99338002d0c9a5edffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7498f062de8ef237aebe0807a295fec7" id="r_a7498f062de8ef237aebe0807a295fec7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a7498f062de8ef237aebe0807a295fec7">scallop_lang_classifier_square_block</a> (wint_t input)</td></tr>
+<tr class="memdesc:a7498f062de8ef237aebe0807a295fec7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the opening of a square bracket block '['.  <br /></td></tr>
+<tr class="separator:a7498f062de8ef237aebe0807a295fec7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa67b79394aa527de07c3b0cd5dd31a26" id="r_aa67b79394aa527de07c3b0cd5dd31a26"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#aa67b79394aa527de07c3b0cd5dd31a26">scallop_lang_classifier_square_block_end</a> (wint_t input)</td></tr>
+<tr class="memdesc:aa67b79394aa527de07c3b0cd5dd31a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the closing of a square bracket block ']'.  <br /></td></tr>
+<tr class="separator:aa67b79394aa527de07c3b0cd5dd31a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4fcca38c575a6ce249bee7bad14932e" id="r_ad4fcca38c575a6ce249bee7bad14932e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ad4fcca38c575a6ce249bee7bad14932e">scallop_lang_classifier_statement_separator</a> (wint_t input)</td></tr>
+<tr class="memdesc:ad4fcca38c575a6ce249bee7bad14932e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a statement separator, such as ';' or newline.  <br /></td></tr>
+<tr class="separator:ad4fcca38c575a6ce249bee7bad14932e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fc05572b1e732393a0f6ac0c90fb508" id="r_a5fc05572b1e732393a0f6ac0c90fb508"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a5fc05572b1e732393a0f6ac0c90fb508">scallop_lang_classifier_line_comment</a> (wint_t input)</td></tr>
+<tr class="memdesc:a5fc05572b1e732393a0f6ac0c90fb508"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents a line comment, starting with a hash '#'.  <br /></td></tr>
+<tr class="separator:a5fc05572b1e732393a0f6ac0c90fb508"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a876af1fed23c36b100014e9590459f6b" id="r_a876af1fed23c36b100014e9590459f6b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a876af1fed23c36b100014e9590459f6b">scallop_lang_classifier_is_word</a> (<a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *type)</td></tr>
+<tr class="memdesc:a876af1fed23c36b100014e9590459f6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tests if a lex type contributes to a word.  <br /></td></tr>
+<tr class="separator:a876af1fed23c36b100014e9590459f6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="var-members" name="var-members"></a>
 Variables</h2></td></tr>
-<tr class="memitem:ae54fde6068016e3f89efb3e3e5aebffb" id="r_ae54fde6068016e3f89efb3e3e5aebffb"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ae54fde6068016e3f89efb3e3e5aebffb">scallop_lang_classifier_end</a></td></tr>
-<tr class="memdesc:ae54fde6068016e3f89efb3e3e5aebffb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the end of a classifier script.  <br /></td></tr>
-<tr class="separator:ae54fde6068016e3f89efb3e3e5aebffb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad028d5cfe30feef49e36e0b645318b44" id="r_ad028d5cfe30feef49e36e0b645318b44"><td class="memItemLeft" align="right" valign="top">EXPORT <a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ad028d5cfe30feef49e36e0b645318b44">scallop_lang_classifier_unexpected</a></td></tr>
-<tr class="memdesc:ad028d5cfe30feef49e36e0b645318b44"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unexpected input for the current state.  <br /></td></tr>
-<tr class="separator:ad028d5cfe30feef49e36e0b645318b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a805632ba3b748478efcde06a2285488c" id="r_a805632ba3b748478efcde06a2285488c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#a805632ba3b748478efcde06a2285488c">scallop_lang_classifier_end</a></td></tr>
+<tr class="memdesc:a805632ba3b748478efcde06a2285488c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents the end of a classifier script.  <br /></td></tr>
+<tr class="separator:a805632ba3b748478efcde06a2285488c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac82434d2da0c3a688e13f322a65879c9" id="r_ac82434d2da0c3a688e13f322a65879c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *const&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classifier_8h.html#ac82434d2da0c3a688e13f322a65879c9">scallop_lang_classifier_unexpected</a></td></tr>
+<tr class="memdesc:ac82434d2da0c3a688e13f322a65879c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Represents an unexpected input for the current state.  <br /></td></tr>
+<tr class="separator:ac82434d2da0c3a688e13f322a65879c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file provides the interface for the classifierer. </p>
 <p>The classifierer is a finite state machine, where each state is a function. Each state takes an input and returns the next state.</p>
 <p>The classifierer state machine functions take a wide character input and return a classifierer state function. The return value should be cast to a scallop_lang_classifier_fn* before use.</p>
 <p>The entry point of the finite state machine is <a class="el" href="classifier_8h.html#ae5363b45889cdd4ca9425b06cafa4b67" title="The default entry point of the state machine.">scallop_lang_classifier_begin()</a>.</p>
-<p>If the current state receives an unexpected input, it will return <a class="el" href="classifier_8h.html#ad028d5cfe30feef49e36e0b645318b44" title="Represents an unexpected input for the current state.">scallop_lang_classifier_unexpected()</a>.</p>
-<p>You <em>must</em> check that the return value of the current state is <a class="el" href="classifier_8h.html#ad028d5cfe30feef49e36e0b645318b44" title="Represents an unexpected input for the current state.">scallop_lang_classifier_unexpected()</a> and handle it correctly. Calling <a class="el" href="classifier_8h.html#ad028d5cfe30feef49e36e0b645318b44" title="Represents an unexpected input for the current state.">scallop_lang_classifier_unexpected()</a> will call abort().</p>
-<p><a class="el" href="classifier_8h.html#ae54fde6068016e3f89efb3e3e5aebffb" title="Represents the end of a classifier script.">scallop_lang_classifier_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="classifier_8h.html#ae54fde6068016e3f89efb3e3e5aebffb" title="Represents the end of a classifier script.">scallop_lang_classifier_end()</a> to indicate that processing finished successfully.</p>
+<p>If the current state receives an unexpected input, it will return <a class="el" href="classifier_8h.html#ac82434d2da0c3a688e13f322a65879c9" title="Represents an unexpected input for the current state.">scallop_lang_classifier_unexpected()</a>.</p>
+<p>You <em>must</em> check that the return value of the current state is <a class="el" href="classifier_8h.html#ac82434d2da0c3a688e13f322a65879c9" title="Represents an unexpected input for the current state.">scallop_lang_classifier_unexpected()</a> and handle it correctly. Calling <a class="el" href="classifier_8h.html#ac82434d2da0c3a688e13f322a65879c9" title="Represents an unexpected input for the current state.">scallop_lang_classifier_unexpected()</a> will call abort().</p>
+<p><a class="el" href="classifier_8h.html#a805632ba3b748478efcde06a2285488c" title="Represents the end of a classifier script.">scallop_lang_classifier_end()</a> indicates that the state machine has terminated and no further states apply. You <em>must</em> check for <a class="el" href="classifier_8h.html#a805632ba3b748478efcde06a2285488c" title="Represents the end of a classifier script.">scallop_lang_classifier_end()</a> to indicate that processing finished successfully.</p>
 <p>Example: </p><div class="fragment"><div class="line"><span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;wchar.h&gt;</span></div>
@@ -257,14 +256,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a11ffb9506feaa466abffe414bb2a530f" name="a11ffb9506feaa466abffe414bb2a530f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11ffb9506feaa466abffe414bb2a530f">&#9670;&#160;</a></span>scallop_lang_classifier_curly_block()</h2>
+<a id="a02e2e268979dbe70c59660a369a92bf2" name="a02e2e268979dbe70c59660a369a92bf2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a02e2e268979dbe70c59660a369a92bf2">&#9670;&#160;</a></span>scallop_lang_classifier_curly_block()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_curly_block </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_curly_block </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -284,14 +283,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aeed922b9c7481b393d40b892f1072391" name="aeed922b9c7481b393d40b892f1072391"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeed922b9c7481b393d40b892f1072391">&#9670;&#160;</a></span>scallop_lang_classifier_curly_block_end()</h2>
+<a id="a637c2d1c2afac99338002d0c9a5edffb" name="a637c2d1c2afac99338002d0c9a5edffb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a637c2d1c2afac99338002d0c9a5edffb">&#9670;&#160;</a></span>scallop_lang_classifier_curly_block_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_curly_block_end </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_curly_block_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -311,14 +310,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a19c949fd0727b8ca82c5cb60ae3fd601" name="a19c949fd0727b8ca82c5cb60ae3fd601"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a19c949fd0727b8ca82c5cb60ae3fd601">&#9670;&#160;</a></span>scallop_lang_classifier_double_quote()</h2>
+<a id="aec394fea5a2bd2b9d6efb1f1a6abb55e" name="aec394fea5a2bd2b9d6efb1f1a6abb55e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec394fea5a2bd2b9d6efb1f1a6abb55e">&#9670;&#160;</a></span>scallop_lang_classifier_double_quote()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_double_quote </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_double_quote </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -338,14 +337,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ae3d46129a67ae4e657191cd44ec16d98" name="ae3d46129a67ae4e657191cd44ec16d98"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae3d46129a67ae4e657191cd44ec16d98">&#9670;&#160;</a></span>scallop_lang_classifier_double_quote_end()</h2>
+<a id="ab6dbe375fb824700d6b5d0cbc6c69f96" name="ab6dbe375fb824700d6b5d0cbc6c69f96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6dbe375fb824700d6b5d0cbc6c69f96">&#9670;&#160;</a></span>scallop_lang_classifier_double_quote_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_double_quote_end </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_double_quote_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -365,14 +364,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a39ed29c91b61393b451e78b3d61fa460" name="a39ed29c91b61393b451e78b3d61fa460"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a39ed29c91b61393b451e78b3d61fa460">&#9670;&#160;</a></span>scallop_lang_classifier_double_quote_word()</h2>
+<a id="aa369a16adb6d24f068d327dfe61e70b5" name="aa369a16adb6d24f068d327dfe61e70b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa369a16adb6d24f068d327dfe61e70b5">&#9670;&#160;</a></span>scallop_lang_classifier_double_quote_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_double_quote_word </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_double_quote_word </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -392,14 +391,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aeb4cc83ceb87bd28d90d5a800b1d302e" name="aeb4cc83ceb87bd28d90d5a800b1d302e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb4cc83ceb87bd28d90d5a800b1d302e">&#9670;&#160;</a></span>scallop_lang_classifier_escape()</h2>
+<a id="ae6b697794c6d386d68e588a6c777f03f" name="ae6b697794c6d386d68e588a6c777f03f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae6b697794c6d386d68e588a6c777f03f">&#9670;&#160;</a></span>scallop_lang_classifier_escape()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_escape </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_escape </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -419,8 +418,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a3c002ccdbf1c2bf88aa0d8021ab41de9" name="a3c002ccdbf1c2bf88aa0d8021ab41de9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3c002ccdbf1c2bf88aa0d8021ab41de9">&#9670;&#160;</a></span>scallop_lang_classifier_is_word()</h2>
+<a id="a876af1fed23c36b100014e9590459f6b" name="a876af1fed23c36b100014e9590459f6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a876af1fed23c36b100014e9590459f6b">&#9670;&#160;</a></span>scallop_lang_classifier_is_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -429,7 +428,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT bool scallop_lang_classifier_is_word </td>
+          <td class="memname">bool scallop_lang_classifier_is_word </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a> *&#160;</td>
           <td class="paramname"><em>type</em></td><td>)</td>
@@ -454,14 +453,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a6d515be52452f6362414cdaa347584a1" name="a6d515be52452f6362414cdaa347584a1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6d515be52452f6362414cdaa347584a1">&#9670;&#160;</a></span>scallop_lang_classifier_line_comment()</h2>
+<a id="a5fc05572b1e732393a0f6ac0c90fb508" name="a5fc05572b1e732393a0f6ac0c90fb508"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fc05572b1e732393a0f6ac0c90fb508">&#9670;&#160;</a></span>scallop_lang_classifier_line_comment()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_line_comment </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_line_comment </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -481,14 +480,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ab271422e4288b98f99c85bb366cb863c" name="ab271422e4288b98f99c85bb366cb863c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab271422e4288b98f99c85bb366cb863c">&#9670;&#160;</a></span>scallop_lang_classifier_single_quote()</h2>
+<a id="a33c3ade503d751793e43dfd91aae4e8e" name="a33c3ade503d751793e43dfd91aae4e8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33c3ade503d751793e43dfd91aae4e8e">&#9670;&#160;</a></span>scallop_lang_classifier_single_quote()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_single_quote </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_single_quote </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -508,14 +507,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="aa2cd2732491ac4fab9a9f9c42e510123" name="aa2cd2732491ac4fab9a9f9c42e510123"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa2cd2732491ac4fab9a9f9c42e510123">&#9670;&#160;</a></span>scallop_lang_classifier_single_quote_end()</h2>
+<a id="a12cd71cc8b647db40a878e68aaf01e09" name="a12cd71cc8b647db40a878e68aaf01e09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a12cd71cc8b647db40a878e68aaf01e09">&#9670;&#160;</a></span>scallop_lang_classifier_single_quote_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_single_quote_end </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_single_quote_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -535,14 +534,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a375ac97510b48f0937794f6a9b6b939d" name="a375ac97510b48f0937794f6a9b6b939d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a375ac97510b48f0937794f6a9b6b939d">&#9670;&#160;</a></span>scallop_lang_classifier_single_quote_word()</h2>
+<a id="a7aa2f1e681bb85c22c5bb875eec30699" name="a7aa2f1e681bb85c22c5bb875eec30699"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7aa2f1e681bb85c22c5bb875eec30699">&#9670;&#160;</a></span>scallop_lang_classifier_single_quote_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_single_quote_word </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_single_quote_word </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -562,14 +561,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad0395a5d80fbba1afc361b47289103bd" name="ad0395a5d80fbba1afc361b47289103bd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad0395a5d80fbba1afc361b47289103bd">&#9670;&#160;</a></span>scallop_lang_classifier_square_block()</h2>
+<a id="a7498f062de8ef237aebe0807a295fec7" name="a7498f062de8ef237aebe0807a295fec7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7498f062de8ef237aebe0807a295fec7">&#9670;&#160;</a></span>scallop_lang_classifier_square_block()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_square_block </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_square_block </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -589,14 +588,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="af0bf846117e00625652ba8d0d827d937" name="af0bf846117e00625652ba8d0d827d937"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0bf846117e00625652ba8d0d827d937">&#9670;&#160;</a></span>scallop_lang_classifier_square_block_end()</h2>
+<a id="aa67b79394aa527de07c3b0cd5dd31a26" name="aa67b79394aa527de07c3b0cd5dd31a26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa67b79394aa527de07c3b0cd5dd31a26">&#9670;&#160;</a></span>scallop_lang_classifier_square_block_end()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_square_block_end </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_square_block_end </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -616,14 +615,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ac57a9cc2d559a1f3b3286856136afcc4" name="ac57a9cc2d559a1f3b3286856136afcc4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac57a9cc2d559a1f3b3286856136afcc4">&#9670;&#160;</a></span>scallop_lang_classifier_statement_separator()</h2>
+<a id="ad4fcca38c575a6ce249bee7bad14932e" name="ad4fcca38c575a6ce249bee7bad14932e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4fcca38c575a6ce249bee7bad14932e">&#9670;&#160;</a></span>scallop_lang_classifier_statement_separator()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_statement_separator </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_statement_separator </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -643,14 +642,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="af5e704bc6cb16c5be9c15538e8b7d36d" name="af5e704bc6cb16c5be9c15538e8b7d36d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5e704bc6cb16c5be9c15538e8b7d36d">&#9670;&#160;</a></span>scallop_lang_classifier_word()</h2>
+<a id="a3f7828534a9d45da19e6e293673e9be1" name="a3f7828534a9d45da19e6e293673e9be1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7828534a9d45da19e6e293673e9be1">&#9670;&#160;</a></span>scallop_lang_classifier_word()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_word </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_word </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -670,14 +669,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a7e25b9b2194d3701033ff988a62f24e8" name="a7e25b9b2194d3701033ff988a62f24e8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7e25b9b2194d3701033ff988a62f24e8">&#9670;&#160;</a></span>scallop_lang_classifier_word_separator()</h2>
+<a id="a117992566e8c30fde3da8b220b666bd8" name="a117992566e8c30fde3da8b220b666bd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a117992566e8c30fde3da8b220b666bd8">&#9670;&#160;</a></span>scallop_lang_classifier_word_separator()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_word_separator </td>
+          <td class="memname"><a class="el" href="classifier_8h.html#a1532e4494aaf84200c51794e83070016">scallop_lang_void_fn</a> * scallop_lang_classifier_word_separator </td>
           <td>(</td>
           <td class="paramtype">wint_t&#160;</td>
           <td class="paramname"><em>input</em></td><td>)</td>
@@ -698,8 +697,8 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="ae54fde6068016e3f89efb3e3e5aebffb" name="ae54fde6068016e3f89efb3e3e5aebffb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae54fde6068016e3f89efb3e3e5aebffb">&#9670;&#160;</a></span>scallop_lang_classifier_end</h2>
+<a id="a805632ba3b748478efcde06a2285488c" name="a805632ba3b748478efcde06a2285488c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a805632ba3b748478efcde06a2285488c">&#9670;&#160;</a></span>scallop_lang_classifier_end</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -708,7 +707,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a>* const scallop_lang_classifier_end</td>
+          <td class="memname"><a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a>* const scallop_lang_classifier_end</td>
         </tr>
       </table>
   </td>
@@ -726,8 +725,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="ad028d5cfe30feef49e36e0b645318b44" name="ad028d5cfe30feef49e36e0b645318b44"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad028d5cfe30feef49e36e0b645318b44">&#9670;&#160;</a></span>scallop_lang_classifier_unexpected</h2>
+<a id="ac82434d2da0c3a688e13f322a65879c9" name="ac82434d2da0c3a688e13f322a65879c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac82434d2da0c3a688e13f322a65879c9">&#9670;&#160;</a></span>scallop_lang_classifier_unexpected</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -736,7 +735,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">EXPORT <a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a>* const scallop_lang_classifier_unexpected</td>
+          <td class="memname"><a class="el" href="classifier_8h.html#afab7527638d738a8124cdc23a2319136">scallop_lang_classifier_fn</a>* const scallop_lang_classifier_unexpected</td>
         </tr>
       </table>
   </td>
