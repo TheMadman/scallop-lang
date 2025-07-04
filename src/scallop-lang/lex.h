@@ -41,7 +41,7 @@ extern "C" {
  */
 struct scallop_lang_lex {
 	/**
-	 * \brief Represents the type of token classifiered.
+	 * \brief Represents the type of token classified.
 	 */
 	scallop_lang_classifier_fn *type;
 
