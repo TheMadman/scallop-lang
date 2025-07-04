@@ -20,6 +20,5 @@ var searchData=
   ['scallop_5flang_5flex_5finit_17',['scallop_lang_lex_init',['../lex_8h.html#ae9dddc88f16e8332bf4fcd4db8952258',1,'lex.h']]],
   ['scallop_5flang_5flex_5fnext_18',['scallop_lang_lex_next',['../lex_8h.html#a547589717d915744052462473f32e7ac',1,'lex.h']]],
   ['scallop_5flang_5flex_5fnext_5fraw_19',['scallop_lang_lex_next_raw',['../lex_8h.html#ae0f9d588d4cb122998a2335f987f7e5d',1,'lex.h']]],
-  ['scallop_5flang_5flex_5fnormalize_5fword_20',['scallop_lang_lex_normalize_word',['../lex_8h.html#a844c52587b63a1806bb9b50cacb51de9',1,'lex.h']]],
-  ['scallop_5flang_5fparse_5fparser_21',['scallop_lang_parse_parser',['../parse_8h.html#a9874472b4795c0fec62e93b0c38f8ea7',1,'parse.h']]]
+  ['scallop_5flang_5flex_5fnormalize_5fword_20',['scallop_lang_lex_normalize_word',['../lex_8h.html#a844c52587b63a1806bb9b50cacb51de9',1,'lex.h']]]
 ];
