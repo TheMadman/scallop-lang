@@ -36,7 +36,7 @@ static CHARACTER_CLASS get_class(wint_t c)
 {
 	const bool is_word
 		= iswalnum(c)
-		|| in((wchar_t)c, L"-_.:");
+		|| in((wchar_t)c, L"-_.:/");
 
 	if (is_word) {
 		return CLASS_WORD;
